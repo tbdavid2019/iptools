@@ -27,9 +27,9 @@
     "Benefits": {
       "Title": "用戶權益",
       "Benefit": "權益",
-      "Note1": "作為一個開源產品，你使用 IPCheck.ing 的過程是免費的。",
+      "Note1": "作為一個開源產品，你使用 IP.david888.com 的過程是免費的。",
       "Note2": "但是，為了避免濫用，我們會限制一些功能。當你登錄後，你將得到以下權益：",
-      "Benefit1": "當你使用 IPCheck.ing 作為 IP 數據解析源時，完整顯示所有字段",
+      "Benefit1": "當你使用 IP.david888.com 作為 IP 數據解析源時，完整顯示所有字段",
       "Benefit2": "可以使用隱身測試",
       "Benefit3": "可以看到自己獲得的成就勳章",
       "Benefit4": "減少部分功能的訪問限制",
@@ -37,7 +37,7 @@
     },
     "Achievements": {
       "Title": "成就",
-      "Note": "在使用 IPCheck.ing 的過程中，你可能會觸發一些成就，在這里，你可以看到你所有的成就。",
+      "Note": "在使用 IP.david888.com 的過程中，你可能會觸發一些成就，在這里，你可以看到你所有的成就。",
       "Get": "已獲得",
       "GetCount": "已獲得的成就數量",
       "NotGet": "未獲得",
@@ -49,7 +49,7 @@
       "Type": {
         "IAmHuman": {
           "Title": "有頭有臉",
-          "Meet": "登錄後使用 IPCheck.ing"
+          "Meet": "登錄後使用 IP.david888.com"
         },
         "BarelyEnough": {
           "Title": "湊湊合合",
@@ -117,7 +117,7 @@
         },
         "GenerousDonor": {
           "Title": "慷慨解囊",
-          "Meet": "給 IPCheck.ing 項目捐贈過"
+          "Meet": "給 IP.david888.com 項目捐贈過"
         },
         "ItIsOpen": {
           "Title": "是開放的",
@@ -125,7 +125,7 @@
         },
         "CuriousCat": {
           "Title": "好奇的貓",
-          "Meet": "在 Whois 查詢中，查詢了 IPCheck.ing 的信息"
+          "Meet": "在 Whois 查詢中，查詢了 IP.david888.com 的信息"
         },
         "CrossingTheWall": {
           "Title": "八仙過墻",
@@ -136,7 +136,7 @@
   },
   "nav": {
     "id": "nav",
-    "Title": "IPCheck.ing",
+    "Title": "IP.david888.com",
     "Navigation": "導航",
     "IPInfo": "IP 信息",
     "Connectivity": "網絡連通性",
@@ -417,7 +417,7 @@
   "ruletest": {
     "Title": "分流測試",
     "Name": "檢測",
-    "Note": "分流測試用於判斷代理軟件基於域名的規則設置是否正確。在進行測試之前，你需要先參考下方的卡片，在你的代理軟件里對 IPCheck.ing 的 8 個不同的 URL 設置不同的域名分流規則。",
+    "Note": "分流測試用於判斷代理軟件基於域名的規則設置是否正確。在進行測試之前，你需要先參考下方的卡片，在你的代理軟件里對 IP.david888.com 的 8 個不同的 URL 設置不同的域名分流規則。",
     "StatusWait": "待檢測",
     "StatusError": "檢測出錯",
     "Country": "代理地區",
@@ -556,7 +556,7 @@
     "id": "pingtest",
     "Title": "全球延遲測試",
     "Note": "Ping 測試是一種網絡工具，用於測量數據包從你的設備到特定目標（在這里是我們分布在全球各個大洲和地區的服務器）的往返時間。是評估網絡性能的關鍵指標。",
-    "Note2": "在這個過程中，IPCheck.ing 會從世界各地的服務器發送小數據包到你的 IP 地址，然後測量這些數據包從服務器發送到你的設備，再返回服務器所需的時間。通過這些不同地理位置的 Ping 測試，你可以獲得一個全面的視圖，了解你的設備與全球網絡連接的速度和穩定性。",
+    "Note2": "在這個過程中，IP.david888.com 會從世界各地的服務器發送小數據包到你的 IP 地址，然後測量這些數據包從服務器發送到你的設備，再返回服務器所需的時間。通過這些不同地理位置的 Ping 測試，你可以獲得一個全面的視圖，了解你的設備與全球網絡連接的速度和穩定性。",
     "Note3": "請選取你的 IP 地址進行測試：",
     "SelectIP": "選擇一個 IP 地址",
     "Region": "地區",
@@ -640,28 +640,28 @@
     "SecurityChecklist": "打開安全檢查清單"
   },
   "page": {
-    "title": "IPCheck.ing - 查看我的 IP 地址 - 查詢本機 IP 地址及歸屬地 - 查看 WebRTC 連接 IP - DNS 泄露檢測 - 網速測試 - Jason Ng 阿禪開源作品",
+    "title": "IP.david888.com - 查看我的 IP 地址 - 查詢本機 IP 地址及歸屬地 - 查看 WebRTC 連接 IP - DNS 泄露檢測 - 網速測試 - Jason Ng 阿禪開源作品",
     "description": "好用和開源的全能 IP 工具箱。輕松查看你的 IP 地址，IP 信息，檢查 DNS 泄露，檢查 WebRTC 連接，測試網站可用性，查找 DNS 記錄，查找 Whois 信息，測試全球延遲測試等。",
     "keywords": "我的IP,IP工具,我的IP,IP查詢,DNS泄漏測試,WebRTC測試,網速測試,DNS查詢,Whois查詢, Ping測試, 隱私測試",
-    "footerLink": "https://github.com/jason5ng32/MyIP",
+    "footerLink": "https://github.com/tbdavid2019/iptools",
     "copyRightName": "Originally from ",
-    "copyRightLink": "https://ipcheck.ing",
-    "copyRightLinkName": "IPCheck.ing"
+    "copyRightLink": "https://IP.david888.com",
+    "copyRightLinkName": "IP.david888.com"
   },
   "helpModal": {
     "Title": "快捷鍵"
   },
   "about": {
     "Title": "關於",
-    "product1": "IPCheck.ing 是一個免費的 IP 工具箱，可以幫助你查看自己的 IP 信息，檢測網站的可用性，查看 DNS 出口信息，進行網速測試，全球延遲測試，MTR 測試等。",
+    "product1": "IP.david888.com 是一個免費的 IP 工具箱，可以幫助你查看自己的 IP 信息，檢測網站的可用性，查看 DNS 出口信息，進行網速測試，全球延遲測試，MTR 測試等。",
     "product2": "這是一個開源項目，你可以點擊頁面底部的 GitHub 圖標查看源代碼。",
     "product3": "最早的時候，這是我的一個用來學習 Vue.js 和學習如何使用 ChatGPT 寫代碼的練手項目，後來在 GitHub 上獲得的星星數量越來越多，於是我進行了大量的重構和添加了許多非常有用的功能，希望你會喜歡。",
     "meTitle": "關於我",
-    "me1": "我的名字叫阿禪，通常在網上使用 Jason Ng 作為英文名，我並不是一個專業的程序員，但是我喜歡編程，我喜歡開源，我喜歡分享。",
+    "me1": "這專案fork自 Jason Ng 作者，我並不是一個專業的程序員，但是我喜歡編程，我喜歡開源，我喜歡分享。",
     "me2": "在大多數時候，我是一名產品經理、一名博客作者、一個摩托車騎士以及一名極客。",
     "me3": "你可以在下面的鏈接里找到我更詳細的介紹：",
     "contactTitle": "聯系我",
-    "contact": "如果你有任何問題或建議，請通過郵箱聯系我： jason[AT]kenengba.com 。",
+    "contact": "如果你有任何問題或建議。",
     "personal": "個人網站",
     "blog": "可能吧博客",
     "retiremoney": "躺平計算器",

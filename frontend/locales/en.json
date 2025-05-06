@@ -27,9 +27,9 @@
     "Benefits": {
       "Title": "User Benefits",
       "Benefit": "Benefit",
-      "Note1": "As an open-source product, your use of IPCheck.ing is free of charge.",
+      "Note1": "As an open-source product, your use of IP.david888.com is free of charge.",
       "Note2": "However, to prevent abuse, we limit some features. By logging in, you will receive the following benefits:",
-      "Benefit1": "When you use IPCheck.ing as IP data source, all fields are displayed in full.",
+      "Benefit1": "When you use IP.david888.com as IP data source, all fields are displayed in full.",
       "Benefit2": "You can use the invisibility test.",
       "Benefit3": "You can view your own achievement badges",
       "Benefit4": "Reduces access restrictions on some features.",
@@ -37,7 +37,7 @@
     },
     "Achievements": {
       "Title": "Achievements",
-      "Note": "While using IPCheck.ing, you may trigger some achievements. Here you can see all your achievements.",
+      "Note": "While using IP.david888.com, you may trigger some achievements. Here you can see all your achievements.",
       "Get": "Obtained",
       "GetCount": "Obtained Achievements",
       "NotGet": "Not Yet",
@@ -49,7 +49,7 @@
       "Type": {
         "IAmHuman": {
           "Title": "I Am Human",
-          "Meet": "Use IPCheck.ing after logging in"
+          "Meet": "Use IP.david888.com after logging in"
         },
         "BarelyEnough": {
           "Title": "Barely Enough",
@@ -117,7 +117,7 @@
         },
         "GenerousDonor": {
           "Title": "Generous Donor",
-          "Meet": "Donated to the IPCheck.ing project"
+          "Meet": "Donated to the IP.david888.com project"
         },
         "ItIsOpen": {
           "Title": "It Is Open",
@@ -125,7 +125,7 @@
         },
         "CuriousCat": {
           "Title": "Curious Cat",
-          "Meet": "Query IPCheck.ing information in the Whois Search"
+          "Meet": "Query IP.david888.com information in the Whois Search"
         },
         "CrossingTheWall": {
           "Title": "Crossing The Wall",
@@ -136,7 +136,7 @@
   },
   "nav": {
     "id": "nav",
-    "Title": "IPCheck.ing",
+    "Title": "IP.david888.com",
     "Navigation": "Navigation",
     "IPInfo": "IP Infos",
     "Connectivity": "Connectivity",
@@ -417,7 +417,7 @@
   "ruletest": {
     "Title": "Rule Test",
     "Name": "Test",
-    "Note": "Rule test is used to determine if the proxy software's domain-based rules are set correctly. Before conducting the test, you need to refer to the card below and set different domain-based routing rules for the 8 different URLs of IPCheck.ing in your proxy software.",
+    "Note": "Rule test is used to determine if the proxy software's domain-based rules are set correctly. Before conducting the test, you need to refer to the card below and set different domain-based routing rules for the 8 different URLs of IP.david888.com in your proxy software.",
     "StatusWait": "Awaiting Test or Test Error",
     "StatusError": "Test Error",
     "Country": "Proxy region",
@@ -556,7 +556,7 @@
     "id": "pingtest",
     "Title": "Global Latency Test",
     "Note": "Ping test is a network tool used to measure the round-trip time of data packets from your device to specific targets (in this case, our servers located in different continents and regions). It is a key metric for evaluating network performance.",
-    "Note2": "In this process, IPCheck.ing sends small packets of data from servers around the world to your IP address and measures the time it takes for these packets to travel from the server to your device and back. Through these Ping tests from different geographical locations, you can gain a comprehensive view of the speed and stability of your device's connection to the global network.",
+    "Note2": "In this process, IP.david888.com sends small packets of data from servers around the world to your IP address and measures the time it takes for these packets to travel from the server to your device and back. Through these Ping tests from different geographical locations, you can gain a comprehensive view of the speed and stability of your device's connection to the global network.",
     "Note3": "Please select your IP address for testing.",
     "SelectIP": "Select an IP Address",
     "Region": "Region",
@@ -640,20 +640,20 @@
     "SecurityChecklist": "Open Security Checklist panel"
   },
   "page": {
-    "title": "IPCheck.ing - Check My IP Address and Geolocation - Check WebRTC Connection IP - DNS Leak Test - Speed Test - Jason Ng Open Source",
+    "title": "IP toolbox",
     "description": "A better and open source IP Toolbox. Easy to check what's your IPs, IP information, check for DNS leaks, examine WebRTC connections, test website availability, lookup DNS record, lookup Whois, and test latency from around the world.",
     "keywords": "MyIP,IP Tool,My IP,IP check,IP lookup,DNS leak test,WebRTC test,Speed test,DNS lookup,Whois lookup, Ping test, privacy test",
-    "footerLink": "https://github.com/jason5ng32/MyIP",
+    "footerLink": "https://github.com/",
     "copyRightName": "Originally from ",
-    "copyRightLink": "https://ipcheck.ing",
-    "copyRightLinkName": "IPCheck.ing"
+    "copyRightLink": "https://IP.david888.com",
+    "copyRightLinkName": "IP.david888.com"
   },
   "helpModal": {
     "Title": "Keyboard Shortcuts"
   },
   "about": {
     "Title": "About",
-    "product1": "IPCheck.ing is a free IP toolbox that helps you check your IP information, test website availability, examine DNS exit information, perform speed tests, global latency tests, MTR tests, and more.",
+    "product1": "IP.david888.com is a free IP toolbox that helps you check your IP information, test website availability, examine DNS exit information, perform speed tests, global latency tests, MTR tests, and more.",
     "product2": "This is an open-source project, and you can view the source code by clicking on the GitHub icon at the bottom of the page.",
     "product3": "Initially, this was a personal project for me to learn Vue.js and how to write code using ChatGPT. Over time, it gained more stars on GitHub, so I did a lot of refactoring and added many useful features. I hope you will enjoy it.",
     "meTitle": "About Me",
