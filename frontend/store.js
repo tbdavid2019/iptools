@@ -156,9 +156,9 @@ export const useMainStore = defineStore('main', {
     },
     // 从本地存储加载用户偏好设置
     loadPreferences() {
-      // 從環境變數中讀取默認的 IP 數據源，如果沒有設置則使用 0 (IPCheck.ing)
-      const defaultIpGeoSource = parseInt(import.meta.env.VITE_DEFAULT_IP_GEO_SOURCE || '0', 10);
-      console.log('Default IP Geo Source from env:', defaultIpGeoSource);
+      // 硬編碼設置默認的 IP 數據源為 1 (IPinfo.io)
+      const defaultIpGeoSource = 1; // 1 = IPinfo.io
+      console.log('Default IP Geo Source (hardcoded):', defaultIpGeoSource);
       
       const defaultPreferences = {
         theme: 'auto', // auto, light, dark

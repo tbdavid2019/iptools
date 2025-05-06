@@ -1,9 +1,4 @@
 import { createApp } from 'vue'
-
-// 臨時代碼：清除本地存儲中的用戶偏好設置，以便使用新的默認 IP 數據源
-// 使用完後可以刪除這段代碼
-console.log('清除本地存儲中的用戶偏好設置');
-localStorage.removeItem('userPreferences');
 import { createPinia } from 'pinia';
 import { useMainStore } from './store';
 import App from './App.vue'

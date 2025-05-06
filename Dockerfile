@@ -4,6 +4,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+
+# 設置構建時的環境變量
+ENV VITE_DEFAULT_IP_GEO_SOURCE=1
+
 RUN npm run build
 
 # 第二阶段：运行
@@ -17,7 +21,7 @@ COPY --from=build-stage /app/frontend-server.js ./
 COPY --from=build-stage /app/api ./api
 COPY --from=build-stage /app/common ./common
 
-EXPOSE 18966
+EXPOSE 6001
 
 # 启动应用
 CMD ["npm", "start"]
