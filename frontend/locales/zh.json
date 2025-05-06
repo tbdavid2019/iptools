@@ -1,0 +1,1131 @@
+{
+  "user": {
+    "SignIn": "登錄/注冊",
+    "SignInWithGoogle": "使用 Google 登錄",
+    "SignInWithGithub": "使用 GitHub 登錄",
+    "SignOut": "登出",
+    "SignInToView": "登錄後查看",
+    "SignInToUse": "請登錄後使用",
+    "InvalidUserToken": "無效的用戶 Token",
+    "MyAchievements": "我的成就",
+    "Fields": {
+      "User": "用戶",
+      "CreatedAt": "創建於",
+      "LastLogin": "最後登錄",
+      "Level": "用戶等級",
+      "FunctionUses": "高級功能使用",
+      "Times": "次",
+      "Fetching": "獲取中..."
+    },
+    "Level": {
+      "Standard": "標準用戶",
+      "Premium": "高級用戶",
+      "Owner": "管理員",
+      "Developer": "開發者",
+      "HonoraryMember": "榮譽用戶"
+    },
+    "Benefits": {
+      "Title": "用戶權益",
+      "Benefit": "權益",
+      "Note1": "作為一個開源產品，你使用 IPCheck.ing 的過程是免費的。",
+      "Note2": "但是，為了避免濫用，我們會限制一些功能。當你登錄後，你將得到以下權益：",
+      "Benefit1": "當你使用 IPCheck.ing 作為 IP 數據解析源時，完整顯示所有字段",
+      "Benefit2": "可以使用隱身測試",
+      "Benefit3": "可以看到自己獲得的成就勳章",
+      "Benefit4": "減少部分功能的訪問限制",
+      "FootNote": "更多權益陸續開發中..."
+    },
+    "Achievements": {
+      "Title": "成就",
+      "Note": "在使用 IPCheck.ing 的過程中，你可能會觸發一些成就，在這里，你可以看到你所有的成就。",
+      "Get": "已獲得",
+      "GetCount": "已獲得的成就數量",
+      "NotGet": "未獲得",
+      "NotGetCount": "未獲得的成就數量",
+      "FooterNote": "有時候，可能會有一些限時成就。",
+      "Congrats": "🎉 恭喜",
+      "CongratsMessage": "你獲得了一個新成就！",
+      "NewAchievementIs": "新成就是：",
+      "Type": {
+        "IAmHuman": {
+          "Title": "有頭有臉",
+          "Meet": "登錄後使用 IPCheck.ing"
+        },
+        "BarelyEnough": {
+          "Title": "湊湊合合",
+          "Meet": "下載速度超過 100Mb/s"
+        },
+        "RapidPace": {
+          "Title": "快馬加鞭",
+          "Meet": "下載速度超過 500Mb/s"
+        },
+        "TorrentFlow": {
+          "Title": "一瀉千里",
+          "Meet": "下載速度超過 1000Mb/s"
+        },
+        "SteadyGoing": {
+          "Title": "普普通通",
+          "Meet": "上傳速度超過 50Mb/s"
+        },
+        "TooFastTooSimple": {
+          "Title": "港記難追",
+          "Meet": "上傳速度超過 200Mb/s"
+        },
+        "SwiftAscent": {
+          "Title": "日行千里",
+          "Meet": "上傳速度超過 1000Mb/s"
+        },
+        "SurfaceCheck": {
+          "Title": "蜻蜓點水",
+          "Meet": "完成一項安全檢查清單"
+        },
+        "HalfwayThere": {
+          "Title": "半半拉拉",
+          "Meet": "完成 50% 安全檢查清單"
+        },
+        "FullySecured": {
+          "Title": "滴水不漏",
+          "Meet": "完成全部安全檢查清單"
+        },
+        "JustInCase": {
+          "Title": "以防萬一",
+          "Meet": "完成一次隱身測試"
+        },
+        "HiddenWell": {
+          "Title": "不露聲色",
+          "Meet": "隱身測試中代理和 VPN 概率都是 0"
+        },
+        "SlipUp": {
+          "Title": "露出馬腳",
+          "Meet": "隱身測試中代理或 VPN 概率大於 50%"
+        },
+        "CleverTrickery": {
+          "Title": "奇技淫巧",
+          "Meet": "查看了所有快捷鍵"
+        },
+        "EnergySaver": {
+          "Title": "省油的燈",
+          "Meet": "設置程序不自動運行"
+        },
+        "ResourceHog": {
+          "Title": "費油的車",
+          "Meet": "設置多次刷新可用性"
+        },
+        "MakingBigNews": {
+          "Title": "搞大新聞",
+          "Meet": "高級功能調用超過 1000 次"
+        },
+        "GenerousDonor": {
+          "Title": "慷慨解囊",
+          "Meet": "給 IPCheck.ing 項目捐贈過"
+        },
+        "ItIsOpen": {
+          "Title": "是開放的",
+          "Meet": "在封鎖測試中，查詢到了一個被封鎖的網站"
+        },
+        "CuriousCat": {
+          "Title": "好奇的貓",
+          "Meet": "在 Whois 查詢中，查詢了 IPCheck.ing 的信息"
+        },
+        "CrossingTheWall": {
+          "Title": "八仙過墻",
+          "Meet": "在規則測試中，8 個測試的 IP 全部不相同"
+        }
+      }
+    }
+  },
+  "nav": {
+    "id": "nav",
+    "Title": "IPCheck.ing",
+    "Navigation": "導航",
+    "IPInfo": "IP 信息",
+    "Connectivity": "網絡連通性",
+    "WebRTC": "WebRTC 測試",
+    "DNSLeakTest": "DNS 泄漏測試",
+    "SpeedTest": "網速測試",
+    "PingTest": "全球延遲",
+    "MTRTest": "MTR 測試",
+    "RuleTest": "分流測試",
+    "AdvancedTools": "高級工具",
+    "preferences": {
+      "title": "偏好設置",
+      "preferenceTips": "這些設置會保存在瀏覽器，方便下次使用。部分選項需要刷新頁面方可生效。",
+      "colorScheme": "顏色方案",
+      "systemAuto": "跟隨系統",
+      "colorLight": "白天",
+      "colorDark": "黑夜",
+      "ipSourcesToCheck": "IP 檢測服務器數量",
+      "ipSourcesToCheckTips": "選擇默認從多少個 IP 檢測服務器獲取 IP 信息。",
+      "appSettings": "程序設置",
+      "autoRun": "自動運行",
+      "autoRunTips": "關閉後，打開應用將只會進行本機 IP 檢測，不會自動運行其它的測試。",
+      "showMap": "顯示地圖",
+      "showMapTips": "在 IP 信息卡片上顯示地圖。",
+      "simpleMode": "簡潔模式",
+      "simpleModeTips": "減少 IP 卡片顯示的內容。僅在手機上生效。",
+      "connectivityAutoRefresh": "多次刷新可用性檢測",
+      "connectivityAutoRefreshTips": "開啟多次刷新後，程序在啟動時將運行 5 次檢測，並顯示最小延遲值。",
+      "popupConnectivityNotifications": "顯示可用性檢測氣泡",
+      "popupConnectivityNotificationsTips": "開啟後，將會在首次檢測時以氣泡形式提示可用性結果。",
+      "ipDB": "IP 解析數據源",
+      "ipDBTips": "你可以選擇你默認使用的 IP 地理位置數據源，如果你選定的不可用，系統會依次使用後續的數據源。",
+      "language": "語言設置",
+      "languageTips": "刷新瀏覽器後生效。"
+    }
+  },
+  "securitychecklist": {
+    "Title": "安全檢查清單",
+    "Note": "這是一份非常全面的網絡安全檢查清單，涵蓋密碼安全、瀏覽安全、移動設備安全等方面的內容。在當前環境下，信息泄露可能會導致重大的損失，因此，確保我們在連接互聯網的時候，我們盡可能地保護自己的隱私、提高訪問的安全性是很有必要的。",
+    "Note2": "這個清單羅列的內容非常多，你不一定要一次性檢查完，進度會在瀏覽器里保存，你可以隨時返回繼續檢查。",
+    "Progress": "檢查進度",
+    "Item": "項目",
+    "Items": "個項目",
+    "Priority": "級別",
+    "Ignore": "忽略",
+    "alert-total": "安全檢查一共有",
+    "alert-checked": "你已經完成了",
+    "alert-ignored": "被忽略",
+    "alert-unchecked": "個未進行檢查。",
+    "Checked": "已檢查",
+    "Ignored": "已忽略",
+    "Unchecked": "未檢查",
+    "Basic": "基礎",
+    "Optional": "可選",
+    "Essential": "必要",
+    "Advanced": "高級",
+    "Reset": "重置",
+    "ShowAll": "顯示所有",
+    "ShowUnchecked": "顯示未檢查",
+    "ShowIgnored": "顯示已忽略",
+    "ShowChecked": "顯示已檢查",
+    "Loading": "加載中..."
+  },
+  "curl": {
+    "Title": "命令行 API",
+    "Note1": "喲，原來你也喜歡用終端？",
+    "Note2_1": "你可以在終端里，通過",
+    "Note2_2": "命令獲取本機的 IP 地址",
+    "Note3": "是可選路徑，添加後可獲取到 IP 的地理信息",
+    "getIPv4": "獲取本機 IPv4 地址",
+    "getIPv6": "獲取本機 IPv6 地址",
+    "get6and4": "獲取本機優先網絡出口的 IP 地址",
+    "notAvailable": "此功能暫未開放，敬請期待"
+  },
+  "browserinfo": {
+    "Title": "瀏覽器信息",
+    "Note": "本頁面展示兩類瀏覽器信息：瀏覽器 User Agent 解析出來的基本信息，以及通過多項數據計算出來的瀏覽器指紋。瀏覽器指紋就像手掌的掌紋，當瀏覽器的信息暴露越多，你被網站識別的唯一性越高，也就是說，你越容易被網站跟蹤到。有些時候，即使你切換到隱私模式，甚至更換瀏覽器，指紋可能也不會發生變化。",
+    "Note2": "瀏覽器指紋的計算的方法是多種多樣的，不同的技術方案算法和結果不完全一致，我們在這里采用一種相對簡單的方法進行計算。",
+    "browser": {
+      "Infos": "瀏覽器信息",
+      "browserName": "瀏覽器名稱",
+      "browserVersion": "版本",
+      "engineName": "引擎",
+      "engineVersion": "版本",
+      "osName": "系統",
+      "osVersion": "版本",
+      "deviceModel": "型號",
+      "deviceVendor": "制造商",
+      "cpuArchitecture": "CPU 架構",
+      "gpu": "GPU",
+      "cpuCores": "CPU 核心數",
+      "language": "語言代碼",
+      "cookieEnabled": "是否啟用 Cookie",
+      "cookieEnabledTrue": "是",
+      "cookieEnabledFalse": "否"
+    },
+    "fingerprint": {
+      "Infos": "指紋信息",
+      "fingerprint": "指紋編碼",
+      "changeOption": "你可以嘗試變更用於計算瀏覽器指紋的數據，觀察指紋的變化（記得打開隱私模式對照查看）。",
+      "browserTips": "有些瀏覽器（比如 Safari）為了保護用戶不被跟蹤，即使勾選相同的數據，每次計算都可能會得到不同的指紋值。"
+    },
+    "options": {
+      "audio": "音頻",
+      "canvas": "畫布",
+      "fonts": "字體",
+      "hardware": "硬件",
+      "locales": "語言",
+      "permissions": "權限",
+      "plugins": "插件",
+      "screen": "屏幕",
+      "system": "瀏覽器版本",
+      "webgl": "WebGL",
+      "math": "運算"
+    },
+    "calError": "瀏覽器信息計算失敗，請刷新重試。",
+    "calculating": "計算中..."
+  },
+  "invisibilitytest": {
+    "Title": "隱身測試",
+    "Note": "當你掛上代理或 VPN 之後，你訪問的網站真的不知道你掛著代理嗎？你真的隱身了麼？我們會通過多種手段，嘗試計算出你偽裝後的漏洞，找到你正在使用代理的證據。盡管可能部分測試結果不完全準確，但本測試依然有較高的參考意義。",
+    "Note2": "點擊運行後，系統將會運行一個腳本，通常在 10s 內將會完成所有的測試，在這個過程中，你的 IP 信息、瀏覽器信息等將會被收集並在後台進行分析。",
+    "Run": "運行測試",
+    "fetchError": "無法獲取測試結果",
+    "yourIP": "你的主測 IP 是",
+    "proxyScore": "代理概率",
+    "VPNScore": "VPN 概率",
+    "isProxy": "你可能使用了代理。",
+    "notProxy": "未發現你使用了代理。",
+    "isVPN": "你可能使用了 VPN。",
+    "notVPN": "未發現你使用了 VPN。",
+    "itemName": "測試項目",
+    "itemProxyResult": "測試結果",
+    "itemComment": "分析",
+    "agreement": "同意信息收集",
+    "blocklist": {
+      "title": "VPN/代理名單",
+      "proxy": "你的 IP 在 VPN/代理名單中。",
+      "notProxy": "你的 IP 不在 VPN/代理名單中"
+    },
+    "headers": {
+      "title": "HTTP 頭信息",
+      "proxy": "你的 HTTP 頭信息中包含了代理信息，你可能正在使用代理。",
+      "notProxy": "你的 HTTP 頭信息中沒有代理信息。"
+    },
+    "datacenter": {
+      "title": "數據中心 IP",
+      "proxy": "你的 IP 是數據中心 IP，普通用戶的 IP 通常不會是數據中心。檢測到的數據中心是：",
+      "notProxy": "你的 IP 不是數據中心 IP"
+    },
+    "tcp": {
+      "title": "TCP 指紋",
+      "proxy": "你發起連接的系統與你的電腦系統不同，你可能正在使用代理。盡管系統判斷不一定準確，但可以肯定兩個系統並不相同。",
+      "computer": "你的電腦系統是：",
+      "server": "你發起連接的系統可能是：",
+      "notProxy": "你發起連接的系統與你的電腦系統相同。"
+    },
+    "timezone": {
+      "title": "時區差異",
+      "proxy": "你的時區與你的 IP 地理位置不匹配，你可能正在使用代理。",
+      "computer": "你的時區是：",
+      "server": "你的 IP 地理位置時區是：",
+      "notProxy": "你的時區與你的 IP 地理位置匹配。"
+    },
+    "net": {
+      "title": "網絡解析",
+      "proxy": "從網絡解析上發現你可能使用了代理或 VPN",
+      "notProxy": "從網絡解析上未發現你使用代理或 VPN 的證據。"
+    },
+    "webrtc": {
+      "title": "WebRTC 檢測",
+      "proxy": "WebRTC 發現你存在多個不同地區的 IP，你可能使用了代理或 VPN。",
+      "ipsAre": "IP 分別是：",
+      "notProxy": "WebRTC 檢測未發現存在多個不同地區的 IP。"
+    },
+    "flow": {
+      "title": "流量分析",
+      "proxy": "流量分析發現你可能使用了代理或 VPN。",
+      "notProxy": "流量分析未發現你使用代理或 VPN 的證據。"
+    },
+    "latency": {
+      "title": "延遲分析",
+      "proxy": "延遲分析發現你可能使用了代理或 VPN。",
+      "fromTCP": "TCP 延遲值：",
+      "fromWS": "WebSocket 延遲值：",
+      "notProxy": "延遲分析未發現你使用代理或 VPN 的證據。"
+    },
+    "highlatency": {
+      "title": "高延遲分析",
+      "proxy": "搞延遲分析發現你可能使用了代理或 VPN。",
+      "notProxy": "高延遲分析未發現你使用代理或 VPN 的證據。"
+    }
+  },
+  "censorshipcheck": {
+    "Title": "封鎖測試",
+    "Note": "檢查目標網站在全球互聯網審查較為嚴重的 4 個地區的可用性，包括：中國大陸、沙特阿拉伯、俄羅斯、土耳其。檢查時會同時從互聯網相對自由的地區進行相同的測試，以作為對照組進行校驗。在一些地區，互聯網審查有較為明確的法律條文，有些則相對含糊。",
+    "Note2": "請輸入 URL 或域名，開始封鎖測試：",
+    "Note3": "只有當同一個國家的所有服務器都無法訪問時，才會判斷為被封鎖",
+    "Run": "運行測試",
+    "Placeholder": "URL 或域名",
+    "Country": "地區",
+    "Status": "狀態",
+    "City": "城市",
+    "Network": "網絡",
+    "invalidURL": "無效的 URL 或域名",
+    "fetchError": "無法獲取測試結果",
+    "isBlocked": "這個網站看起來在部分國家被封鎖了，請參考上方的測試結果做最終判斷。",
+    "notBlocked": "這個網站看起來沒有被封鎖了，請參考上方的測試結果做最終判斷。",
+    "isDown": "無法判斷這個網站是否被封鎖，因為看起來它在全球許多位置都無法訪問。如果你輸入的地址是正確的，有可能網站本身出現了問題導致無法訪問。",
+    "Timeout": "測試超時",
+    "TestGroup": "測試組",
+    "ControlGroup": "控制組"
+  },
+  "advancedtools": {
+    "Title": "高級工具",
+    "Note": "一些使用頻率相對較低，但在進行網絡測試時，非常有用的工具。",
+    "PingTestNote": "全球的 Ping 值測試",
+    "MTRTestNote": "全球的 MTR 路由測試",
+    "DNSResolverNote": "實時多渠道 DNS 解析",
+    "RuleTestNote": "檢查代理軟件的規則設置",
+    "CensorshipCheck": "檢查一個網站在某些國家是否被封鎖",
+    "Whois": "對域名或 IP 進行 Whois 查詢",
+    "InvisibilityTest": "猜猜看我是否知道你掛了代理",
+    "MacChecker": "查詢物理地址的歸屬信息",
+    "BrowserInfo": "檢閱瀏覽器信息和指紋",
+    "SecurityChecklist": "全面的數字生活安全檢查清單"
+  },
+  "macchecker": {
+    "Title": "MAC 地址查詢",
+    "Note": "查詢一個物理地址（MAC 地址）所屬的制造商、是否單播/多播、是否廣域/區域等信息。支持使用完整的 12 位進行查詢，也支持前綴查詢。當然，你也可以用本查詢工具來驗證你生成的物理地址是否符合自己的需求。",
+    "Note2": "請輸入一個物理地址，開始查詢：",
+    "Run": "查詢",
+    "Placeholder": "F0:2F:4B:01:0A:AA",
+    "invalidMAC": "無效的物理地址",
+    "fetchError": "無法獲取查詢結果",
+    "company": "制造商",
+    "macPrefix": "物理地址前綴",
+    "address": "注冊地址",
+    "country": "注冊國家/地區",
+    "blockStart": "起始區塊",
+    "blockEnd": "結束區塊",
+    "blockSize": "區塊大小",
+    "blockType": "區塊類型",
+    "blockRange": "區塊範圍",
+    "isRand": "隨機地址",
+    "isPrivate": "私有數據",
+    "isMulticast": "多播地址",
+    "isUnicast": "單播地址",
+    "isGlobal": "全球地址",
+    "isLocal": "本地地址",
+    "property": "地址屬性",
+    "value": "值",
+    "manufacturer": "制造商信息"
+  },
+  "whois": {
+    "Title": "Whois 查詢",
+    "Note": "Whois 查詢是一種用於查詢域名注冊信息的服務。通過輸入域名或 IP 地址，可以查詢到域名的注冊信息、注冊商、注冊日期、過期日期等信息。IP 與域名的 Whois 信息字段不完全一致。同時，部分比較小眾的域名（TLD）可能無法查詢到相關信息。",
+    "Note2": "請輸入域名或 IP，開始進行查詢：",
+    "Note3": "Whois 信息包含多種類型的字段，以下為原始文本信息",
+    "Placeholder": "域名或 IP",
+    "Run": "查詢",
+    "invalidURL": "無效的域名或 IP",
+    "fetchError": "無法獲取查詢結果或查詢結果為空",
+    "Provider": "信息服務商"
+  },
+  "dnsresolver": {
+    "Title": "DNS 解析",
+    "Note": "在一些地區，某些運營商可能會因為政治原因或者商業原因，對一些域名進行污染，以至於直接進行訪問的時候，無法返回正確的結果。使用 DNS 解析檢查，將幫助你從全球各個知名的 DNS 廠商里檢查域名的解析結果。在檢測內置的 DNS 中，有一部分服務商來自中國，其 DNS 解析的結果可能會受到污染。請注意鑒別。",
+    "Note2": "請輸入 URL 或域名，開始進行解析：",
+    "Placeholder": "URL 或域名",
+    "Run": "解析",
+    "invalidURL": "無效的 URL 或域名",
+    "fetchError": "無法獲取解析結果",
+    "Provider": "DNS 服務商",
+    "Result": "解析結果",
+    "Record": "記錄"
+  },
+  "ruletest": {
+    "Title": "分流測試",
+    "Name": "檢測",
+    "Note": "分流測試用於判斷代理軟件基於域名的規則設置是否正確。在進行測試之前，你需要先參考下方的卡片，在你的代理軟件里對 IPCheck.ing 的 8 個不同的 URL 設置不同的域名分流規則。",
+    "StatusWait": "待檢測",
+    "StatusError": "檢測出錯",
+    "Country": "代理地區",
+    "RefreshAll": "刷新所有"
+  },
+  "Tooltips": {
+    "RefreshIPCard": "刷新 IP 信息",
+    "RefreshConnectivityTests": "刷新連通性測試",
+    "RefreshWebRTC": "刷新 WebRTC 測試",
+    "RefreshDNSLeakTest": "刷新 DNS 泄漏測試",
+    "SpeedTestButton": "開始/暫停網速測試",
+    "ToggleMaps": "打開/關閉地圖顯示",
+    "SourceSelect": "選擇 IP 歸屬地數據來源",
+    "ShowASNInfo": "顯示 AS 詳細信息",
+    "CopyIP": "覆制 IP 地址",
+    "InfoMask": "隱藏信息",
+    "QueryIP": "查詢 IP 信息",
+    "GithubLink": "查看源代碼",
+    "RefreshRuleTests": "刷新規則測試",
+    "qualityScoreExplain": "IP 質量分根據多個因素加權計算出來，包含了 IP 的類型、是否屬於代理/VPN 和近期監測到來自該 IP 的攻擊事件數量等。分數越高，意味著該 IP 的質量越好，在一些網站里，這個 IP 被風控阻斷的概率就越低。"
+  },
+  "ipInfos": {
+    "id": "ipinfos",
+    "database": "數據源",
+    "Title": "IP 信息",
+    "Notes": "程序會先從多個不同的來源（包含 IPv4 和 IPv6）檢查你的 IP 地址，然後通過你選擇的 IP 地理位置信息源查詢對應的地理數據。如果當前 IP 棧只有 1 個，則沒有數據的來源會顯示為空。",
+    "Simple": "簡約",
+    "Map": "地圖",
+    "MapUnavailable": "地圖不可用",
+    "Source": "IP 來源",
+    "IP": "IP",
+    "Country": "地區",
+    "Region": "省份",
+    "City": "城市",
+    "ISP": "網絡",
+    "ASN": "ASN",
+    "IPv4Error": "獲取失敗或不存在 IPv4 地址",
+    "IPv6Error": "獲取失敗或不存在 IPv6 地址",
+    "SelectSource": "選擇 IP 歸屬地數據來源",
+    "type": "類型",
+    "isProxy": "代理",
+    "qualityScore": "IP 質量分",
+    "qualityScoreUnknown": "未知分數",
+    "ASNInfo": {
+      "note": "此 AS 的相關數據：",
+      "asnName": "AS 名稱：",
+      "asnOrgName": "AS 組織名稱：",
+      "estimatedUsers": "估計用戶數：",
+      "IPv4_Pct": "IPv4 流量占比：",
+      "IPv6_Pct": "IPv6 流量占比：",
+      "HTTP_Pct": "HTTP 流量占比：",
+      "HTTPS_Pct": "HTTPS 流量占比：",
+      "Desktop_Pct": "桌面設備占比：",
+      "Mobile_Pct": "移動設備占比：",
+      "Bot_Pct": "機器人流量占比：",
+      "Human_Pct": "人類流量占比："
+    },
+    "proxyDetect": {
+      "yes": "是代理或 VPN",
+      "maybe": "可能是代理或 VPN",
+      "no": "不是代理或 VPN",
+      "unknownProxyType": "未知類型",
+      "unknownProtocol": "未知協議",
+      "type": {
+        "Residential": "住宅線路",
+        "Wireless": "無線網絡",
+        "Business": "商業線路",
+        "Hosting": "數據中心",
+        "unknownType": "未知類型"
+      }
+    }
+  },
+  "connectivity": {
+    "id": "connectivity",
+    "Title": "網絡連通性",
+    "Note": "通過加載對應網站上的小圖片進行測試，延遲值僅供參考，實際會更小。",
+    "StatusWait": "待檢測",
+    "StatusAvailable": "可用",
+    "StatusUnavailable": "不可用",
+    "StatusTimeout": "超時或不可用",
+    "checking": "檢查中...",
+    "minTestTime": "最小測試時間：",
+    "RefreshThisTest": "刷新此測試"
+  },
+  "webrtc": {
+    "id": "webrtc",
+    "Title": "WebRTC 測試",
+    "Note": "WebRTC 往往通過 UDP 直連進行建立，如果測試返回了真實 IP，則意味著你的代理設置沒有覆蓋這些連接。除了檢測你連接 WebRTC 時所使用的 IP，我們還會檢測你的 NAT 類型。然而，NAT 類型的檢測並不是 100% 準確的，僅供參考。",
+    "StatusWait": "待檢測或連接錯誤",
+    "StatusError": "測試出錯",
+    "NATType": {
+      "srflx": "端口限制型或對稱型",
+      "prflx": "端口限制型",
+      "relay": "對稱型",
+      "host": "全錐型",
+      "unknown": "未知類型"
+    }
+  },
+  "dnsleaktest": {
+    "id": "dnsleaktest",
+    "Name": "檢測",
+    "Title": "DNS 泄漏測試",
+    "Note": "DNS 泄露（DNS Leaks）的意思是，當你掛上 VPN/代理後，你解析域名時，依然通過當地的運營商進行解析，這時就有 DNS 泄露的風險。",
+    "Note2": "泄露測試的方法是通過訪問新生成的域名，檢測你是通過哪個地區的 DNS 出口進行解析，如果返回的出口區域和你當地的運營商區域相同，則有 DNS 泄露風險，你可能需要修改 VPN/代理設置。",
+    "Endpoint": "DNS 出口",
+    "EndpointCountry": "出口地區",
+    "StatusWait": "待檢測",
+    "StatusError": "測試出錯"
+  },
+  "speedtest": {
+    "id": "speedtest",
+    "Title": "網速測試",
+    "Note": "將從 Cloudflare 使用邊沿網絡進行速度測試，時間可能較長。如果你的網絡位於中國大陸，數據可能會有較大的偏差。測速結果僅供參考，實際速度會更快。你可以選擇下載和上傳的包大小進行測試。默認情況下，測速會進行 4 次數據包上傳與下載，請注意流量消耗。",
+    "Download": "下載",
+    "Upload": "上傳",
+    "Latency": "延遲",
+    "Jitter": "抖動",
+    "Unit": "Mbps",
+    "StatusWait": "--",
+    "StatusError": "測試出錯",
+    "videoStreaming": "在線視頻：",
+    "gaming": " ，在線遊戲：",
+    "rtc": " ，視頻會議：",
+    "score": "根據網速測試，得出以下質量分數：",
+    "resultNote": " 。",
+    "connectionFrom": "已完成從你的機器，IP：",
+    "connectionTo": "與測速服務器：",
+    "connectionEnd": " 的測試。",
+    "quality": {
+      "Good": "優秀",
+      "Medium": "中等",
+      "Bad": "較差"
+    }
+  },
+  "pingtest": {
+    "id": "pingtest",
+    "Title": "全球延遲測試",
+    "Note": "Ping 測試是一種網絡工具，用於測量數據包從你的設備到特定目標（在這里是我們分布在全球各個大洲和地區的服務器）的往返時間。是評估網絡性能的關鍵指標。",
+    "Note2": "在這個過程中，IPCheck.ing 會從世界各地的服務器發送小數據包到你的 IP 地址，然後測量這些數據包從服務器發送到你的設備，再返回服務器所需的時間。通過這些不同地理位置的 Ping 測試，你可以獲得一個全面的視圖，了解你的設備與全球網絡連接的速度和穩定性。",
+    "Note3": "請選取你的 IP 地址進行測試：",
+    "SelectIP": "選擇一個 IP 地址",
+    "Region": "地區",
+    "MinDelay": "最小延遲（ms）",
+    "MaxDelay": "最大延遲（ms）",
+    "AvgDelay": "平均延遲（ms）",
+    "TotalPackets": "總包數",
+    "PacketLoss": "丟包率",
+    "ReceivedPackets": "收到",
+    "DroppedPackets": "丟失",
+    "Run": "運行測試",
+    "Error": "測試失敗，看起來你的 IP 不允許進行 Ping 測試。"
+  },
+  "mtrtest": {
+    "id": "mtrtest",
+    "Title": "MTR 測試",
+    "Note": "MTR (My Traceroute) 測試會從遍布全球不同大洲和地區的服務器出發，對你的 IP 地址進行詳細的路由跟蹤。MTR 結合了傳統 traceroute 和 ping 命令的功能，能夠實時地診斷網絡連接的質量和性能。",
+    "Note2": "這個過程涵蓋了從各個地理位置到你的網絡環境的完整路徑，提供關於每一跳的延遲和數據包丟失信息。無論是路由路徑的擁堵、某個特定節點的延遲問題，還是數據包在傳輸過程中的丟失，MTR 測試都能提供關鍵的診斷信息。",
+    "Note3": "請選取你的 IP 地址進行測試：",
+    "SelectIP": "選擇一個 IP 地址",
+    "Region": "地區",
+    "Run": "運行測試",
+    "Error": "測試失敗，看起來你的 IP 不允許進行 MTR 測試。"
+  },
+  "ipcheck": {
+    "id": "ipcheck",
+    "Title": "IP 查詢",
+    "Placeholder": "請輸入 IP 地址",
+    "Button": "查詢",
+    "Error": "請輸入有效的 IPv4 或 IPv6 地址。"
+  },
+  "alert": {
+    "id": "alert",
+    "refreshEverythingMessage": "正在刷新所有數據，請等待...",
+    "refreshEverythingTitle": "正在刷新",
+    "OhNo": "糟糕！",
+    "Congrats": "恭喜呀！",
+    "OhNo_Message": "連通性檢測沒有通過，部分網站無法訪問。",
+    "Congrats_Message": "所有的連通性檢測均通過，你可以訪問所有網站。",
+    "maskedInfoTitle_1": "IP 隱藏成功",
+    "maskedInfoMessage_1": "IP 信息已隱藏，截圖時請注意隱私。",
+    "maskedInfoTitle": "全部隱藏成功",
+    "maskedInfoMessage": "所有信息已隱藏，現在可以安心截圖了。",
+    "unmaskedInfoTitle": "取消隱藏",
+    "unmaskedInfoMessage": "信息已顯示，截圖時請注意隱私。",
+    "SignInFailed": "登錄失敗",
+    "SignInFailedReason": "原因"
+  },
+  "shortcutKeys": {
+    "id": "shortcutKeys",
+    "GoToTop": "回到頂部",
+    "GoToBottom": "回到底部",
+    "ToggleDarkMode": "切換深色模式",
+    "RefreshEverything": "刷新所有數據",
+    "RefreshIPCard": "刷新某張 IP 卡片",
+    "RefreshConnectivityTests": "刷新連通性測試",
+    "RefreshWebRTC": "刷新 WebRTC 測試",
+    "RefreshDNSLeakTest": "刷新 DNS 泄漏測試",
+    "SpeedTestButton": "開始/暫停網速測試",
+    "PingTest": "打開全球延遲測試面板",
+    "MTRTest": "打開全球路由測試面板",
+    "RuleTest": "打開規則測試面板",
+    "DNSResolver": "打開 DNS 解析器面板",
+    "ToggleMaps": "切換地圖顯示",
+    "IPCheck": "IP 查詢",
+    "ToggleInfoMask": "切換信息隱藏",
+    "Help": "顯示快捷鍵",
+    "HelpNote": "使用快捷鍵的人，是喜歡效率的人，你真棒！",
+    "GoNext": "下一張卡片",
+    "GoPrevious": "上一張卡片",
+    "RefreshRuleTests": "刷新規則測試",
+    "CensorshipCheck": "打開封鎖測試面板",
+    "Preferences": "打開偏好設置面板",
+    "About": "打開關於頁面",
+    "Whois": "打開 Whois 查詢面板",
+    "InvisibilityTest": "打開隱身測試面板",
+    "MacChecker": "打開物理地址查詢面板",
+    "BrowserInfo": "打開瀏覽器信息面板",
+    "fullScreenAdvancedTools": "全屏展開高級工具面板",
+    "Curl": "命令行 API",
+    "SecurityChecklist": "打開安全檢查清單"
+  },
+  "page": {
+    "title": "IPCheck.ing - 查看我的 IP 地址 - 查詢本機 IP 地址及歸屬地 - 查看 WebRTC 連接 IP - DNS 泄露檢測 - 網速測試 - Jason Ng 阿禪開源作品",
+    "description": "好用和開源的全能 IP 工具箱。輕松查看你的 IP 地址，IP 信息，檢查 DNS 泄露，檢查 WebRTC 連接，測試網站可用性，查找 DNS 記錄，查找 Whois 信息，測試全球延遲測試等。",
+    "keywords": "我的IP,IP工具,我的IP,IP查詢,DNS泄漏測試,WebRTC測試,網速測試,DNS查詢,Whois查詢, Ping測試, 隱私測試",
+    "footerLink": "https://github.com/jason5ng32/MyIP",
+    "copyRightName": "Originally from ",
+    "copyRightLink": "https://ipcheck.ing",
+    "copyRightLinkName": "IPCheck.ing"
+  },
+  "helpModal": {
+    "Title": "快捷鍵"
+  },
+  "about": {
+    "Title": "關於",
+    "product1": "IPCheck.ing 是一個免費的 IP 工具箱，可以幫助你查看自己的 IP 信息，檢測網站的可用性，查看 DNS 出口信息，進行網速測試，全球延遲測試，MTR 測試等。",
+    "product2": "這是一個開源項目，你可以點擊頁面底部的 GitHub 圖標查看源代碼。",
+    "product3": "最早的時候，這是我的一個用來學習 Vue.js 和學習如何使用 ChatGPT 寫代碼的練手項目，後來在 GitHub 上獲得的星星數量越來越多，於是我進行了大量的重構和添加了許多非常有用的功能，希望你會喜歡。",
+    "meTitle": "關於我",
+    "me1": "我的名字叫阿禪，通常在網上使用 Jason Ng 作為英文名，我並不是一個專業的程序員，但是我喜歡編程，我喜歡開源，我喜歡分享。",
+    "me2": "在大多數時候，我是一名產品經理、一名博客作者、一個摩托車騎士以及一名極客。",
+    "me3": "你可以在下面的鏈接里找到我更詳細的介紹：",
+    "contactTitle": "聯系我",
+    "contact": "如果你有任何問題或建議，請通過郵箱聯系我： jason[AT]kenengba.com 。",
+    "personal": "個人網站",
+    "blog": "可能吧博客",
+    "retiremoney": "躺平計算器",
+    "twitter": "Twitter",
+    "Sponsor": "讚助"
+  },
+  "specialthanks": {
+    "Title": "特別鳴謝",
+    "Note1": "這個項目之所以能夠完成，少不了一些熱心的人和組織的支持和幫助，以及給予靈感或開放的代碼人們。非常感謝他們："
+  },
+  "changelog": {
+    "Title": "更新日志",
+    "add": "新增",
+    "improve": "優化",
+    "fix": "修覆",
+    "versions": [
+      {
+        "version": "v1.0",
+        "date": "Nov 06, 2020",
+        "content": [
+          {
+            "type": "add",
+            "change": "顯示用戶的 IP 信息"
+          },
+          {
+            "type": "add",
+            "change": "顯示代理前後的 IP 信息"
+          },
+          {
+            "type": "add",
+            "change": "檢查網站可用性"
+          }
+        ]
+      },
+      {
+        "version": "v2.0",
+        "date": "Nov 24, 2023",
+        "content": [
+          {
+            "type": "add",
+            "change": "使用 Vue2 重構了整個項目"
+          },
+          {
+            "type": "improve",
+            "change": "使用 Bootstrap v5 重構了 UI"
+          }
+        ]
+      },
+      {
+        "version": "v2.1",
+        "date": "Nov 25, 2023",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加了 WebRTC 測試"
+          },
+          {
+            "type": "improve",
+            "change": "優化了程序的一些邏輯"
+          }
+        ]
+      },
+      {
+        "version": "v2.2",
+        "date": "Nov 26, 2023",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加了 DNS 泄漏測試"
+          },
+          {
+            "type": "add",
+            "change": "支持在前端顯示 Bing 地圖"
+          },
+          {
+            "type": "improve",
+            "change": "多個邏輯優化"
+          }
+        ]
+      },
+      {
+        "version": "v2.3",
+        "date": "Nov 27, 2023 ",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加了黑暗模式"
+          },
+          {
+            "type": "add",
+            "change": "增加移動版簡約模式"
+          },
+          {
+            "type": "improve",
+            "change": "優化了文件結構"
+          }
+        ]
+      },
+      {
+        "version": "v2.4",
+        "date": "Dec 1, 2023",
+        "content": [
+          {
+            "type": "add",
+            "change": "支持英文語言"
+          },
+          {
+            "type": "add",
+            "change": "添加信息遮罩功能"
+          },
+          {
+            "type": "add",
+            "change": "支持 PWA，可以安裝到手機和桌面上"
+          }
+        ]
+      },
+      {
+        "version": "v2.5",
+        "date": "Dec 20, 2023",
+        "content": [
+          {
+            "type": "add",
+            "change": "支持快捷鍵操作"
+          },
+          {
+            "type": "add",
+            "change": "添加網速測試功能"
+          },
+          {
+            "type": "improve",
+            "change": "支持使用 Docker 部署"
+          },
+          {
+            "type": "improve",
+            "change": "支持從多個來源獲取 IP 歸屬地等信息"
+          }
+        ]
+      },
+      {
+        "version": "v3.0",
+        "date": "Jan 28, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "使用 Vite + Vue3 重構了整個項目"
+          },
+          {
+            "type": "add",
+            "change": "增加全球延遲測試功能"
+          },
+          {
+            "type": "add",
+            "change": "增加 MTR 測試功能"
+          },
+          {
+            "type": "improve",
+            "change": "多個性能優化和體驗優化"
+          }
+        ]
+      },
+      {
+        "version": "v3.1",
+        "date": "Jan 30, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "支持新的語言：法語"
+          },
+          {
+            "type": "add",
+            "change": "添加數據加載中的動畫"
+          },
+          {
+            "type": "improve",
+            "change": "優化了緩存策略"
+          },
+          {
+            "type": "improve",
+            "change": "調整黑暗模式樣式"
+          },
+          {
+            "type": "fix",
+            "change": "修覆了一些小問題"
+          }
+        ]
+      },
+      {
+        "version": "v3.2",
+        "date": "Feb 3, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加 NAT 類型檢測"
+          },
+          {
+            "type": "improve",
+            "change": "優化 PWA 應用的體驗"
+          },
+          {
+            "type": "improve",
+            "change": "提高後端腳本安全性"
+          }
+        ]
+      },
+      {
+        "version": "v3.3",
+        "date": "Feb 6, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "支持使用不同的 IP 地理位置信息源"
+          },
+          {
+            "type": "improve",
+            "change": "優化連接可用性檢測的用戶體驗"
+          },
+          {
+            "type": "improve",
+            "change": "優化 UI 體驗"
+          }
+        ]
+      },
+      {
+        "version": "v3.4",
+        "date": "Feb 17, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加 ASN 詳細信息查看器"
+          },
+          {
+            "type": "add",
+            "change": "添加 IP 地址是否為代理的判斷"
+          },
+          {
+            "type": "improve",
+            "change": "優化 IP 信息的展示 UI"
+          }
+        ]
+      },
+      {
+        "version": "v3.5",
+        "date": "Mar 3, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加規則測試"
+          },
+          {
+            "type": "improve",
+            "change": "優化了部分邏輯"
+          }
+        ]
+      },
+      {
+        "version": "v3.6",
+        "date": "Mar 10, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加 DNS 解析功能"
+          },
+          {
+            "type": "improve",
+            "change": "優化主頁結構，高級功能折疊展示"
+          },
+          {
+            "type": "improve",
+            "change": "優化了程序邏輯"
+          }
+        ]
+      },
+      {
+        "version": "v3.7",
+        "date": "Apr 26, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加封鎖測試功能"
+          },
+          {
+            "type": "add",
+            "change": "網速測試可以自定義數據包大小"
+          },
+          {
+            "type": "improve",
+            "change": "優化了部分功能邏輯"
+          }
+        ]
+      },
+      {
+        "version": "v3.8",
+        "date": "May 4, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "增加設置面板，可以在本地保存偏好設置"
+          },
+          {
+            "type": "add",
+            "change": "可以自定義程序在第二次啟動時的多個默認行為"
+          },
+          {
+            "type": "improve",
+            "change": "大量優化了程序的邏輯"
+          },
+          {
+            "type": "fix",
+            "change": "修覆了一些小問題"
+          }
+        ]
+      },
+      {
+        "version": "v3.9",
+        "date": "May 8, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "增加 Whois 查詢功能"
+          },
+          {
+            "type": "improve",
+            "change": "優化高級功能的展示與動畫效果"
+          },
+          {
+            "type": "fix",
+            "change": "修覆了一些小問題"
+          }
+        ]
+      },
+      {
+        "version": "v4.0",
+        "date": "May 13, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "采用 Vue 3 的 Composition API 重構了整個項目"
+          },
+          {
+            "type": "add",
+            "change": "拆分前端多個模塊，提高了程序的可維護性"
+          },
+          {
+            "type": "add",
+            "change": "增加隱身測試功能（Beta）"
+          },
+          {
+            "type": "improve",
+            "change": "優化後端程序的依賴結構"
+          },
+          {
+            "type": "improve",
+            "change": "優化了大量細節"
+          }
+        ]
+      },
+      {
+        "version": "v4.1",
+        "date": "July 11, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加 MAC 地址查詢功能"
+          },
+          {
+            "type": "improve",
+            "change": "優化了部分程序細節"
+          }
+        ]
+      },
+      {
+        "version": "v4.2",
+        "date": "Sept 25, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加瀏覽器信息查詢功能"
+          },
+          {
+            "type": "add",
+            "change": "添加 MaxMind 地理數據庫"
+          },
+          {
+            "type": "improve",
+            "change": "多處體驗優化"
+          }
+        ]
+      },
+      {
+        "version": "v4.3",
+        "date": "Oct 30, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加命令行 API 功能"
+          },
+          {
+            "type": "improve",
+            "change": "WebRTC 測試可以展示地區信息"
+          },
+          {
+            "type": "improve",
+            "change": "DNS 泄露測試可以展示地區信息"
+          }
+        ]
+      },
+      {
+        "version": "v4.4",
+        "date": "Dec 7, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "語言偏好設置"
+          },
+          {
+            "type": "improve",
+            "change": "地圖展示供應商變更為 Google"
+          },
+          {
+            "type": "improve",
+            "change": "其它常規優化"
+          }
+        ]
+      },
+      {
+        "version": "v4.5",
+        "date": "Dec 25, 2024",
+        "content": [
+          {
+            "type": "add",
+            "change": "添加安全檢查清單"
+          },
+          {
+            "type": "improve",
+            "change": "其它常規優化"
+          }
+        ]
+      },
+      {
+        "version": "v5.0",
+        "date": "Jan 31, 2025",
+        "content": [
+          {
+            "type": "add",
+            "change": "新增用戶系統"
+          },
+          {
+            "type": "add",
+            "change": "新增用戶成就系統"
+          },
+          {
+            "type": "add",
+            "change": "新增 Lite 版本"
+          },
+          {
+            "type": "add",
+            "change": "網速測試可以看到數據變化圖表"
+          },
+          {
+            "type": "improve",
+            "change": "代碼效率優化"
+          }
+        ]
+      }
+    ]
+  }
+}
