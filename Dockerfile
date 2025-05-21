@@ -6,7 +6,7 @@ RUN npm install
 COPY . .
 
 # 設置構建時的環境變量
-ENV VITE_DEFAULT_IP_GEO_SOURCE=1
+ENV VITE_DEFAULT_IP_GEO_SOURCE=2
 
 RUN npm run build
 
