@@ -170,7 +170,9 @@
       "ipDB": "IP 解析數據源",
       "ipDBTips": "你可以選擇你默認使用的 IP 地理位置數據源，如果你選定的不可用，系統會依次使用後續的數據源。",
       "language": "語言設置",
-      "languageTips": "刷新瀏覽器後生效。"
+      "languageTips": "刷新瀏覽器後生效。",
+      "refreshDetectors": "重新測速",
+      "refreshDetectorsTips": "清除測速快取並重新測試所有 IP 檢測源"
     }
   },
   "securitychecklist": {
