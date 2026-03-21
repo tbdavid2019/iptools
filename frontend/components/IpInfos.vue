@@ -28,6 +28,7 @@ import { trackEvent } from '@/utils/use-analytics';
 import { isValidIP } from '@/utils/valid-ip.js';
 import { transformDataFromIPapi } from '@/utils/transform-ip-data.js';
 import { getIPFromIPIP, getIPFromCloudflare_V4, getIPFromCloudflare_V6, getIPFromIPChecking64, getIPFromIPChecking4, getIPFromIPChecking6 } from '@/utils/getips';
+import { speedTestAndSortDetectors, loadDetectorCache } from '@/store';
 import { authenticatedFetch } from '@/utils/authenticated-fetch';
 import IPCard from './ip-infos/IPCard.vue';
 
@@ -115,6 +116,7 @@ const asnInfos = ref({
 
 // 其它数据
 const ipCardsToShow = ref(userPreferences.value.ipCardsToShow);
+const ipDetectors = ref([]);
 const copiedStatus = ref({});
 const IPArray = ref([]);
 const ipGeoSource = ref(userPreferences.value.ipGeoSource);
@@ -162,21 +164,34 @@ const trackFetchStatus = (status) => {
 
 // 检查所有 IP 地址
 const checkAllIPs = async () => {
-  const ipFunctions = [
-    () => fetchIP(0, getIPFromIPIP),
-    () => fetchIP(1, getIPFromCloudflare_V4),
-    () => fetchIP(2, getIPFromCloudflare_V6),
-    () => fetchIP(3, getIPFromIPChecking64),
-    () => fetchIP(4, getIPFromIPChecking4),
-    () => fetchIP(5, getIPFromIPChecking6),
-  ];
+  let detectors = ipDetectors.value;
 
-  // 限制执行的函数数量为 ipCardsToShow 的长度
-  const maxIndex = ipCardsToShow.value;
+  if (!detectors || detectors.length === 0) {
+    const cached = loadDetectorCache();
+    if (cached && cached.length > 0) {
+      ipDetectors.value = cached;
+      detectors = cached;
+    } else {
+      detectors = await speedTestAndSortDetectors();
+      ipDetectors.value = detectors;
+    }
+  }
+
+  if (detectors.length === 0) {
+    store.setLoadingStatus('ipcheck', true);
+    return;
+  }
+
+  const ipFunctions = detectors.map((detector, idx) => {
+    const fetchFn = window[detector.fetchFnName];
+    return () => fetchIP(idx, fetchFn);
+  });
+
+  const maxIndex = Math.min(ipCardsToShow.value, detectors.length);
 
   let index = 0;
   const interval = setInterval(() => {
-    if (index < maxIndex && index < ipFunctions.length) {
+    if (index < maxIndex && ipFunctions[index]) {
       ipFunctions[index].call(this);
       index++;
     } else {
