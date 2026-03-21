@@ -195,6 +195,23 @@
                         </div>
                     </li>
 
+                    <li class="list-group-item d-flex justify-content-between align-items-start"
+                        :class="[isDarkMode ? 'border-light' : 'border-dark']">
+                        <div class="me-auto">
+                            <div class="fw-bold"><label class="form-check-label" for="refreshDetectors">{{
+                                    t('nav.preferences.refreshDetectors')
+                                    }}</label>
+                            </div>
+                            <div class="preferences-tip">{{ t('nav.preferences.refreshDetectorsTips') }}</div>
+                        </div>
+                        <button class="btn btn-sm" :class="{
+                            'btn-outline-dark': !isDarkMode,
+                            'btn-outline-light': isDarkMode
+                        }" id="refreshDetectors" @click="refreshDetectors">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    </li>
+
                 </ul>
             </div>
 
@@ -329,6 +346,11 @@ const prefipGeoSource = (value) => {
 const toggleMaps = () => {
     store.updatePreference('showMap', !userPreferences.value.showMap);
     trackEvent('Nav', 'ToggleClick', 'ShowMap');
+};
+
+const refreshDetectors = () => {
+    store.clearDetectorCache();
+    window.location.reload();
 };
 
 onMounted(() => {
