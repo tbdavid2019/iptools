@@ -5,6 +5,63 @@ import { auth } from './firebase-init.js';
 import i18n from './locales/i18n';
 const { t } = i18n.global;
 
+const CACHE_KEY = 'iptools_ipdetectors_cache';
+const CACHE_TTL = 24 * 60 * 60 * 1000;
+
+const defaultIpDetectors = [
+  { id: 0, name: 'CN Source', fetchFnName: 'getIPFromIPIP', status: 'pending', latency: null },
+  { id: 1, name: 'Cloudflare IPv4', fetchFnName: 'getIPFromCloudflare_V4', status: 'pending', latency: null },
+  { id: 2, name: 'Cloudflare IPv6', fetchFnName: 'getIPFromCloudflare_V6', status: 'pending', latency: null },
+  { id: 3, name: 'IPCheck.ing IPv6/4', fetchFnName: 'getIPFromIPChecking64', status: 'pending', latency: null },
+  { id: 4, name: 'IPCheck.ing IPv4', fetchFnName: 'getIPFromIPChecking4', status: 'pending', latency: null },
+  { id: 5, name: 'IPCheck.ing IPv6', fetchFnName: 'getIPFromIPChecking6', status: 'pending', latency: null },
+];
+
+function loadDetectorCache() {
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      const { timestamp, detectors } = JSON.parse(cached);
+      if (Date.now() - timestamp < CACHE_TTL) {
+        return detectors;
+      }
+    }
+  } catch (e) { /* ignore */ }
+  return null;
+}
+
+function saveDetectorCache(detectors) {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({
+      timestamp: Date.now(),
+      detectors
+    }));
+  } catch (e) { /* ignore */ }
+}
+
+export async function speedTestAndSortDetectors() {
+  const results = await Promise.allSettled(
+    defaultIpDetectors.map(async (detector) => {
+      const start = performance.now();
+      const fetchFn = window[detector.fetchFnName];
+      if (!fetchFn) throw new Error('Function not found');
+      await Promise.race([
+        fetchFn(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 3000))
+      ]);
+      return { ...detector, status: 'success', latency: Math.round(performance.now() - start) };
+    })
+  );
+
+  const sorted = results
+    .map((r, i) => r.status === 'fulfilled' ? r.value : { ...defaultIpDetectors[i], status: 'failed', latency: null })
+    .filter(d => d.status === 'success')
+    .sort((a, b) => a.latency - b.latency);
+
+  saveDetectorCache(sorted);
+  return sorted;
+}
+
 export const useMainStore = defineStore('main', {
 
   state: () => ({
@@ -85,6 +142,7 @@ export const useMainStore = defineStore('main', {
       { id: 5, text: 'IP.sb', url: '/api/ipsb?ip={{ip}}', enabled: true },
       { id: 6, text: 'MaxMind', url: '/api/maxmind?ip={{ip}}&lang={{lang}}', enabled: true },
     ],
+    ipDetectors: [],
   }),
 
   getters: {
@@ -281,6 +339,17 @@ export const useMainStore = defineStore('main', {
     setTriggerUpdateAchievements(achievement) {
       this.triggerUpdateAchievements = true;
       this.achievementToUpdate = achievement;
+    },
+    // IP Detectors
+    setIpDetectors(detectors) {
+      this.ipDetectors = detectors;
+    },
+    loadDetectorCache() {
+      return loadDetectorCache();
+    },
+    clearDetectorCache() {
+      localStorage.removeItem(CACHE_KEY);
+      this.ipDetectors = [];
     }
   }
 });
