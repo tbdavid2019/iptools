@@ -17,7 +17,7 @@ const defaultIpDetectors = [
   { id: 5, name: 'IPCheck.ing IPv6', fetchFnName: 'getIPFromIPChecking6', status: 'pending', latency: null },
 ];
 
-function loadDetectorCache() {
+export function loadDetectorCache() {
   try {
     const cached = localStorage.getItem(CACHE_KEY);
     if (cached) {

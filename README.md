@@ -40,6 +40,13 @@
 * 🌍 根據可用性檢測結果，返回目前是否可以訪問全世界網絡的提示
 * 🇺🇸 🇨🇳 🇫🇷 支持中文、英文、法文
 
+## 🧠 IP 檢測 Provider 行為
+
+* 頁面載入時會自動對 IP 檢測源進行測速，並按延遲由低到高排序。
+* 測速失敗或超時的檢測源會自動從畫面隱藏，不再占用卡片位置。
+* 測速結果會快取到本地，減少重複測試帶來的等待時間。
+* 可以在 Preferences 中手動觸發「重新測速」，清除快取並重新檢查所有 IP 檢測源。
+
 ## 📕 如何使用
 
 ### 在 Node 環境部署
@@ -203,6 +210,13 @@ DOMAIN,ptest-8.ipcheck.ing,Proxy8
 * ⌨️ **Keyboard Shortcuts**: Supports keyboard shortcuts for all functions, press `?` to view the shortcut list.
 * 🌍 Based on availability test results, it indicates whether global internet access is currently feasible.
 * 🇺🇸 🇨🇳 🇫🇷 English, Chinese, and French support.
+
+## 🧠 IP Detection Provider Behavior
+
+* On page load, IP detection providers are speed-tested automatically and reordered from lowest latency to highest latency.
+* Providers that fail or time out are hidden automatically instead of occupying a card slot.
+* Speed-test results are cached locally to reduce repeated checks.
+* You can rerun the provider check manually from Preferences to clear the cache and refresh the ordering.
 
 ## 📕 How to Use
 

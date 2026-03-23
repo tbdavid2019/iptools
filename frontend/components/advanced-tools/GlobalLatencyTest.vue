@@ -215,7 +215,7 @@ const processpingResults = (data) => {
 const drawMap = async () => {
   // 动态导入 svgMap 和其样式
   const svgMapModule = await import('svgmap');
-  await import('svgmap/dist/svgMap.min.css');
+  await import('svgmap/style.min');
 
   const mapData = {
     data: {
