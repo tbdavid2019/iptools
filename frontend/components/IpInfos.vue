@@ -8,9 +8,11 @@
       <p>{{ t('ipInfos.Notes') }}</p>
     </div>
     <div class="row">
-      <div v-for="(card, index) in ipDataCards.slice(0, ipCardsToShow)" :key="card.id" :ref="card.id" :class="[colClass, {
-        'jn-opacity': !card.ip || card.ip === t('ipInfos.IPv4Error') || card.ip === t('ipInfos.IPv6Error')
-      }]">
+      <div v-for="(card, index) in ipDataCards.slice(0, ipCardsToShow)" :key="card.id" :ref="card.id"
+        v-show="!(userPreferences.hideUnavailableIPStack && (card.ip === t('ipInfos.IPv4Error') || card.ip === t('ipInfos.IPv6Error')))"
+        :class="[colClass, {
+          'jn-opacity': !card.ip || card.ip === t('ipInfos.IPv4Error') || card.ip === t('ipInfos.IPv6Error')
+        }]">
         <IPCard :card="card" :index="index" :isDarkMode="isDarkMode" :isMobile="isMobile" :ipGeoSource="ipGeoSource"
           :isMapShown="isMapShown" :isCardsCollapsed="isCardsCollapsed" :copiedStatus="copiedStatus" :configs="configs"
           :asnInfos="asnInfos" @refresh-card="refreshCard" />
