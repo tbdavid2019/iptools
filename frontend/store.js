@@ -2,6 +2,7 @@
 import { defineStore } from 'pinia';
 import { getAuth, GoogleAuthProvider, GithubAuthProvider, signInWithPopup, signOut as firebaseSignOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from './firebase-init.js';
+import { fetchFnMap } from './utils/getips/index.js';
 import i18n from './locales/i18n';
 const { t } = i18n.global;
 
@@ -43,7 +44,7 @@ export async function speedTestAndSortDetectors() {
   const results = await Promise.allSettled(
     defaultIpDetectors.map(async (detector) => {
       const start = performance.now();
-      const fetchFn = window[detector.fetchFnName];
+      const fetchFn = fetchFnMap[detector.fetchFnName];
       if (!fetchFn) throw new Error('Function not found');
       await Promise.race([
         fetchFn(),

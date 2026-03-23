@@ -9,7 +9,7 @@
     </div>
     <div class="row">
       <div v-for="(card, index) in ipDataCards.slice(0, ipCardsToShow)" :key="card.id" :ref="card.id"
-        v-show="!(userPreferences.hideUnavailableIPStack && (card.ip === t('ipInfos.IPv4Error') || card.ip === t('ipInfos.IPv6Error')))"
+        v-show="!card.ip || (card.ip !== t('ipInfos.IPv4Error') && card.ip !== t('ipInfos.IPv6Error'))"
         :class="[colClass, {
           'jn-opacity': !card.ip || card.ip === t('ipInfos.IPv4Error') || card.ip === t('ipInfos.IPv6Error')
         }]">
@@ -29,7 +29,7 @@ import { useI18n } from 'vue-i18n';
 import { trackEvent } from '@/utils/use-analytics';
 import { isValidIP } from '@/utils/valid-ip.js';
 import { transformDataFromIPapi } from '@/utils/transform-ip-data.js';
-import { getIPFromIPIP, getIPFromCloudflare_V4, getIPFromCloudflare_V6, getIPFromIPChecking64, getIPFromIPChecking4, getIPFromIPChecking6 } from '@/utils/getips';
+import { getIPFromIPIP, getIPFromCloudflare_V4, getIPFromCloudflare_V6, getIPFromIPChecking64, getIPFromIPChecking4, getIPFromIPChecking6, fetchFnMap } from '@/utils/getips';
 import { speedTestAndSortDetectors, loadDetectorCache } from '@/store';
 import { authenticatedFetch } from '@/utils/authenticated-fetch';
 import IPCard from './ip-infos/IPCard.vue';
@@ -185,7 +185,7 @@ const checkAllIPs = async () => {
   }
 
   const ipFunctions = detectors.map((detector, idx) => {
-    const fetchFn = window[detector.fetchFnName];
+    const fetchFn = fetchFnMap[detector.fetchFnName];
     return () => fetchIP(idx, fetchFn);
   });
 
