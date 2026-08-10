@@ -26,7 +26,8 @@ async function resolveDoh(hostname, type, name, url) {
 export default {
     async fetch(request, env, ctx) {
         const url = new URL(request.url);
-        const pathname = url.pathname;
+        const rawPath = url.pathname;
+        const pathname = rawPath.length > 1 && rawPath.endsWith('/') ? rawPath.slice(0, -1) : rawPath;
         const userAgent = request.headers.get('user-agent') || '';
         const clientIp = request.headers.get('cf-connecting-ip') || 'unknown';
 
@@ -81,7 +82,9 @@ export default {
             const apiUrl = token ? `https://ipinfo.io/${ip}?token=${token}` : `https://ipinfo.io/${ip}`;
 
             try {
-                const res = await fetch(apiUrl);
+                const res = await fetch(apiUrl, {
+                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+                });
                 const json = await res.json();
                 const [lat, lon] = (json.loc || '0,0').split(',').map(Number);
                 const orgParts = (json.org || 'AS0 Unknown').split(' ');
@@ -114,7 +117,9 @@ export default {
             const apiUrl = `http://ip-api.com/json/${ip}?fields=66842623&lang=${lang}`;
 
             try {
-                const res = await fetch(apiUrl);
+                const res = await fetch(apiUrl, {
+                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+                });
                 const json = await res.json();
                 const asn = json.as ? json.as.split(' ')[0] : '';
                 return new Response(JSON.stringify({
@@ -144,7 +149,9 @@ export default {
             const apiUrl = key ? `https://api.ipapi.is?q=${ip}&key=${key}` : `https://api.ipapi.is?q=${ip}`;
 
             try {
-                const res = await fetch(apiUrl);
+                const res = await fetch(apiUrl, {
+                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+                });
                 const json = await res.json();
                 const asn = json.asn || {};
                 const location = json.location || {};
@@ -201,7 +208,13 @@ export default {
             try {
                 const isIp = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(query) || query.includes(':');
                 const rdapUrl = isIp ? `https://rdap.org/ip/${query}` : `https://rdap.org/domain/${query}`;
-                const res = await fetch(rdapUrl);
+                const res = await fetch(rdapUrl, {
+                    headers: {
+                        'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)',
+                        'Accept': 'application/rdap+json, application/json'
+                    },
+                    redirect: 'follow'
+                });
                 const data = await res.json();
                 return new Response(JSON.stringify(data), {
                     headers: { 'content-type': 'application/json; charset=utf-8' }
