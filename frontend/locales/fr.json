@@ -27,9 +27,9 @@
         "Benefits": {
             "Title": "Avantages Utilisateurs",
             "Benefit": "Avantage",
-            "Note1": "En tant que produit open-source, l'utilisation de IP.david888.com est gratuite.",
+            "Note1": "En tant que produit open-source, l'utilisation de 8888IP est gratuite.",
             "Note2": "Cependant, afin de prévenir les abus, nous limitons certaines fonctionnalités. En vous connectant, vous obtiendrez les avantages suivants :",
-            "Benefit1": "Lorsque vous utilisez IP.david888.com comme source de données IP, tous les champs sont affichés intégralement.",
+            "Benefit1": "Lorsque vous utilisez 8888IP comme source de données IP, tous les champs sont affichés intégralement.",
             "Benefit2": "Peut utiliser le test d'invisibilité.",
             "Benefit3": "Peut voir les badges de réussite qu'il a obtenus",
             "Benefit4": "Réduit les restrictions d'accès à certaines fonctionnalités.",
@@ -37,7 +37,7 @@
         },
         "Achievements": {
             "Title": "Succès",
-            "Note": "En utilisant IP.david888.com, vous pouvez déclencher certains succès. Ici, vous pouvez voir tous vos succès.",
+            "Note": "En utilisant 8888IP, vous pouvez déclencher certains succès. Ici, vous pouvez voir tous vos succès.",
             "Get": "obtenus",
             "GetCount": "Succès obtenus:",
             "NotGet": "non obtenus",
@@ -49,7 +49,7 @@
             "Type": {
                 "IAmHuman": {
                     "Title": "Je suis humain",
-                    "Meet": "Utiliser IP.david888.com après s'être connecté"
+                    "Meet": "Utiliser 8888IP après s'être connecté"
                 },
                 "BarelyEnough": {
                     "Title": "Tout juste suffisant",
@@ -117,7 +117,7 @@
                 },
                 "GenerousDonor": {
                     "Title": "Généreux donateur",
-                    "Meet": "Avoir fait un don au projet IP.david888.com"
+                    "Meet": "Avoir fait un don au projet 8888IP"
                 },
                 "ItIsOpen": {
                     "Title": "C'est ouvert",
@@ -125,7 +125,7 @@
                 },
                 "CuriousCat": {
                     "Title": "Chat curieux",
-                    "Meet": "Rechercher les informations de IP.david888.com dans la recherche Whois"
+                    "Meet": "Rechercher les informations de 8888IP dans la recherche Whois"
                 },
                 "CrossingTheWall": {
                     "Title": "Huit personnes traversent la muraille",
@@ -136,7 +136,7 @@
     },
     "nav": {
         "id": "nav",
-        "Title": "IP.david888.com",
+        "Title": "8888IP",
         "Navigation": "Navigation",
         "IPInfo": "Infos IP",
         "Connectivity": "Connectivité",
@@ -419,7 +419,7 @@
     "ruletest": {
         "Title": "Test de règles",
         "Name": "Test",
-        "Note": "Le test de règles est utilisé pour déterminer si les paramètres de règles basées sur le nom de domaine de votre logiciel proxy sont corrects. Avant de procéder au test, veuillez vous référer à la carte ci-dessous et configurer des règles de redirection de domaine différentes pour les 8 URL différentes d'IP.david888.com dans votre logiciel proxy.",
+        "Note": "Le test de règles est utilisé pour déterminer si les paramètres de règles basées sur le nom de domaine de votre logiciel proxy sont corrects. Avant de procéder au test, veuillez vous référer à la carte ci-dessous et configurer des règles de redirection de domaine différentes pour les 8 URL différentes d'8888IP dans votre logiciel proxy.",
         "StatusWait": "En attente du test ou erreur de connexion",
         "StatusError": "Erreur de test",
         "Country": "Région de proxy",
@@ -558,7 +558,7 @@
         "id": "pingtest",
         "Title": "Test de latence mondiale",
         "Note": "Le test de ping est un outil réseau utilisé pour mesurer le temps aller-retour des paquets de données de votre appareil vers des cibles spécifiques (dans ce cas, nos serveurs situés sur différents continents et régions). Il s'agit d'une mesure clé pour évaluer les performances du réseau.",
-        "Note2": "Dans ce processus, IP.david888.com envoie de petits paquets de données depuis des serveurs du monde entier vers votre adresse IP et mesure le temps qu'il faut à ces paquets pour voyager du serveur à votre appareil et vice versa. Grâce à ces tests de ping depuis différentes localisations géographiques, vous pouvez obtenir une vue complète de la vitesse et de la stabilité de la connexion de votre appareil au réseau mondial.",
+        "Note2": "Dans ce processus, 8888IP envoie de petits paquets de données depuis des serveurs du monde entier vers votre adresse IP et mesure le temps qu'il faut à ces paquets pour voyager du serveur à votre appareil et vice versa. Grâce à ces tests de ping depuis différentes localisations géographiques, vous pouvez obtenir une vue complète de la vitesse et de la stabilité de la connexion de votre appareil au réseau mondial.",
         "Note3": "Veuillez sélectionner votre adresse IP pour le test.",
         "SelectIP": "Choisissez un IP",
         "Region": "Région",
@@ -642,28 +642,28 @@
         "SecurityChecklist": "Ouvrir la Liste de sécurité"
     },
     "page": {
-        "title": "IP.david888.com - Vérifier mon adresse IP et géolocalisation - Vérifier l'adresse IP de connexion WebRTC - Test de fuite DNS - Test de vitesse - Jason Ng Open Source",
+        "title": "8888IP - Vérifier l'adresse IP, WebRTC, DNS, la vitesse et la connectivité réseau",
         "description": "Une boîte à outils IP meilleure et open source. Facile à vérifier vos adresses IP, informations IP, vérifier les fuites DNS, examiner les connexions WebRTC, tester la disponibilité des sites web, rechercher des enregistrements DNS, rechercher des informations Whois et tester la latence dans le monde entier.",
         "keywords": "MonIP, Outil IP, Mon IP, Vérification IP, Recherche IP, Test de fuite DNS, Test WebRTC, Test de vitesse, Recherche DNS, Recherche Whois, Test de ping, Test de confidentialité",
-        "footerLink": "https://github.com/",
-        "copyRightName": "Originalement de ",
-        "copyRightLink": "https://IP.david888.com",
-        "copyRightLinkName": "IP.david888.com"
+        "footerLink": "https://github.com/tbdavid2019/iptools",
+        "copyRightName": "Maintenu par ",
+        "copyRightLink": "https://ip.david888.com",
+        "copyRightLinkName": "8888IP"
     },
     "helpModal": {
         "Title": "Raccourcis"
     },
     "about": {
         "Title": "À propos",
-        "product1": "IP.david888.com est une boîte à outils IP gratuite qui vous aide à vérifier vos informations IP, tester la disponibilité des sites web, examiner les informations de sortie DNS, effectuer des tests de vitesse, des tests de latence mondiale, des tests MTR, et plus encore.",
+        "product1": "8888IP est une boîte à outils IP gratuite qui vous aide à vérifier vos informations IP, tester la disponibilité des sites web, examiner les informations de sortie DNS, effectuer des tests de vitesse, des tests de latence mondiale, des tests MTR, et plus encore.",
         "product2": "Il s'agit d'un projet open-source, et vous pouvez consulter le code source en cliquant sur l'icône GitHub en bas de la page.",
         "product3": "Au départ, il s'agissait d'un projet personnel pour moi afin d'apprendre Vue.js et comment écrire du code en utilisant ChatGPT. Au fil du temps, il a gagné en popularité sur GitHub, j'ai donc effectué beaucoup de refactoring et ajouté de nombreuses fonctionnalités utiles. J'espère que vous l'apprécierez.",
         "meTitle": "À propos de moi",
-        "me1": "Je m'appelle Jason Ng, également connu sous le nom d'Achán en ligne. Je ne suis pas un programmeur professionnel, mais j'adore coder, l'open-source et le partage.",
-        "me2": "La plupart du temps, je travaille en tant que chef de produit, blogueur, motard et geek.",
-        "me3": "Vous pouvez trouver une présentation plus détaillée à mon sujet dans le lien suivant :",
+        "me1": "8888IP est un projet open source maintenu indépendamment.",
+        "me2": "Le projet propose des outils pratiques pour l'IP, le réseau, la confidentialité et la connectivité.",
+        "me3": "Le code source et les mises à jour sont disponibles dans le dépôt du projet.",
         "contactTitle": "Contactez-moi",
-        "contact": "Si vous avez des questions ou des suggestions, veuillez me contacter par email : jason[AT]kenengba.com.",
+        "contact": "Pour toute question ou suggestion, veuillez ouvrir une issue dans le dépôt du projet.",
         "personal": "Site personnel",
         "blog": "Mon blog",
         "retiremoney": "Planificateur futur",

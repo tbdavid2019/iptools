@@ -36,27 +36,11 @@
 
     <!-- Additional Tools -->
     <div class="container text-center jn-add">
-        <div id="morefromipchecking" class="d-flex justify-content-center">
-            <div :class="[isMobile ? 'mx-1' : 'mx-3']">
-                <a href="https://www.raycast.com/jason5ng32/ipcheck-ing" target="_blank"
-                    @click="trackEvent('Additional', 'AdditionalClick', 'Raycast');">
-                    <img src="/additional/raycast.webp" alt="IPCheck.ing on Raycast" :width="[isMobile ? '108' : '180']"
-                        :height="[isMobile ? '39' : '65']">
-                </a>
-            </div>
-
+        <div id="morefrom8888ip" class="d-flex justify-content-center">
             <div :class="[isMobile ? 'mx-1' : 'mx-3']">
                 <img type="button" data-bs-toggle="modal" @click="openCurlModal"
-                    src="/additional/curl.webp" alt="IPCheck.ing for Curl" :width="[isMobile ? '108' : '180']"
+                    src="/additional/curl.webp" alt="8888IP for Curl" :width="[isMobile ? '108' : '180']"
                     :height="[isMobile ? '39' : '65']">
-            </div>
-
-            <div :class="[isMobile ? 'mx-1' : 'mx-3']">
-                <a href="https://lite.ipcheck.ing" target="_blank"
-                    @click="trackEvent('Additional', 'AdditionalClick', 'Lite');">
-                    <img src="/additional/lite.webp" alt="IPCheck.ing lite" :width="[isMobile ? '108' : '180']"
-                        :height="[isMobile ? '39' : '65']">
-                </a>
             </div>
         </div>
     </div>

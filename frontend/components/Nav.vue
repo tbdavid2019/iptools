@@ -10,14 +10,12 @@
 
       <div class="jn-logo">
         <a class="navbar-brand d-flex align-items-center align-content-center" :class="{ 'text-white': isDarkMode }"
-          href="#" @click="handleLogoClick">
-          <brandIcon />
-          <span class=" fw-bold  "> IP</span>
-          <span class="fw-lighter">Check.</span>
+          href="#" aria-label="8888IP" @click="handleLogoClick">
+          <span class="fw-bold">8888</span>
           <span class="fw-lighter" :class="{
               'background-animation-dark': !loaded && isDarkMode,
               'background-animation-light': !loaded && !isDarkMode
-            }">ing
+            }">IP
           </span>
         </a>
       </div>
@@ -42,7 +40,7 @@
           </div>
           <a :class="[isMobile ? 'mt-2':'ms-2']" :href="t('page.footerLink')" target="_blank"
             class="d-flex align-items-center">
-            <img src="https://img.shields.io/github/stars/jason5ng32/MyIP" />
+            <img src="https://img.shields.io/github/stars/tbdavid2019/iptools" alt="8888IP GitHub stars" />
           </a>
         </div>
       </div>
@@ -142,8 +140,6 @@ import unixToDateTime from '@/utils/timestamp-to-date';
 const { t } = useI18n();
 
 // 导入 Logo 图标
-import brandIcon from './svgicons/Brand.vue';
-
 // 基础数据
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);

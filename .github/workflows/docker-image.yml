@@ -51,10 +51,8 @@ jobs:
       with:
         push: true
         tags: |
-          jason5ng32/myip:latest
-          jason5ng32/myip:${{ env.RELEASE_VERSION }}
-          ghcr.io/${{ github.repository_owner }}/myip:latest
-          ghcr.io/${{ github.repository_owner }}/myip:${{ env.RELEASE_VERSION }}
+          ghcr.io/${{ github.repository_owner }}/8888ip:latest
+          ghcr.io/${{ github.repository_owner }}/8888ip:${{ env.RELEASE_VERSION }}
         labels: |
           org.opencontainers.image.version=${{ env.RELEASE_VERSION }}
           org.opencontainers.image.description=${{ env.RELEASE_NOTES }}

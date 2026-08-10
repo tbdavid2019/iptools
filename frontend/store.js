@@ -13,9 +13,9 @@ const defaultIpDetectors = [
   { id: 0, name: 'CN Source', fetchFnName: 'getIPFromIPIP', status: 'pending', latency: null },
   { id: 1, name: 'Cloudflare IPv4', fetchFnName: 'getIPFromCloudflare_V4', status: 'pending', latency: null },
   { id: 2, name: 'Cloudflare IPv6', fetchFnName: 'getIPFromCloudflare_V6', status: 'pending', latency: null },
-  { id: 3, name: 'IPCheck.ing IPv6/4', fetchFnName: 'getIPFromIPChecking64', status: 'pending', latency: null },
-  { id: 4, name: 'IPCheck.ing IPv4', fetchFnName: 'getIPFromIPChecking4', status: 'pending', latency: null },
-  { id: 5, name: 'IPCheck.ing IPv6', fetchFnName: 'getIPFromIPChecking6', status: 'pending', latency: null },
+  { id: 3, name: '8888IP IPv6/4', fetchFnName: 'getIPFromIPChecking64', status: 'pending', latency: null },
+  { id: 4, name: '8888IP IPv4', fetchFnName: 'getIPFromIPChecking4', status: 'pending', latency: null },
+  { id: 5, name: '8888IP IPv6', fetchFnName: 'getIPFromIPChecking6', status: 'pending', latency: null },
 ];
 
 export function loadDetectorCache() {
@@ -135,7 +135,7 @@ export const useMainStore = defineStore('main', {
     },
     currentSection: 'IPInfo',
     ipDBs: [
-      { id: 0, text: 'IPCheck.ing', url: '/api/ipchecking?ip={{ip}}&lang={{lang}}', enabled: true },
+      { id: 0, text: '8888IP', url: '/api/ipchecking?ip={{ip}}&lang={{lang}}', enabled: true },
       { id: 1, text: 'IPinfo.io', url: '/api/ipinfo?ip={{ip}}', enabled: true },
       { id: 2, text: 'IP-API.com', url: '/api/ipapicom?ip={{ip}}&lang={{lang}}', enabled: true },
       { id: 3, text: 'IPAPI.is', url: '/api/ipapiis?ip={{ip}}', enabled: true },

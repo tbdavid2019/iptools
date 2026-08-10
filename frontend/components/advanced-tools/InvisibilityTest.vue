@@ -301,7 +301,7 @@ const retryCount = ref(0);
 // 生成28位字符串
 const generate28DigitString = () => {
     const unixTime = Date.now().toString();
-    const fixedString = "jason5ng32";
+    const fixedString = "8888ip";
     const neededUnixTimeLength = 13;
     const remainingLength = 28 - fixedString.length - neededUnixTimeLength;
     const randomString = Math.random().toString(36).substring(2, 2 + remainingLength);

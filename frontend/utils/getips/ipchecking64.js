@@ -1,28 +1,28 @@
 import { isValidIP } from '@/utils/valid-ip.js';
 
-// 从 IPCheck.ing 获取 IPv6/4 地址
+// 从 8888IP 获取 IPv6/4 地址
 const getIPFromIPChecking64 = async (originalSite) => {
     try {
         let ip;
         originalSite ? ip = await getFromJson() : ip = await getFromTrace();
-        const source = "IPCheck.ing IPv6/4";
+        const source = "8888IP IPv6/4";
         if (isValidIP(ip)) {
             return {
                 ip: ip,
                 source: source
             };
         } else {
-            console.error("Invalid IP from IPCheck.ing IPv6/4:", ip);
+            console.error("Invalid IP from 8888IP IPv6/4:", ip);
             return {
                 ip: null,
                 source: source
             };
         }
     } catch (error) {
-        console.error("Error fetching IP from IPCheck.ing IPv6/4:", error);
+        console.error("Error fetching IP from 8888IP IPv6/4:", error);
         return {
             ip: null,
-            source: "IPCheck.ing IPv6/4"
+            source: "8888IP IPv6/4"
         };
     }
 };
@@ -38,7 +38,7 @@ const getFromJson = async () => {
         const ip = data.ip;
         return ip;
     } catch (error) {
-        console.error("Error fetching IP from IPCheck.ing IPv6 JSON:", error);
+        console.error("Error fetching IP from 8888IP IPv6 JSON:", error);
     }
     return getFromTrace();
 };
@@ -55,7 +55,7 @@ const getFromTrace = async () => {
         }
         return ip;
     } catch (error) {
-        console.error("Error fetching IP from IPCheck.ing IPv6 Trace:", error);
+        console.error("Error fetching IP from 8888IP IPv6 Trace:", error);
         throw error;
     }
 };

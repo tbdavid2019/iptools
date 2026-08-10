@@ -74,28 +74,18 @@ export default defineConfig({
         ]
       },
       manifest: {
-        name: 'IPCheck.ing',
-        short_name: 'IPCheck.ing',
+        name: '8888IP',
+        short_name: '8888IP',
         theme_color: '#f8f9fa',
         orientation: "portrait",
-        id: 'com.jasonng.myip',
-        description: 'All in one IP Toolbox',
+        id: 'com.david888.8888ip',
+        description: '8888IP network toolbox',
         icons: [
           {
-            src: '/logos/logo-192.webp',
-            sizes: '192x192',
-            type: 'image/webp',
-            purpose: 'maskable'
-          },
-          {
-            src: '/logos/ios-logo-192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/logos/ios-logo-512.png',
-            sizes: '512x512',
-            type: 'image/png',
+            src: '/favicon.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
+            purpose: 'any maskable'
           },
         ],
       },

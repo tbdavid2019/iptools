@@ -95,7 +95,7 @@ const isStarted = ref(false);
 // 生成 32 位随机字符串
 const generate32DigitString = () => {
   const unixTime = Date.now().toString();
-  const fixedString = "jason5ng32";
+  const fixedString = "8888ip";
   const randomString = Math.random().toString(36).substring(2, 11);
 
   return unixTime + fixedString + randomString;
@@ -103,7 +103,7 @@ const generate32DigitString = () => {
 
 // 生成 14 位随机字符串
 const generate14DigitString = () => {
-  const fixedString = "jn32";
+  const fixedString = "8888";
   const randomString = Math.random().toString(36).substring(2, 11);
 
   return fixedString + randomString;

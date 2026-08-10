@@ -95,17 +95,17 @@ const ipDataCards = reactive([
   {
     ...createDefaultCard(),
     id: "ipchecking_v64",
-    source: "IPCheck.ing IPv6/4",
+    source: "8888IP IPv6/4",
   },
   {
     ...createDefaultCard(),
     id: "ipchecking_v4",
-    source: "IPCheck.ing IPv4",
+    source: "8888IP IPv4",
   },
   {
     ...createDefaultCard(),
     id: "ipchecking_v6",
-    source: "IPCheck.ing IPv6",
+    source: "8888IP IPv6",
   },
 ]);
 

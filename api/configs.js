@@ -14,7 +14,7 @@ export default (req, res) => {
     }
 
     const hostname = referer ? new URL(referer).hostname : '';
-    const allowedHostnames = ['ipcheck.ing', 'www.ipcheck.ing', 'localtest.ipcheck.ing'];
+    const allowedHostnames = ['ip.david888.com', 'www.ip.david888.com', 'localhost'];
     const originalSite = allowedHostnames.includes(hostname);
 
     const envConfigs = {

@@ -25,9 +25,9 @@ const defaultIpDetectors = [
   { id: 0, name: 'CN Source', fetchFn: 'getIPFromIPIP', status: 'pending', latency: null },
   { id: 1, name: 'Cloudflare IPv4', fetchFn: 'getIPFromCloudflare_V4', status: 'pending', latency: null },
   { id: 2, name: 'Cloudflare IPv6', fetchFn: 'getIPFromCloudflare_V6', status: 'pending', latency: null },
-  { id: 3, name: 'IPCheck.ing IPv6/4', fetchFn: 'getIPFromIPChecking64', status: 'pending', latency: null },
-  { id: 4, name: 'IPCheck.ing IPv4', fetchFn: 'getIPFromIPChecking4', status: 'pending', latency: null },
-  { id: 5, name: 'IPCheck.ing IPv6', fetchFn: 'getIPFromIPChecking6', status: 'pending', latency: null },
+  { id: 3, name: '8888IP IPv6/4', fetchFn: 'getIPFromIPChecking64', status: 'pending', latency: null },
+  { id: 4, name: '8888IP IPv4', fetchFn: 'getIPFromIPChecking4', status: 'pending', latency: null },
+  { id: 5, name: '8888IP IPv6', fetchFn: 'getIPFromIPChecking6', status: 'pending', latency: null },
 ];
 
 const CACHE_KEY = 'iptools_ipdetectors_cache';

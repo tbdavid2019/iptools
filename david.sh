@@ -1,11 +1,10 @@
-docker build -t tbdavid2019/iptools:latest .
+docker build -t ghcr.io/tbdavid2019/8888ip:latest .
 
-docker push tbdavid2019/iptools:latest
+docker push ghcr.io/tbdavid2019/8888ip:latest
 
 
-docker run -d -p 6001:18966 \
+docker run -d -p 6001:6001 \
   --env-file .env \
   --restart unless-stopped \
-  --name iptools \
-  tbdavid2019/iptools:latest
-
+  --name 8888ip \
+  ghcr.io/tbdavid2019/8888ip:latest

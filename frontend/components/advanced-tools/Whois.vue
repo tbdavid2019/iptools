@@ -157,7 +157,7 @@ const getWhoisResults = async (query) => {
         if (type.value === 'domain' && providers.value.length >= 1) {
             whoisResults.value = data;
             // 成就检查
-            if (isSignedIn.value && query.toLowerCase().includes('ipcheck.ing')) {
+            if (isSignedIn.value && query.toLowerCase().includes('ip.david888.com')) {
                 checkAchievements();
             }
             errorMsg.value = '';

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2026-08-10
+
+### Changed
+- Rebranded the product as 8888IP and removed former product, author, and installation references from the application and deployment configuration.
+- Added the Vercel command-line IP endpoint so `curl ip.david888.com` can return the caller's public IP.
+
 ## [Unreleased]
 
 ### Added

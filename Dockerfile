@@ -13,6 +13,7 @@ RUN npm run build
 # 第二阶段：运行
 FROM node:22-alpine AS production-stage
 WORKDIR /app
+ENV FRONTEND_PORT=6001 BACKEND_PORT=11966
 COPY --from=build-stage /app/node_modules ./node_modules
 COPY --from=build-stage /app/package.json ./
 COPY --from=build-stage /app/dist ./dist
