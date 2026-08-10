@@ -202,6 +202,37 @@ export default {
             }
         }
 
+        // /api/maxmind
+        if (pathname === '/api/maxmind') {
+            const ip = url.searchParams.get('ip') || clientIp;
+            const lang = url.searchParams.get('lang') || 'en';
+            const apiUrl = `http://ip-api.com/json/${ip}?fields=66842623&lang=${lang}`;
+
+            try {
+                const res = await fetch(apiUrl, {
+                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+                });
+                const json = await res.json();
+                const asn = json.as ? json.as.split(' ')[0] : 'N/A';
+                return new Response(JSON.stringify({
+                    ip: json.query || ip,
+                    city: json.city || 'N/A',
+                    region: json.regionName || 'N/A',
+                    country: json.countryCode || 'N/A',
+                    country_name: json.country || 'N/A',
+                    country_code: json.countryCode || 'N/A',
+                    latitude: json.lat || 0,
+                    longitude: json.lon || 0,
+                    asn,
+                    org: json.isp || 'N/A'
+                }), {
+                    headers: { 'content-type': 'application/json; charset=utf-8' }
+                });
+            } catch (e) {
+                return new Response(JSON.stringify({ error: e.message }), { status: 500 });
+            }
+        }
+
         // 7. /api/dnsresolver
         if (pathname === '/api/dnsresolver') {
             const hostname = url.searchParams.get('hostname');

@@ -132,18 +132,17 @@ const checkSTUNServer = async (stun) => {
           const ipMatch = /([0-9a-f]{1,4}(:[0-9a-f]{1,4}){7}|[0-9a-f]{0,4}(:[0-9a-f]{1,4}){0,6}::[0-9a-f]{0,4}|::[0-9a-f]{1,4}(:[0-9a-f]{1,4}){0,6}|[0-9]{1,3}(\.[0-9]{1,3}){3})/i.exec(candidate);
           if (ipMatch) {
             stun.ip = ipMatch[0];
+            stun.natType = determineNATType(candidate);
             try {
               let countryInfo = await fetchCountryCode(stun.ip);
-              stun.country_code = countryInfo[0];
-              stun.country = countryInfo[1];
+              if (countryInfo && Array.isArray(countryInfo)) {
+                stun.country_code = countryInfo[0] || '';
+                stun.country = countryInfo[1] || 'N/A';
+              }
             } catch (error) {
               console.error("Error fetching country code:", error);
-              reject(error);
-              pc.close();
-              return;
             }
             IPArray.value = [...IPArray.value, stun.ip];
-            stun.natType = determineNATType(candidate);
             pc.close();
             resolve();
           }
@@ -193,15 +192,15 @@ const fetchCountryCode = async (ip) => {
   if (setLang === 'zh') {
     setLang = 'zh-CN';
   }
-  const source = store.ipDBs.find(source => source.text === "MaxMind");
+  const source = store.ipDBs.find(source => source.text === "MaxMind") || store.ipDBs[0];
 
   try {
-    const url = store.getDbUrl(source.id, ip, setLang);
+    const url = (source && store.getDbUrl(source.id, ip, setLang)) || `/api/maxmind?ip=${ip}&lang=${setLang}`;
     const response = await fetch(url);
     const data = await response.json();
-    const ipData = transformDataFromIPapi(data, source.id, t, lang.value);
+    const ipData = transformDataFromIPapi(data, source ? source.id : 6, t, lang.value);
 
-    if (ipData) {
+    if (ipData && ipData.country_code) {
       let country_code = ipData.country_code.toLowerCase();
       let country = ipData.country_code || 'N/A';
       if (country !== 'N/A') {
@@ -212,6 +211,7 @@ const fetchCountryCode = async (ip) => {
   } catch (error) {
     console.error("Error fetching IP country code", error);
   }
+  return ['', 'N/A'];
 }
 
 
