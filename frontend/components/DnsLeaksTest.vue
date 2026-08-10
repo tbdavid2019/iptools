@@ -125,8 +125,14 @@ const fetchLeakTestIpApiCom = (index) => {
       .then((data) => {
         if (data.dns && "geo" in data.dns && "ip" in data.dns) {
           const geoSplit = data.dns.geo.split(" - ");
-          leakTest[index].country_code = countryLookup.byCountry(geoSplit[0]).iso2;
-          leakTest[index].country = getCountryName(leakTest[index].country_code, lang.value);
+          let countryCode = '';
+          try {
+            const lookup = countryLookup.byCountry(geoSplit[0]) || countryLookup.byIso(geoSplit[0]) || countryLookup.byFips(geoSplit[0]);
+            countryCode = lookup ? lookup.iso2 : '';
+          } catch (e) {}
+
+          leakTest[index].country_code = countryCode;
+          leakTest[index].country = countryCode ? getCountryName(countryCode, lang.value) : (geoSplit[0] || 'N/A');
           leakTest[index].org = geoSplit[1] || '';
           leakTest[index].ip = data.dns.ip;
           resolve();
