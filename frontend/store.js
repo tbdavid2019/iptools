@@ -109,9 +109,9 @@ export const useMainStore = defineStore('main', {
       advancedtools: false,
     },
     curl: {
-      ipv4Domain: import.meta.env.VITE_CURL_IPV4_DOMAIN,
-      ipv6Domain: import.meta.env.VITE_CURL_IPV6_DOMAIN,
-      ipv64Domain: import.meta.env.VITE_CURL_IPV64_DOMAIN,
+      ipv4Domain: import.meta.env.VITE_CURL_IPV4_DOMAIN || 'ip.david888.com',
+      ipv6Domain: import.meta.env.VITE_CURL_IPV6_DOMAIN || 'ip.david888.com',
+      ipv64Domain: import.meta.env.VITE_CURL_IPV64_DOMAIN || 'ip.david888.com',
     },
     isFireBaseSet: false,
     loadingStatus: {

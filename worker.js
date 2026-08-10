@@ -246,6 +246,66 @@ export default {
             }
         }
 
+        // 10. /api/cfradar
+        if (pathname === '/api/cfradar') {
+            const asn = (url.searchParams.get('asn') || '').replace(/^AS/i, '');
+            if (!asn) {
+                return new Response(JSON.stringify({ error: 'No ASN provided' }), { status: 400 });
+            }
+
+            const cfToken = env.CLOUDFLARE_API || '';
+            if (!cfToken) {
+                return new Response(JSON.stringify({ error: 'CLOUDFLARE_API not set' }), { status: 400 });
+            }
+
+            const fetchOptions = {
+                headers: {
+                    'Authorization': `Bearer ${cfToken}`,
+                    'Content-Type': 'application/json',
+                    'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)'
+                }
+            };
+
+            const fetchCf = async (endpoint) => {
+                const r = await fetch(`https://api.cloudflare.com/client/v4${endpoint}`, fetchOptions);
+                return r.json();
+            };
+
+            try {
+                const [asnInfo, ipVersion, httpProtocol, deviceType, botType] = await Promise.all([
+                    fetchCf(`/radar/entities/asns/${asn}`),
+                    fetchCf(`/radar/http/summary/ip_version?asn=${asn}&dateRange=7d`),
+                    fetchCf(`/radar/http/summary/http_protocol?asn=${asn}&dateRange=7d`),
+                    fetchCf(`/radar/http/summary/device_type?asn=${asn}&dateRange=7d`),
+                    fetchCf(`/radar/http/summary/bot_class?asn=${asn}&dateRange=7d`)
+                ]);
+
+                const resData = {
+                    asnName: asnInfo?.result?.asn?.name,
+                    asnOrgName: asnInfo?.result?.asn?.orgName,
+                    estimatedUsers: parseFloat(asnInfo?.result?.asn?.estimatedUsers?.estimatedUsers || 0).toLocaleString(),
+                    IPv4_Pct: `${parseFloat(ipVersion?.result?.summary_0?.IPv4 || 0).toFixed(2)}%`,
+                    IPv6_Pct: `${parseFloat(ipVersion?.result?.summary_0?.IPv6 || 0).toFixed(2)}%`,
+                    HTTP_Pct: `${parseFloat(httpProtocol?.result?.summary_0?.http || 0).toFixed(2)}%`,
+                    HTTPS_Pct: `${parseFloat(httpProtocol?.result?.summary_0?.https || 0).toFixed(2)}%`,
+                    Desktop_Pct: `${parseFloat(deviceType?.result?.summary_0?.desktop || 0).toFixed(2)}%`,
+                    Mobile_Pct: `${parseFloat(deviceType?.result?.summary_0?.mobile || 0).toFixed(2)}%`,
+                    Bot_Pct: `${parseFloat(botType?.result?.summary_0?.bot || 0).toFixed(2)}%`,
+                    Human_Pct: `${parseFloat(botType?.result?.summary_0?.human || 0).toFixed(2)}%`
+                };
+
+                for (const k in resData) {
+                    if (resData[k] === 'NaN' || resData[k] === 'NaN%') delete resData[k];
+                }
+
+                return new Response(JSON.stringify(resData), {
+                    headers: { 'content-type': 'application/json; charset=utf-8' }
+                });
+            } catch (e) {
+                return new Response(JSON.stringify({ error: e.message }), { status: 500 });
+            }
+        }
+
         // Fallback to serving static assets from KV
         try {
             return await getAssetFromKV(
