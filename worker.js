@@ -363,6 +363,29 @@ export default {
             }
         }
 
+        // 11. /llms.txt and /llms-full.txt
+        if (pathname === '/llms.txt' || pathname === '/llms-full.txt') {
+            try {
+                const assetResponse = await getAssetFromKV(
+                    {
+                        request,
+                        waitUntil: ctx.waitUntil.bind(ctx),
+                    },
+                    {
+                        ASSET_NAMESPACE: env.__STATIC_CONTENT,
+                        ASSET_MANIFEST: assetManifest,
+                        mapRequestUrl: req => new Request(req.url, req)
+                    }
+                );
+                const response = new Response(assetResponse.body, assetResponse);
+                response.headers.set('content-type', 'text/markdown; charset=utf-8');
+                response.headers.set('link', '</llms.txt>; rel="llms-txt"; type="text/markdown"');
+                return response;
+            } catch (e) {
+                return new Response(`File not found: ${e.message}`, { status: 404 });
+            }
+        }
+
         // Fallback to serving static assets from KV
         try {
             return await getAssetFromKV(
