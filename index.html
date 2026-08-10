@@ -4,18 +4,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8888IP - Check My IP Address, DNS Leak & Speed Test</title>
   <meta name="keywords"
-    content="8888IP,IP Tool,My IP,IP check,IP lookup,DNS leak test,WebRTC test,Speed test,DNS lookup,Whois lookup, Ping test, privacy test">
+    content="8888IP,IP Tool,My IP,IP check,IP lookup,DNS leak test,WebRTC test,Speed test,DNS lookup,Whois lookup,Ping test,privacy test">
   <meta name="description"
-    content="A better and open source IP Toolbox. Easy to check what's your IPs, IP information, check for DNS leaks, examine WebRTC connections, test website availability, lookup DNS record, lookup Whois, and test latency from around the world.">
+    content="An open-source IP toolbox to check your IP address, IP geolocation, DNS leaks, WebRTC connections, domain WHOIS, and global network latency.">
+  <meta name="robots" content="index, follow">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#f8f9fa">
   <meta name="background-color" content="#ffffff">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="apple-touch-icon" href="favicon.svg">
-  <title>8888IP - Check My IP Address and Geolocation - WebRTC, DNS Leak, Speed and Network Tests</title>
+  <link rel="canonical" href="https://ip.david888.com/">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ip.david888.com/">
+  <meta property="og:site_name" content="8888IP">
+  <meta property="og:title" content="8888IP - Check My IP Address, DNS Leak & Speed Test">
+  <meta property="og:description"
+    content="An open-source IP toolbox to check your IP address, IP geolocation, DNS leaks, WebRTC connections, domain WHOIS, and global network latency.">
+  <meta property="og:image" content="https://ip.david888.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="8888IP Open-Source Network & IP Toolbox">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@tbdavid2019">
+  <meta name="twitter:title" content="8888IP - Check My IP Address, DNS Leak & Speed Test">
+  <meta name="twitter:description"
+    content="An open-source IP toolbox to check your IP address, IP geolocation, DNS leaks, WebRTC connections, domain WHOIS, and global network latency.">
+  <meta name="twitter:image" content="https://ip.david888.com/og-image.jpg">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" href="/logos/ios-logo-192.png">
   <link rel="icon" href="logos/logo.svg">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "8888IP",
+    "url": "https://ip.david888.com/",
+    "description": "An open-source IP toolbox to check your IP address, IP geolocation, DNS leaks, WebRTC connections, domain WHOIS, and global network latency.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "author": {
+      "@type": "Person",
+      "name": "David",
+      "url": "https://github.com/tbdavid2019"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
 
   <script>
     setTimeout(() => {
@@ -50,6 +99,7 @@
       font-family: Arial, sans-serif;
       font-size: 42px;
       letter-spacing: -2px;
+      margin: 0;
     }
 
     .loading-logo span {
@@ -72,6 +122,18 @@
       color: #777;
     }
 
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
     @keyframes spin {
       0% {
         transform: rotate(0deg);
@@ -85,6 +147,7 @@
 </head>
 
 <body>
+  <h1 class="visually-hidden">8888IP - Check My IP Address, DNS Leak & Speed Test</h1>
   <div id="jn-loading" class="jn-loading">
     <div>
       <div class="loading-logo" aria-label="8888IP"><span>8888</span><strong>IP</strong></div>

@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 ## [2026-08-10]
 
 ### Added
+- **Social Preview Image (`og:image`)**: Generated and added high-resolution 1200x630 social preview image (`public/og-image.jpg`) for Open Graph and Twitter cards.
+- **Structured Data (JSON-LD)**: Added Schema.org `WebApplication` structured data script in `index.html` to enable rich search snippets.
+- **Accessibility & SEO H1 Heading**: Added semantic `<h1 class="visually-hidden">` heading to static HTML for search engine crawlers and screen readers.
 - **Browser Info Homepage Placement**: Embedded the `BrowserInfo` (瀏覽器資訊) component directly beneath `IPCheck` on the homepage for immediate access to User Agent, OS, GPU, CPU cores, and browser fingerprint.
 - **Invisibility Test Free Access**: Removed login restrictions from `InvisibilityTest` so visitors can run proxy/VPN threat detection without logging in, with fast local environment fallback.
 - **Surfshark DNS Leak Integration**: Replaced legacy `edns.ip-api.com` in `DnsLeaksTest` with Surfshark DNS resolvers across all 4 leak test cards.
@@ -12,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - **AI Agent Discovery (`llms.txt`)**: Added `public/llms.txt` and `public/llms-full.txt` compliant with `llmstxt.org` standards, providing AI agents with structured API indexes.
 
 ### Changed
+- **SEO Title & Description Optimization**: Optimized `<title>` to 51 characters (`8888IP - Check My IP Address, DNS Leak & Speed Test`) and meta description to 144 characters (`An open-source IP toolbox to check your IP address, IP geolocation, DNS leaks, WebRTC connections, domain WHOIS, and global network latency.`).
 - **Reactive Auto-Hide Failed IP Cards**: Updated `hideUnavailableIPStack` default to `true` in `store.js` and added `visibleCards` reactive filter in `IpInfos.vue` so failed cards hide immediately on first page load without requiring a page refresh.
 - **IPify IPv4 & Provider Reliability**: Replaced `CN Source` (`cnsource`) with `IPify IPv4` (`ipify_v4`) with multi-tier fallbacks (`api4.ipify.org` -> `api.ipify.org` -> `/api/ip`).
 - **Connectivity Test Reordering**: Reordered connectivity target sites so international services (Google, Cloudflare, YouTube, GitHub, ChatGPT) appear first, and Mainland China services (Taobao, Baidu, WeChat) are placed at the bottom.
@@ -19,6 +23,9 @@ All notable changes to this project will be documented in this file.
 - **Serverless Cloudflare Worker Architecture**: Migrated backend infrastructure from VPS/Express to 100% serverless Cloudflare Workers with Static Assets (`@cloudflare/kv-asset-handler`).
 
 ### Fixed
+- **Open Graph & Twitter Meta Tags**: Added missing `og:url`, `og:site_name`, `og:locale`, `twitter:card` (`summary_large_image`), `twitter:site` (`@tbdavid2019`), `twitter:image`, and `canonical` URL link.
+- **Apple Touch Icon Link**: Fixed `apple-touch-icon` to correctly reference PNG logo (`/logos/ios-logo-192.png`) instead of SVG.
+- **Viewport Meta Tag Duplication**: Removed duplicate `<meta name="viewport">` declaration in `index.html`.
 - **Invisibility Test Button UI**: Fixed missing button text during testing by replacing raw Bootstrap `spinner-grow` with `[spinner] 檢測中...` text label.
 - **Traditional Chinese (zh-TW) i18n**: Fixed Simplified Chinese vocabulary in `zh.json` and PWA installation dialogs (`PWA.vue`, `index.html`).
 - **UTF-8 Charset for `llms.txt`**: Added explicit route handlers in `worker.js` ensuring `/llms.txt` and `/llms-full.txt` serve raw markdown with `Content-Type: text/markdown; charset=utf-8`.
