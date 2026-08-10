@@ -1,0 +1,2 @@
+# Cloudflare Pages API Proxy Rule
+/api/*  https://dns.glsoft.ai/api/:splat  200
