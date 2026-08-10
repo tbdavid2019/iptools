@@ -29,7 +29,7 @@ import { useI18n } from 'vue-i18n';
 import { trackEvent } from '@/utils/use-analytics';
 import { isValidIP } from '@/utils/valid-ip.js';
 import { transformDataFromIPapi } from '@/utils/transform-ip-data.js';
-import { getIPFromIPIP, getIPFromCloudflare_V4, getIPFromCloudflare_V6, getIPFromIPChecking64, getIPFromIPChecking4, getIPFromIPChecking6, fetchFnMap } from '@/utils/getips';
+import { getIPFromIpify_V4, getIPFromCloudflare_V4, getIPFromCloudflare_V6, getIPFromIPChecking64, getIPFromIPChecking4, getIPFromIPChecking6, fetchFnMap } from '@/utils/getips';
 import { speedTestAndSortDetectors, loadDetectorCache } from '@/store';
 import { authenticatedFetch } from '@/utils/authenticated-fetch';
 import IPCard from './ip-infos/IPCard.vue';
@@ -80,8 +80,8 @@ const createDefaultCard = () => ({
 const ipDataCards = reactive([
   {
     ...createDefaultCard(),
-    id: "cnsource",
-    source: "CN Source",
+    id: "ipify_v4",
+    source: "IPify IPv4",
   },
   {
     ...createDefaultCard(),
@@ -318,7 +318,7 @@ const refreshCard = (card, index) => {
   clearCardData(card);
   switch (index) {
     case 0:
-      fetchIP(0, getIPFromIPIP);
+      fetchIP(0, getIPFromIpify_V4);
       break;
     case 1:
       fetchIP(1, getIPFromCloudflare_V4);

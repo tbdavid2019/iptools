@@ -152,7 +152,7 @@ const fetchLeakTestIpApiCom = (index) => {
   });
 };
 
-// DNS 泄露测试 2
+// DNS 泄露测试
 const fetchLeakTestSfSharkCom = (index, key) => {
   return new Promise((resolve, reject) => {
     const urlString = generate14DigitString();
@@ -166,19 +166,25 @@ const fetchLeakTestSfSharkCom = (index, key) => {
         return response.json();
       })
       .then((data) => {
-        const getKey = Object.keys(data)[key];
-        const keyEntry = data[getKey];
-
-        if (keyEntry && keyEntry.CountryCode && keyEntry.IP) {
-          leakTest[index].country_code = keyEntry.CountryCode;
-          leakTest[index].country = getCountryName(keyEntry.CountryCode, lang.value);
-          leakTest[index].org = keyEntry.ISP || '';
-          leakTest[index].ip = keyEntry.IP;
-          resolve();
-        } else {
-          console.error("Unexpected data structure:", data);
-          reject(new Error("Unexpected data structure"));
+        const keys = Object.keys(data);
+        if (keys.length > 0) {
+          const targetKey = keys[key % keys.length];
+          const keyEntry = data[targetKey];
+          if (keyEntry && keyEntry.IP) {
+            const countryCode = keyEntry.CountryCode || '';
+            leakTest[index].country_code = countryCode;
+            leakTest[index].country = countryCode ? getCountryName(countryCode, lang.value) : (keyEntry.Country || 'N/A');
+            leakTest[index].org = keyEntry.ISP || 'DNS Provider';
+            leakTest[index].ip = keyEntry.IP;
+            resolve();
+            return;
+          }
         }
+        leakTest[index].ip = '無額外出口';
+        leakTest[index].country = '安全';
+        leakTest[index].country_code = '';
+        leakTest[index].org = '未發現更多 DNS 出口';
+        resolve();
       })
       .catch((error) => {
         console.error("Error fetching leak test data:", error);
@@ -216,10 +222,10 @@ const checkAllDNSLeakTest = async (isRefresh) => {
 
   // 批量请求
   const promises = [
-    delayedFetch(fetchLeakTestIpApiCom, 0, null, 100),
-    delayedFetch(fetchLeakTestIpApiCom, 1, null, 1000),
-    delayedFetch(fetchLeakTestSfSharkCom, 2, 0, 100),
-    delayedFetch(fetchLeakTestSfSharkCom, 3, 0, 1000)
+    delayedFetch(fetchLeakTestSfSharkCom, 0, 0, 100),
+    delayedFetch(fetchLeakTestSfSharkCom, 1, 1, 300),
+    delayedFetch(fetchLeakTestSfSharkCom, 2, 2, 500),
+    delayedFetch(fetchLeakTestSfSharkCom, 3, 3, 700)
   ];
 
   // 最长等待 6 秒
