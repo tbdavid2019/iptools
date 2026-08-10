@@ -1,21 +1,21 @@
 {
   "user": {
-    "SignIn": "登錄/注冊",
-    "SignInWithGoogle": "使用 Google 登錄",
-    "SignInWithGithub": "使用 GitHub 登錄",
+    "SignIn": "登入/註冊",
+    "SignInWithGoogle": "使用 Google 登入",
+    "SignInWithGithub": "使用 GitHub 登入",
     "SignOut": "登出",
-    "SignInToView": "登錄後查看",
-    "SignInToUse": "請登錄後使用",
+    "SignInToView": "登入後查看",
+    "SignInToUse": "請登入後使用",
     "InvalidUserToken": "無效的用戶 Token",
     "MyAchievements": "我的成就",
     "Fields": {
       "User": "用戶",
       "CreatedAt": "創建於",
-      "LastLogin": "最後登錄",
+      "LastLogin": "最後登入",
       "Level": "用戶等級",
       "FunctionUses": "高級功能使用",
       "Times": "次",
-      "Fetching": "獲取中..."
+      "Fetching": "取得中..."
     },
     "Level": {
       "Standard": "標準用戶",
@@ -28,7 +28,7 @@
       "Title": "用戶權益",
       "Benefit": "權益",
       "Note1": "作為一個開源產品，你使用 8888IP 的過程是免費的。",
-      "Note2": "但是，為了避免濫用，我們會限制一些功能。當你登錄後，你將得到以下權益：",
+      "Note2": "但是，為了避免濫用，我們會限制一些功能。當你登入後，你將得到以下權益：",
       "Benefit1": "當你使用 8888IP 作為 IP 數據解析源時，完整顯示所有字段",
       "Benefit2": "可以使用隱身測試",
       "Benefit3": "可以看到自己獲得的成就勳章",
@@ -37,7 +37,7 @@
     },
     "Achievements": {
       "Title": "成就",
-      "Note": "在使用 8888IP 的過程中，你可能會觸發一些成就，在這里，你可以看到你所有的成就。",
+      "Note": "在使用 8888IP 的過程中，你可能會觸發一些成就，在這裡，你可以看到你所有的成就。",
       "Get": "已獲得",
       "GetCount": "已獲得的成就數量",
       "NotGet": "未獲得",
@@ -49,7 +49,7 @@
       "Type": {
         "IAmHuman": {
           "Title": "有頭有臉",
-          "Meet": "登錄後使用 8888IP"
+          "Meet": "登入後使用 8888IP"
         },
         "BarelyEnough": {
           "Title": "湊湊合合",
@@ -105,11 +105,11 @@
         },
         "EnergySaver": {
           "Title": "省油的燈",
-          "Meet": "設置程序不自動運行"
+          "Meet": "設定程序不自動運行"
         },
         "ResourceHog": {
           "Title": "費油的車",
-          "Meet": "設置多次刷新可用性"
+          "Meet": "設定多次重新整理可用性"
         },
         "MakingBigNews": {
           "Title": "搞大新聞",
@@ -125,7 +125,7 @@
         },
         "CuriousCat": {
           "Title": "好奇的貓",
-          "Meet": "在 Whois 查詢中，查詢了 8888IP 的信息"
+          "Meet": "在 Whois 查詢中，查詢了 8888IP 的資訊"
         },
         "CrossingTheWall": {
           "Title": "八仙過墻",
@@ -138,7 +138,7 @@
     "id": "nav",
     "Title": "8888IP",
     "Navigation": "導航",
-    "IPInfo": "IP 信息",
+    "IPInfo": "IP 資訊",
     "Connectivity": "網絡連通性",
     "WebRTC": "WebRTC 測試",
     "DNSLeakTest": "DNS 泄漏測試",
@@ -148,37 +148,37 @@
     "RuleTest": "分流測試",
     "AdvancedTools": "高級工具",
     "preferences": {
-      "title": "偏好設置",
-      "preferenceTips": "這些設置會保存在瀏覽器，方便下次使用。部分選項需要刷新頁面方可生效。",
+      "title": "偏好設定",
+      "preferenceTips": "這些設定會儲存在瀏覽器，方便下次使用。部分選項需要重新整理頁面方可生效。",
       "colorScheme": "顏色方案",
       "systemAuto": "跟隨系統",
       "colorLight": "白天",
       "colorDark": "黑夜",
       "ipSourcesToCheck": "IP 檢測服務器數量",
-      "ipSourcesToCheckTips": "選擇默認從多少個 IP 檢測服務器獲取 IP 信息。",
-      "appSettings": "程序設置",
+      "ipSourcesToCheckTips": "選擇默認從多少個 IP 檢測服務器取得 IP 資訊。",
+      "appSettings": "程序設定",
       "autoRun": "自動運行",
       "autoRunTips": "關閉後，打開應用將只會進行本機 IP 檢測，不會自動運行其它的測試。",
       "showMap": "顯示地圖",
-      "showMapTips": "在 IP 信息卡片上顯示地圖。",
+      "showMapTips": "在 IP 資訊卡片上顯示地圖。",
       "simpleMode": "簡潔模式",
       "simpleModeTips": "減少 IP 卡片顯示的內容。僅在手機上生效。",
-      "connectivityAutoRefresh": "多次刷新可用性檢測",
-      "connectivityAutoRefreshTips": "開啟多次刷新後，程序在啟動時將運行 5 次檢測，並顯示最小延遲值。",
+      "connectivityAutoRefresh": "多次重新整理可用性檢測",
+      "connectivityAutoRefreshTips": "開啟多次重新整理後，程序在啟動時將運行 5 次檢測，並顯示最小延遲值。",
       "popupConnectivityNotifications": "顯示可用性檢測氣泡",
       "popupConnectivityNotificationsTips": "開啟後，將會在首次檢測時以氣泡形式提示可用性結果。",
       "ipDB": "IP 解析數據源",
       "ipDBTips": "你可以選擇你默認使用的 IP 地理位置數據源，如果你選定的不可用，系統會依次使用後續的數據源。",
-      "language": "語言設置",
-      "languageTips": "刷新瀏覽器後生效。",
+      "language": "語言設定",
+      "languageTips": "重新整理瀏覽器後生效。",
       "refreshDetectors": "重新測速",
       "refreshDetectorsTips": "清除測速快取並重新測試所有 IP 檢測源"
     }
   },
   "securitychecklist": {
     "Title": "安全檢查清單",
-    "Note": "這是一份非常全面的網絡安全檢查清單，涵蓋密碼安全、瀏覽安全、移動設備安全等方面的內容。在當前環境下，信息泄露可能會導致重大的損失，因此，確保我們在連接互聯網的時候，我們盡可能地保護自己的隱私、提高訪問的安全性是很有必要的。",
-    "Note2": "這個清單羅列的內容非常多，你不一定要一次性檢查完，進度會在瀏覽器里保存，你可以隨時返回繼續檢查。",
+    "Note": "這是一份非常全面的網絡安全檢查清單，涵蓋密碼安全、瀏覽安全、移動設備安全等方面的內容。在當前環境下，資訊泄露可能會導致重大的損失，因此，確保我們在連接互聯網的時候，我們盡可能地保護自己的隱私、提高訪問的安全性是很有必要的。",
+    "Note2": "這個清單羅列的內容非常多，你不一定要一次性檢查完，進度會在瀏覽器里儲存，你可以隨時返回繼續檢查。",
     "Progress": "檢查進度",
     "Item": "項目",
     "Items": "個項目",
@@ -206,19 +206,19 @@
     "Title": "命令行 API",
     "Note1": "喲，原來你也喜歡用終端？",
     "Note2_1": "你可以在終端里，通過",
-    "Note2_2": "命令獲取本機的 IP 地址",
-    "Note3": "是可選路徑，添加後可獲取到 IP 的地理信息",
-    "getIPv4": "獲取本機 IPv4 地址",
-    "getIPv6": "獲取本機 IPv6 地址",
-    "get6and4": "獲取本機優先網絡出口的 IP 地址",
+    "Note2_2": "命令取得本機的 IP 地址",
+    "Note3": "是可選路徑，新增後可取得到 IP 的地理資訊",
+    "getIPv4": "取得本機 IPv4 地址",
+    "getIPv6": "取得本機 IPv6 地址",
+    "get6and4": "取得本機優先網絡出口的 IP 地址",
     "notAvailable": "此功能暫未開放，敬請期待"
   },
   "browserinfo": {
-    "Title": "瀏覽器信息",
-    "Note": "本頁面展示兩類瀏覽器信息：瀏覽器 User Agent 解析出來的基本信息，以及通過多項數據計算出來的瀏覽器指紋。瀏覽器指紋就像手掌的掌紋，當瀏覽器的信息暴露越多，你被網站識別的唯一性越高，也就是說，你越容易被網站跟蹤到。有些時候，即使你切換到隱私模式，甚至更換瀏覽器，指紋可能也不會發生變化。",
-    "Note2": "瀏覽器指紋的計算的方法是多種多樣的，不同的技術方案算法和結果不完全一致，我們在這里采用一種相對簡單的方法進行計算。",
+    "Title": "瀏覽器資訊",
+    "Note": "本頁面展示兩類瀏覽器資訊：瀏覽器 User Agent 解析出來的基本資訊，以及通過多項數據計算出來的瀏覽器指紋。瀏覽器指紋就像手掌的掌紋，當瀏覽器的資訊暴露越多，你被網站識別的唯一性越高，也就是說，你越容易被網站跟蹤到。有些時候，即使你切換到隱私模式，甚至更換瀏覽器，指紋可能也不會發生變化。",
+    "Note2": "瀏覽器指紋的計算的方法是多種多樣的，不同的技術方案算法和結果不完全一致，我們在這裡采用一種相對簡單的方法進行計算。",
     "browser": {
-      "Infos": "瀏覽器信息",
+      "Infos": "瀏覽器資訊",
       "browserName": "瀏覽器名稱",
       "browserVersion": "版本",
       "engineName": "引擎",
@@ -236,7 +236,7 @@
       "cookieEnabledFalse": "否"
     },
     "fingerprint": {
-      "Infos": "指紋信息",
+      "Infos": "指紋資訊",
       "fingerprint": "指紋編碼",
       "changeOption": "你可以嘗試變更用於計算瀏覽器指紋的數據，觀察指紋的變化（記得打開隱私模式對照查看）。",
       "browserTips": "有些瀏覽器（比如 Safari）為了保護用戶不被跟蹤，即使勾選相同的數據，每次計算都可能會得到不同的指紋值。"
@@ -254,15 +254,15 @@
       "webgl": "WebGL",
       "math": "運算"
     },
-    "calError": "瀏覽器信息計算失敗，請刷新重試。",
+    "calError": "瀏覽器資訊計算失敗，請重新整理重試。",
     "calculating": "計算中..."
   },
   "invisibilitytest": {
     "Title": "隱身測試",
     "Note": "當你掛上代理或 VPN 之後，你訪問的網站真的不知道你掛著代理嗎？你真的隱身了麼？我們會通過多種手段，嘗試計算出你偽裝後的漏洞，找到你正在使用代理的證據。盡管可能部分測試結果不完全準確，但本測試依然有較高的參考意義。",
-    "Note2": "點擊運行後，系統將會運行一個腳本，通常在 10s 內將會完成所有的測試，在這個過程中，你的 IP 信息、瀏覽器信息等將會被收集並在後台進行分析。",
+    "Note2": "點擊運行後，系統將會運行一個腳本，通常在 10s 內將會完成所有的測試，在這個過程中，你的 IP 資訊、瀏覽器資訊等將會被收集並在後台進行分析。",
     "Run": "運行測試",
-    "fetchError": "無法獲取測試結果",
+    "fetchError": "無法取得測試結果",
     "yourIP": "你的主測 IP 是",
     "proxyScore": "代理概率",
     "VPNScore": "VPN 概率",
@@ -273,16 +273,16 @@
     "itemName": "測試項目",
     "itemProxyResult": "測試結果",
     "itemComment": "分析",
-    "agreement": "同意信息收集",
+    "agreement": "同意資訊收集",
     "blocklist": {
       "title": "VPN/代理名單",
       "proxy": "你的 IP 在 VPN/代理名單中。",
       "notProxy": "你的 IP 不在 VPN/代理名單中"
     },
     "headers": {
-      "title": "HTTP 頭信息",
-      "proxy": "你的 HTTP 頭信息中包含了代理信息，你可能正在使用代理。",
-      "notProxy": "你的 HTTP 頭信息中沒有代理信息。"
+      "title": "HTTP 頭資訊",
+      "proxy": "你的 HTTP 頭資訊中包含了代理資訊，你可能正在使用代理。",
+      "notProxy": "你的 HTTP 頭資訊中沒有代理資訊。"
     },
     "datacenter": {
       "title": "數據中心 IP",
@@ -335,16 +335,16 @@
   "censorshipcheck": {
     "Title": "封鎖測試",
     "Note": "檢查目標網站在全球互聯網審查較為嚴重的 4 個地區的可用性，包括：中國大陸、沙特阿拉伯、俄羅斯、土耳其。檢查時會同時從互聯網相對自由的地區進行相同的測試，以作為對照組進行校驗。在一些地區，互聯網審查有較為明確的法律條文，有些則相對含糊。",
-    "Note2": "請輸入 URL 或域名，開始封鎖測試：",
+    "Note2": "請輸入 URL 或網域，開始封鎖測試：",
     "Note3": "只有當同一個國家的所有服務器都無法訪問時，才會判斷為被封鎖",
     "Run": "運行測試",
-    "Placeholder": "URL 或域名",
+    "Placeholder": "URL 或網域",
     "Country": "地區",
     "Status": "狀態",
     "City": "城市",
     "Network": "網絡",
-    "invalidURL": "無效的 URL 或域名",
-    "fetchError": "無法獲取測試結果",
+    "invalidURL": "無效的 URL 或網域",
+    "fetchError": "無法取得測試結果",
     "isBlocked": "這個網站看起來在部分國家被封鎖了，請參考上方的測試結果做最終判斷。",
     "notBlocked": "這個網站看起來沒有被封鎖了，請參考上方的測試結果做最終判斷。",
     "isDown": "無法判斷這個網站是否被封鎖，因為看起來它在全球許多位置都無法訪問。如果你輸入的地址是正確的，有可能網站本身出現了問題導致無法訪問。",
@@ -358,26 +358,26 @@
     "PingTestNote": "全球的 Ping 值測試",
     "MTRTestNote": "全球的 MTR 路由測試",
     "DNSResolverNote": "實時多渠道 DNS 解析",
-    "RuleTestNote": "檢查代理軟件的規則設置",
+    "RuleTestNote": "檢查代理軟件的規則設定",
     "CensorshipCheck": "檢查一個網站在某些國家是否被封鎖",
-    "Whois": "對域名或 IP 進行 Whois 查詢",
+    "Whois": "對網域或 IP 進行 Whois 查詢",
     "InvisibilityTest": "猜猜看我是否知道你掛了代理",
-    "MacChecker": "查詢物理地址的歸屬信息",
-    "BrowserInfo": "檢閱瀏覽器信息和指紋",
+    "MacChecker": "查詢物理地址的歸屬資訊",
+    "BrowserInfo": "檢閱瀏覽器資訊和指紋",
     "SecurityChecklist": "全面的數字生活安全檢查清單"
   },
   "macchecker": {
     "Title": "MAC 地址查詢",
-    "Note": "查詢一個物理地址（MAC 地址）所屬的制造商、是否單播/多播、是否廣域/區域等信息。支持使用完整的 12 位進行查詢，也支持前綴查詢。當然，你也可以用本查詢工具來驗證你生成的物理地址是否符合自己的需求。",
+    "Note": "查詢一個物理地址（MAC 地址）所屬的制造商、是否單播/多播、是否廣域/區域等資訊。支援使用完整的 12 位進行查詢，也支援前綴查詢。當然，你也可以用本查詢工具來驗證你生成的物理地址是否符合自己的需求。",
     "Note2": "請輸入一個物理地址，開始查詢：",
     "Run": "查詢",
     "Placeholder": "F0:2F:4B:01:0A:AA",
     "invalidMAC": "無效的物理地址",
-    "fetchError": "無法獲取查詢結果",
+    "fetchError": "無法取得查詢結果",
     "company": "制造商",
     "macPrefix": "物理地址前綴",
-    "address": "注冊地址",
-    "country": "注冊國家/地區",
+    "address": "註冊地址",
+    "country": "註冊國家/地區",
     "blockStart": "起始區塊",
     "blockEnd": "結束區塊",
     "blockSize": "區塊大小",
@@ -391,27 +391,27 @@
     "isLocal": "本地地址",
     "property": "地址屬性",
     "value": "值",
-    "manufacturer": "制造商信息"
+    "manufacturer": "制造商資訊"
   },
   "whois": {
     "Title": "Whois 查詢",
-    "Note": "Whois 查詢是一種用於查詢域名注冊信息的服務。通過輸入域名或 IP 地址，可以查詢到域名的注冊信息、注冊商、注冊日期、過期日期等信息。IP 與域名的 Whois 信息字段不完全一致。同時，部分比較小眾的域名（TLD）可能無法查詢到相關信息。",
-    "Note2": "請輸入域名或 IP，開始進行查詢：",
-    "Note3": "Whois 信息包含多種類型的字段，以下為原始文本信息",
-    "Placeholder": "域名或 IP",
+    "Note": "Whois 查詢是一種用於查詢網域註冊資訊的服務。通過輸入網域或 IP 地址，可以查詢到網域的註冊資訊、註冊商、註冊日期、過期日期等資訊。IP 與網域的 Whois 資訊字段不完全一致。同時，部分比較小眾的網域（TLD）可能無法查詢到相關資訊。",
+    "Note2": "請輸入網域或 IP，開始進行查詢：",
+    "Note3": "Whois 資訊包含多種類型的字段，以下為原始文本資訊",
+    "Placeholder": "網域或 IP",
     "Run": "查詢",
-    "invalidURL": "無效的域名或 IP",
-    "fetchError": "無法獲取查詢結果或查詢結果為空",
-    "Provider": "信息服務商"
+    "invalidURL": "無效的網域或 IP",
+    "fetchError": "無法取得查詢結果或查詢結果為空",
+    "Provider": "資訊服務商"
   },
   "dnsresolver": {
     "Title": "DNS 解析",
-    "Note": "在一些地區，某些運營商可能會因為政治原因或者商業原因，對一些域名進行污染，以至於直接進行訪問的時候，無法返回正確的結果。使用 DNS 解析檢查，將幫助你從全球各個知名的 DNS 廠商里檢查域名的解析結果。在檢測內置的 DNS 中，有一部分服務商來自中國，其 DNS 解析的結果可能會受到污染。請注意鑒別。",
-    "Note2": "請輸入 URL 或域名，開始進行解析：",
-    "Placeholder": "URL 或域名",
+    "Note": "在一些地區，某些運營商可能會因為政治原因或者商業原因，對一些網域進行污染，以至於直接進行訪問的時候，無法返回正確的結果。使用 DNS 解析檢查，將幫助你從全球各個知名的 DNS 廠商里檢查網域的解析結果。在檢測內置的 DNS 中，有一部分服務商來自中國，其 DNS 解析的結果可能會受到污染。請注意鑒別。",
+    "Note2": "請輸入 URL 或網域，開始進行解析：",
+    "Placeholder": "URL 或網域",
     "Run": "解析",
-    "invalidURL": "無效的 URL 或域名",
-    "fetchError": "無法獲取解析結果",
+    "invalidURL": "無效的 URL 或網域",
+    "fetchError": "無法取得解析結果",
     "Provider": "DNS 服務商",
     "Result": "解析結果",
     "Record": "記錄"
@@ -419,33 +419,33 @@
   "ruletest": {
     "Title": "分流測試",
     "Name": "檢測",
-    "Note": "分流測試用於判斷代理軟件基於域名的規則設置是否正確。在進行測試之前，你需要先參考下方的卡片，在你的代理軟件里對 8888IP 的 8 個不同的 URL 設置不同的域名分流規則。",
+    "Note": "分流測試用於判斷代理軟件基於網域的規則設定是否正確。在進行測試之前，你需要先參考下方的卡片，在你的代理軟件里對 8888IP 的 8 個不同的 URL 設定不同的網域分流規則。",
     "StatusWait": "待檢測",
     "StatusError": "檢測出錯",
     "Country": "代理地區",
-    "RefreshAll": "刷新所有"
+    "RefreshAll": "重新整理所有"
   },
   "Tooltips": {
-    "RefreshIPCard": "刷新 IP 信息",
-    "RefreshConnectivityTests": "刷新連通性測試",
-    "RefreshWebRTC": "刷新 WebRTC 測試",
-    "RefreshDNSLeakTest": "刷新 DNS 泄漏測試",
+    "RefreshIPCard": "重新整理 IP 資訊",
+    "RefreshConnectivityTests": "重新整理連通性測試",
+    "RefreshWebRTC": "重新整理 WebRTC 測試",
+    "RefreshDNSLeakTest": "重新整理 DNS 泄漏測試",
     "SpeedTestButton": "開始/暫停網速測試",
     "ToggleMaps": "打開/關閉地圖顯示",
     "SourceSelect": "選擇 IP 歸屬地數據來源",
-    "ShowASNInfo": "顯示 AS 詳細信息",
+    "ShowASNInfo": "顯示 AS 詳細資訊",
     "CopyIP": "覆制 IP 地址",
-    "InfoMask": "隱藏信息",
-    "QueryIP": "查詢 IP 信息",
+    "InfoMask": "隱藏資訊",
+    "QueryIP": "查詢 IP 資訊",
     "GithubLink": "查看源代碼",
-    "RefreshRuleTests": "刷新規則測試",
+    "RefreshRuleTests": "重新整理規則測試",
     "qualityScoreExplain": "IP 質量分根據多個因素加權計算出來，包含了 IP 的類型、是否屬於代理/VPN 和近期監測到來自該 IP 的攻擊事件數量等。分數越高，意味著該 IP 的質量越好，在一些網站里，這個 IP 被風控阻斷的概率就越低。"
   },
   "ipInfos": {
     "id": "ipinfos",
     "database": "數據源",
-    "Title": "IP 信息",
-    "Notes": "程序會先從多個不同的來源（包含 IPv4 和 IPv6）檢查你的 IP 地址，然後通過你選擇的 IP 地理位置信息源查詢對應的地理數據。如果當前 IP 棧只有 1 個，則沒有數據的來源會顯示為空。",
+    "Title": "IP 資訊",
+    "Notes": "程序會先從多個不同的來源（包含 IPv4 和 IPv6）檢查你的 IP 地址，然後通過你選擇的 IP 地理位置資訊源查詢對應的地理數據。如果當前 IP 棧只有 1 個，則沒有數據的來源會顯示為空。",
     "Simple": "簡約",
     "Map": "地圖",
     "MapUnavailable": "地圖不可用",
@@ -456,8 +456,8 @@
     "City": "城市",
     "ISP": "網絡",
     "ASN": "ASN",
-    "IPv4Error": "獲取失敗或不存在 IPv4 地址",
-    "IPv6Error": "獲取失敗或不存在 IPv6 地址",
+    "IPv4Error": "取得失敗或不存在 IPv4 地址",
+    "IPv6Error": "取得失敗或不存在 IPv6 地址",
     "SelectSource": "選擇 IP 歸屬地數據來源",
     "type": "類型",
     "isProxy": "代理",
@@ -502,12 +502,12 @@
     "StatusTimeout": "超時或不可用",
     "checking": "檢查中...",
     "minTestTime": "最小測試時間：",
-    "RefreshThisTest": "刷新此測試"
+    "RefreshThisTest": "重新整理此測試"
   },
   "webrtc": {
     "id": "webrtc",
     "Title": "WebRTC 測試",
-    "Note": "WebRTC 往往通過 UDP 直連進行建立，如果測試返回了真實 IP，則意味著你的代理設置沒有覆蓋這些連接。除了檢測你連接 WebRTC 時所使用的 IP，我們還會檢測你的 NAT 類型。然而，NAT 類型的檢測並不是 100% 準確的，僅供參考。",
+    "Note": "WebRTC 往往通過 UDP 直連進行建立，如果測試返回了真實 IP，則意味著你的代理設定沒有覆蓋這些連接。除了檢測你連接 WebRTC 時所使用的 IP，我們還會檢測你的 NAT 類型。然而，NAT 類型的檢測並不是 100% 準確的，僅供參考。",
     "StatusWait": "待檢測或連接錯誤",
     "StatusError": "測試出錯",
     "NATType": {
@@ -522,8 +522,8 @@
     "id": "dnsleaktest",
     "Name": "檢測",
     "Title": "DNS 泄漏測試",
-    "Note": "DNS 泄露（DNS Leaks）的意思是，當你掛上 VPN/代理後，你解析域名時，依然通過當地的運營商進行解析，這時就有 DNS 泄露的風險。",
-    "Note2": "泄露測試的方法是通過訪問新生成的域名，檢測你是通過哪個地區的 DNS 出口進行解析，如果返回的出口區域和你當地的運營商區域相同，則有 DNS 泄露風險，你可能需要修改 VPN/代理設置。",
+    "Note": "DNS 泄露（DNS Leaks）的意思是，當你掛上 VPN/代理後，你解析網域時，依然通過當地的運營商進行解析，這時就有 DNS 泄露的風險。",
+    "Note2": "泄露測試的方法是通過訪問新生成的網域，檢測你是通過哪個地區的 DNS 出口進行解析，如果返回的出口區域和你當地的運營商區域相同，則有 DNS 泄露風險，你可能需要修改 VPN/代理設定。",
     "Endpoint": "DNS 出口",
     "EndpointCountry": "出口地區",
     "StatusWait": "待檢測",
@@ -557,7 +557,7 @@
   "pingtest": {
     "id": "pingtest",
     "Title": "全球延遲測試",
-    "Note": "Ping 測試是一種網絡工具，用於測量數據包從你的設備到特定目標（在這里是我們分布在全球各個大洲和地區的服務器）的往返時間。是評估網絡性能的關鍵指標。",
+    "Note": "Ping 測試是一種網絡工具，用於測量數據包從你的設備到特定目標（在這裡是我們分布在全球各個大洲和地區的服務器）的往返時間。是評估網絡性能的關鍵指標。",
     "Note2": "在這個過程中，8888IP 會從世界各地的服務器發送小數據包到你的 IP 地址，然後測量這些數據包從服務器發送到你的設備，再返回服務器所需的時間。通過這些不同地理位置的 Ping 測試，你可以獲得一個全面的視圖，了解你的設備與全球網絡連接的速度和穩定性。",
     "Note3": "請選取你的 IP 地址進行測試：",
     "SelectIP": "選擇一個 IP 地址",
@@ -576,7 +576,7 @@
     "id": "mtrtest",
     "Title": "MTR 測試",
     "Note": "MTR (My Traceroute) 測試會從遍布全球不同大洲和地區的服務器出發，對你的 IP 地址進行詳細的路由跟蹤。MTR 結合了傳統 traceroute 和 ping 命令的功能，能夠實時地診斷網絡連接的質量和性能。",
-    "Note2": "這個過程涵蓋了從各個地理位置到你的網絡環境的完整路徑，提供關於每一跳的延遲和數據包丟失信息。無論是路由路徑的擁堵、某個特定節點的延遲問題，還是數據包在傳輸過程中的丟失，MTR 測試都能提供關鍵的診斷信息。",
+    "Note2": "這個過程涵蓋了從各個地理位置到你的網絡環境的完整路徑，提供關於每一跳的延遲和數據包丟失資訊。無論是路由路徑的擁堵、某個特定節點的延遲問題，還是數據包在傳輸過程中的丟失，MTR 測試都能提供關鍵的診斷資訊。",
     "Note3": "請選取你的 IP 地址進行測試：",
     "SelectIP": "選擇一個 IP 地址",
     "Region": "地區",
@@ -592,19 +592,19 @@
   },
   "alert": {
     "id": "alert",
-    "refreshEverythingMessage": "正在刷新所有數據，請等待...",
-    "refreshEverythingTitle": "正在刷新",
+    "refreshEverythingMessage": "正在重新整理所有數據，請等待...",
+    "refreshEverythingTitle": "正在重新整理",
     "OhNo": "糟糕！",
     "Congrats": "恭喜呀！",
     "OhNo_Message": "連通性檢測沒有通過，部分網站無法訪問。",
     "Congrats_Message": "所有的連通性檢測均通過，你可以訪問所有網站。",
     "maskedInfoTitle_1": "IP 隱藏成功",
-    "maskedInfoMessage_1": "IP 信息已隱藏，截圖時請注意隱私。",
+    "maskedInfoMessage_1": "IP 資訊已隱藏，截圖時請注意隱私。",
     "maskedInfoTitle": "全部隱藏成功",
-    "maskedInfoMessage": "所有信息已隱藏，現在可以安心截圖了。",
+    "maskedInfoMessage": "所有資訊已隱藏，現在可以安心截圖了。",
     "unmaskedInfoTitle": "取消隱藏",
-    "unmaskedInfoMessage": "信息已顯示，截圖時請注意隱私。",
-    "SignInFailed": "登錄失敗",
+    "unmaskedInfoMessage": "資訊已顯示，截圖時請注意隱私。",
+    "SignInFailed": "登入失敗",
     "SignInFailedReason": "原因"
   },
   "shortcutKeys": {
@@ -612,11 +612,11 @@
     "GoToTop": "回到頂部",
     "GoToBottom": "回到底部",
     "ToggleDarkMode": "切換深色模式",
-    "RefreshEverything": "刷新所有數據",
-    "RefreshIPCard": "刷新某張 IP 卡片",
-    "RefreshConnectivityTests": "刷新連通性測試",
-    "RefreshWebRTC": "刷新 WebRTC 測試",
-    "RefreshDNSLeakTest": "刷新 DNS 泄漏測試",
+    "RefreshEverything": "重新整理所有數據",
+    "RefreshIPCard": "重新整理某張 IP 卡片",
+    "RefreshConnectivityTests": "重新整理連通性測試",
+    "RefreshWebRTC": "重新整理 WebRTC 測試",
+    "RefreshDNSLeakTest": "重新整理 DNS 泄漏測試",
     "SpeedTestButton": "開始/暫停網速測試",
     "PingTest": "打開全球延遲測試面板",
     "MTRTest": "打開全球路由測試面板",
@@ -624,26 +624,26 @@
     "DNSResolver": "打開 DNS 解析器面板",
     "ToggleMaps": "切換地圖顯示",
     "IPCheck": "IP 查詢",
-    "ToggleInfoMask": "切換信息隱藏",
+    "ToggleInfoMask": "切換資訊隱藏",
     "Help": "顯示快捷鍵",
     "HelpNote": "使用快捷鍵的人，是喜歡效率的人，你真棒！",
     "GoNext": "下一張卡片",
     "GoPrevious": "上一張卡片",
-    "RefreshRuleTests": "刷新規則測試",
+    "RefreshRuleTests": "重新整理規則測試",
     "CensorshipCheck": "打開封鎖測試面板",
-    "Preferences": "打開偏好設置面板",
+    "Preferences": "打開偏好設定面板",
     "About": "打開關於頁面",
     "Whois": "打開 Whois 查詢面板",
     "InvisibilityTest": "打開隱身測試面板",
     "MacChecker": "打開物理地址查詢面板",
-    "BrowserInfo": "打開瀏覽器信息面板",
+    "BrowserInfo": "打開瀏覽器資訊面板",
     "fullScreenAdvancedTools": "全屏展開高級工具面板",
     "Curl": "命令行 API",
     "SecurityChecklist": "打開安全檢查清單"
   },
   "page": {
     "title": "8888IP - 查看 IP 地址、WebRTC、DNS 泄漏、網速與網絡連通性",
-    "description": "好用和開源的全能 IP 工具箱。輕松查看你的 IP 地址，IP 信息，檢查 DNS 泄露，檢查 WebRTC 連接，測試網站可用性，查找 DNS 記錄，查找 Whois 信息，測試全球延遲測試等。",
+    "description": "好用和開源的全能 IP 工具箱。輕松查看你的 IP 地址，IP 資訊，檢查 DNS 泄露，檢查 WebRTC 連接，測試網站可用性，查找 DNS 記錄，查找 Whois 資訊，測試全球延遲測試等。",
     "keywords": "我的IP,IP工具,我的IP,IP查詢,DNS泄漏測試,WebRTC測試,網速測試,DNS查詢,Whois查詢, Ping測試, 隱私測試",
     "footerLink": "https://github.com/tbdavid2019/iptools",
     "copyRightName": "由 ",
@@ -655,9 +655,9 @@
   },
   "about": {
     "Title": "關於",
-    "product1": "8888IP 是一個免費的 IP 工具箱，可以幫助你查看自己的 IP 信息，檢測網站的可用性，查看 DNS 出口信息，進行網速測試，全球延遲測試，MTR 測試等。",
+    "product1": "8888IP 是一個免費的 IP 工具箱，可以幫助你查看自己的 IP 資訊，檢測網站的可用性，查看 DNS 出口資訊，進行網速測試，全球延遲測試，MTR 測試等。",
     "product2": "這是一個開源項目，你可以點擊頁面底部的 GitHub 圖標查看源代碼。",
-    "product3": "最早的時候，這是我的一個用來學習 Vue.js 和學習如何使用 ChatGPT 寫代碼的練手項目，後來在 GitHub 上獲得的星星數量越來越多，於是我進行了大量的重構和添加了許多非常有用的功能，希望你會喜歡。",
+    "product3": "最早的時候，這是我的一個用來學習 Vue.js 和學習如何使用 ChatGPT 寫代碼的練手項目，後來在 GitHub 上獲得的星星數量越來越多，於是我進行了大量的重構和新增了許多非常有用的功能，希望你會喜歡。",
     "meTitle": "關於我",
     "me1": "8888IP 是一個獨立維護的開源專案。",
     "me2": "專案專注於實用的 IP、網絡、隱私與連通性工具。",
@@ -672,7 +672,7 @@
   },
   "specialthanks": {
     "Title": "特別鳴謝",
-    "Note1": "這個項目之所以能夠完成，少不了一些熱心的人和組織的支持和幫助，以及給予靈感或開放的代碼人們。非常感謝他們："
+    "Note1": "這個項目之所以能夠完成，少不了一些熱心的人和組織的支援和幫助，以及給予靈感或開放的代碼人們。非常感謝他們："
   },
   "changelog": {
     "Title": "更新日志",
@@ -686,11 +686,11 @@
         "content": [
           {
             "type": "add",
-            "change": "顯示用戶的 IP 信息"
+            "change": "顯示用戶的 IP 資訊"
           },
           {
             "type": "add",
-            "change": "顯示代理前後的 IP 信息"
+            "change": "顯示代理前後的 IP 資訊"
           },
           {
             "type": "add",
@@ -718,7 +718,7 @@
         "content": [
           {
             "type": "add",
-            "change": "添加了 WebRTC 測試"
+            "change": "新增了 WebRTC 測試"
           },
           {
             "type": "improve",
@@ -732,11 +732,11 @@
         "content": [
           {
             "type": "add",
-            "change": "添加了 DNS 泄漏測試"
+            "change": "新增了 DNS 泄漏測試"
           },
           {
             "type": "add",
-            "change": "支持在前端顯示 Bing 地圖"
+            "change": "支援在前端顯示 Bing 地圖"
           },
           {
             "type": "improve",
@@ -750,7 +750,7 @@
         "content": [
           {
             "type": "add",
-            "change": "添加了黑暗模式"
+            "change": "新增了黑暗模式"
           },
           {
             "type": "add",
@@ -768,15 +768,15 @@
         "content": [
           {
             "type": "add",
-            "change": "支持英文語言"
+            "change": "支援英文語言"
           },
           {
             "type": "add",
-            "change": "添加信息遮罩功能"
+            "change": "新增資訊遮罩功能"
           },
           {
             "type": "add",
-            "change": "支持 PWA，可以安裝到手機和桌面上"
+            "change": "支援 PWA，可以安裝到手機和桌面上"
           }
         ]
       },
@@ -786,19 +786,19 @@
         "content": [
           {
             "type": "add",
-            "change": "支持快捷鍵操作"
+            "change": "支援快捷鍵操作"
           },
           {
             "type": "add",
-            "change": "添加網速測試功能"
+            "change": "新增網速測試功能"
           },
           {
             "type": "improve",
-            "change": "支持使用 Docker 部署"
+            "change": "支援使用 Docker 部署"
           },
           {
             "type": "improve",
-            "change": "支持從多個來源獲取 IP 歸屬地等信息"
+            "change": "支援從多個來源取得 IP 歸屬地等資訊"
           }
         ]
       },
@@ -830,11 +830,11 @@
         "content": [
           {
             "type": "add",
-            "change": "支持新的語言：法語"
+            "change": "支援新的語言：法語"
           },
           {
             "type": "add",
-            "change": "添加數據加載中的動畫"
+            "change": "新增數據加載中的動畫"
           },
           {
             "type": "improve",
@@ -856,7 +856,7 @@
         "content": [
           {
             "type": "add",
-            "change": "添加 NAT 類型檢測"
+            "change": "新增 NAT 類型檢測"
           },
           {
             "type": "improve",
@@ -874,7 +874,7 @@
         "content": [
           {
             "type": "add",
-            "change": "支持使用不同的 IP 地理位置信息源"
+            "change": "支援使用不同的 IP 地理位置資訊源"
           },
           {
             "type": "improve",
@@ -892,15 +892,15 @@
         "content": [
           {
             "type": "add",
-            "change": "添加 ASN 詳細信息查看器"
+            "change": "新增 ASN 詳細資訊查看器"
           },
           {
             "type": "add",
-            "change": "添加 IP 地址是否為代理的判斷"
+            "change": "新增 IP 地址是否為代理的判斷"
           },
           {
             "type": "improve",
-            "change": "優化 IP 信息的展示 UI"
+            "change": "優化 IP 資訊的展示 UI"
           }
         ]
       },
@@ -910,7 +910,7 @@
         "content": [
           {
             "type": "add",
-            "change": "添加規則測試"
+            "change": "新增規則測試"
           },
           {
             "type": "improve",
@@ -924,7 +924,7 @@
         "content": [
           {
             "type": "add",
-            "change": "添加 DNS 解析功能"
+            "change": "新增 DNS 解析功能"
           },
           {
             "type": "improve",
@@ -942,7 +942,7 @@
         "content": [
           {
             "type": "add",
-            "change": "添加封鎖測試功能"
+            "change": "新增封鎖測試功能"
           },
           {
             "type": "add",
@@ -960,7 +960,7 @@
         "content": [
           {
             "type": "add",
-            "change": "增加設置面板，可以在本地保存偏好設置"
+            "change": "增加設定面板，可以在本地儲存偏好設定"
           },
           {
             "type": "add",
@@ -1026,7 +1026,7 @@
         "content": [
           {
             "type": "add",
-            "change": "添加 MAC 地址查詢功能"
+            "change": "新增 MAC 地址查詢功能"
           },
           {
             "type": "improve",
@@ -1040,11 +1040,11 @@
         "content": [
           {
             "type": "add",
-            "change": "添加瀏覽器信息查詢功能"
+            "change": "新增瀏覽器資訊查詢功能"
           },
           {
             "type": "add",
-            "change": "添加 MaxMind 地理數據庫"
+            "change": "新增 MaxMind 地理數據庫"
           },
           {
             "type": "improve",
@@ -1058,15 +1058,15 @@
         "content": [
           {
             "type": "add",
-            "change": "添加命令行 API 功能"
+            "change": "新增命令行 API 功能"
           },
           {
             "type": "improve",
-            "change": "WebRTC 測試可以展示地區信息"
+            "change": "WebRTC 測試可以展示地區資訊"
           },
           {
             "type": "improve",
-            "change": "DNS 泄露測試可以展示地區信息"
+            "change": "DNS 泄露測試可以展示地區資訊"
           }
         ]
       },
@@ -1076,7 +1076,7 @@
         "content": [
           {
             "type": "add",
-            "change": "語言偏好設置"
+            "change": "語言偏好設定"
           },
           {
             "type": "improve",
@@ -1094,7 +1094,7 @@
         "content": [
           {
             "type": "add",
-            "change": "添加安全檢查清單"
+            "change": "新增安全檢查清單"
           },
           {
             "type": "improve",
