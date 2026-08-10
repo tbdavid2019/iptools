@@ -8,6 +8,7 @@
     <div data-bs-spy="scroll" data-bs-target="#navbar-top" data-bs-root-margin="0px 0px -40%"
       data-bs-smooth-scroll="true" class="rounded-2" tabindex="0">
       <IPCheck ref="IPCheckRef" />
+      <BrowserInfo ref="browserInfoRef" />
       <Connectivity ref="connectivityRef" />
       <WebRTC ref="webRTCRef" />
       <DNSLeaks ref="dnsLeaksRef" />
@@ -30,6 +31,7 @@
 // Components
 import NavBar from './components/Nav.vue';
 import IPCheck from './components/IpInfos.vue';
+import BrowserInfo from './components/advanced-tools/BrowserInfo.vue';
 import Connectivity from './components/ConnectivityTest.vue';
 import WebRTC from './components/WebRtcTest.vue';
 import DNSLeaks from './components/DnsLeaksTest.vue';
@@ -81,6 +83,7 @@ const footerRef = ref(null);
 const speedTestRef = ref(null);
 const advancedToolsRef = ref(null);
 const IPCheckRef = ref(null);
+const browserInfoRef = ref(null);
 const connectivityRef = ref(null);
 const webRTCRef = ref(null);
 const dnsLeaksRef = ref(null);

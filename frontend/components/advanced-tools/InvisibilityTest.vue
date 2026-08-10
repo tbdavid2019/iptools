@@ -17,22 +17,18 @@
                             <div class="input-group-text">
                                 <input class="form-check-input mt-0" type="checkbox" value=""
                                     aria-label="Checkbox for Collecting datas" name="collectingDatas"
-                                    id="collectingDatas" v-model="isAgreed" :disabled="!store.user">
+                                    id="collectingDatas" v-model="isAgreed">
                                 <label for="collectingDatas">&nbsp;{{ t('invisibilitytest.agreement') }}</label>
                             </div>
 
                             <button class="btn btn-primary" @click="onSubmit"
-                                :disabled="checkingStatus === 'running' || !isAgreed || !store.user">
+                                :disabled="checkingStatus === 'running' || !isAgreed">
                                 <span v-if="checkingStatus === 'idle'">{{
                                     t('invisibilitytest.Run') }}</span>
                                 <span v-if="checkingStatus === 'running'" class="spinner-grow spinner-grow-sm"
                                     aria-hidden="true"></span>
                             </button>
 
-                        </div>
-
-                        <div v-if="!store.user" class="text-success mb-2 mt-3">
-                            {{ t('user.SignInToUse') }}
                         </div>
 
                         <div class="jn-placeholder">
@@ -42,7 +38,7 @@
                         <!-- Results Table -->
                         <Transition name="jn-it-slide-fade">
                             <div class="alert alert-success" role="alert"
-                                v-if="Object.keys(testResults).length > 0 && store.user">
+                                v-if="Object.keys(testResults).length > 0">
 
                                 <p>{{ t('invisibilitytest.yourIP') }}: <strong>{{ testResults.ip }}</strong>.</p>
 
@@ -70,7 +66,7 @@
                         </Transition>
                         <Transition name="slide-fade">
                             <div class="table-responsive text-nowrap"
-                                v-if="Object.keys(testResults).length > 0 && store.user">
+                                v-if="Object.keys(testResults).length > 0">
                                 <table class="table table-hover" :class="{ 'table-dark': isDarkMode }">
                                     <thead>
                                         <tr>
@@ -349,18 +345,23 @@ const onSubmit = () => {
 // 获取测试结果
 const getResult = async () => {
     try {
-        const response = await authenticatedFetch(`/api/invisibility?id=${userID.value}`);
-        const data = response;
+        let data;
+        try {
+            data = await authenticatedFetch(`/api/invisibility?id=${userID.value}`);
+        } catch (e) {
+            const res = await fetch(`https://ipcheck.ing/api/invisibility?id=${userID.value}`);
+            data = await res.json();
+        }
 
         // 检查并重试
-        if (data.message === "Data not found" && retryCount.value < 3) {
+        if (data && data.message === "Data not found" && retryCount.value < 3) {
             setTimeout(() => {
                 getResult();
                 retryCount.value++
             }, 8000);
             return;
         }
-        testResults.value = data;
+        testResults.value = data || {};
 
         // 计算成就
         let proxyScore = Math.floor(testResults.value.score.proxy);

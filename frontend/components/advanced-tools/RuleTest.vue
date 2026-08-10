@@ -94,7 +94,13 @@ const finishAll = ref(false);
 
 const fetchTrace = async (id, url) => {
     try {
-        const response = await fetch(`https://${url}/cdn-cgi/trace`);
+        let response;
+        try {
+            response = await fetch(`https://${url}/cdn-cgi/trace`);
+            if (!response.ok) throw new Error("Subdomain not found");
+        } catch (e) {
+            response = await fetch(`/cdn-cgi/trace`);
+        }
         const data = await response.text();
         const lines = data.split("\n");
         const ipLine = lines.find((line) => line.startsWith("ip="));
