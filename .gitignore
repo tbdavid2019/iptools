@@ -29,3 +29,11 @@ package-lock.json
 localtest
 
 .VSCodeCounter
+
+# OpenSpec & AI Agent files
+openspec/
+.agent/
+.claude/
+.codex/
+.gemini/
+.kilocode/
