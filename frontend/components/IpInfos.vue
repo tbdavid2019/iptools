@@ -8,10 +8,9 @@
       <p>{{ t('ipInfos.Notes') }}</p>
     </div>
     <div class="row">
-      <div v-for="(card, index) in ipDataCards.slice(0, ipCardsToShow)" :key="card.id" :ref="card.id"
-        v-show="!hideUnavailableIPStack || !card.ip || (card.ip !== t('ipInfos.IPv4Error') && card.ip !== t('ipInfos.IPv6Error'))"
+      <div v-for="(card, index) in visibleCards" :key="card.id" :ref="card.id"
         :class="[colClass, {
-          'jn-opacity': !card.ip || card.ip === t('ipInfos.IPv4Error') || card.ip === t('ipInfos.IPv6Error')
+          'jn-opacity': !card.ip || isCardError(card)
         }]">
         <IPCard :card="card" :index="index" :isDarkMode="isDarkMode" :isMobile="isMobile" :ipGeoSource="ipGeoSource"
           :isMapShown="isMapShown" :isCardsCollapsed="isCardsCollapsed" :copiedStatus="copiedStatus" :configs="configs"
@@ -49,16 +48,36 @@ const lang = computed(() => store.lang);
 const isMapShown = computed(() => userPreferences.value.showMap);
 const isCardsCollapsed = computed(() => userPreferences.value.simpleMode);
 const hideUnavailableIPStack = computed(() => userPreferences.value.hideUnavailableIPStack);
+const ipCardsToShow = computed(() => userPreferences.value.ipCardsToShow || 6);
+
+// 检查卡片是否加载失败
+const isCardError = (card) => {
+  if (!card || !card.ip) return false;
+  return card.ip === t('ipInfos.IPv4Error') ||
+         card.ip === t('ipInfos.IPv6Error') ||
+         card.ip.includes('Error') ||
+         card.ip.includes('失敗') ||
+         card.ip.includes('不存在');
+};
+
+// 动态计算真正要显示的卡片
+const visibleCards = computed(() => {
+  const slice = ipDataCards.slice(0, ipCardsToShow.value);
+  if (!hideUnavailableIPStack.value) return slice;
+  return slice.filter(card => {
+    if (!card.ip) return true; // 加载中保留
+    return !isCardError(card); // 失败的立即隐藏
+  });
+});
 
 // 创建样式
 const colClass = computed(() => {
-  const numCards = ipCardsToShow.value;
+  const numCards = visibleCards.value.length;
   if (numCards > 0) {
-    // 保证每行不超过三个卡片
-    const colSize = numCards > 3 ? 4 : Math.floor(12 / numCards);
-    return `col-xl-${colSize} col-md-${colSize}  mb-4`;
+    const colSize = numCards > 3 ? (numCards === 4 ? 3 : 4) : Math.floor(12 / numCards);
+    return `col-xl-${colSize} col-md-${colSize} mb-4`;
   }
-  return 'col-xl-4 col-lg-6 col-md-6 mb-4'; // 默认情况
+  return 'col-xl-4 col-lg-6 col-md-6 mb-4';
 });
 
 // 默认卡片数据
@@ -118,7 +137,6 @@ const asnInfos = ref({
 });
 
 // 其它数据
-const ipCardsToShow = computed(() => userPreferences.value.ipCardsToShow || 6);
 const ipDetectors = ref([]);
 const copiedStatus = ref({});
 const IPArray = ref([]);

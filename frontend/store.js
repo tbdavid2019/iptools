@@ -225,7 +225,7 @@ export const useMainStore = defineStore('main', {
         showMap: false,
         simpleMode: false,
         autoStart: true,
-        hideUnavailableIPStack: false,
+        hideUnavailableIPStack: true,
         popupConnectivityNotifications: true,
         ipCardsToShow: 6,
         ipGeoSource: defaultIpGeoSource,
