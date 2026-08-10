@@ -6,12 +6,15 @@
 
 ## 主要功能
 
-- 查看本機 IPv4／IPv6 與 IP 歸屬資訊
-- 查詢任意 IP 的地理位置、ASN 與組織
-- WebRTC、DNS 洩漏、網速與全球延遲測試
-- DNS 解析、Whois、MAC 與網絡連通性工具
-- PWA、深色模式、中文／英文／法文介面
-- Cloudflare Worker / Pages 部署與命令列 IP 查詢
+- 查看本機 IPv4／IPv6 與 IP 歸屬資訊（自動隱藏不可用 IP 棧卡片）
+- 瀏覽器資訊、User Agent、裝置指紋、GPU 與 CPU 檢閱（直接顯示於首頁 IP 資訊下方）
+- 免登入隱身測試 (Invisibility Test)，快速評估代理/VPN 風險與時區/WebRTC 洩漏
+- 國際優先網絡連通性測試（Google、Cloudflare、YouTube、GitHub、ChatGPT 優先；中國服務置底）
+- WebRTC、Surfshark DNS 洩漏與全球延遲測試
+- 分流規則測試 (Rule Test)，支援平滑 fallback 備援
+- DNS 解析、Whois、MAC 地址查詢與安全檢查清單
+- PWA、深色模式、正體中文／英文／法文介面
+- 100% Cloudflare Worker Serverless 部署與 `curl` 命令列 IP 查詢
 
 ## 命令列 API
 

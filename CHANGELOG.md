@@ -5,19 +5,23 @@ All notable changes to this project will be documented in this file.
 ## [2026-08-10]
 
 ### Added
-- **AI Agent Discovery (`llms.txt`)**: Added `public/llms.txt` and `public/llms-full.txt` compliant with the `llmstxt.org` standard, providing AI agents and LLMs with a clean, structured index of API endpoints, architecture, and maintainer details.
-- **Serverless Cloudflare Worker Architecture**: Migrated backend infrastructure from VPS/Express to 100% serverless Cloudflare Workers with Static Assets (`@cloudflare/kv-asset-handler`).
-- **Cloudflare Radar Endpoint**: Added `/api/cfradar` in `worker.js` to query Cloudflare Radar v4 ASN threat intelligence using `CLOUDFLARE_API`.
-- **Serverless API Routes**: Integrated `/api/ip`, `/api/configs`, `/api/ipinfo`, `/api/ipapicom`, `/api/ipapiis`, `/api/dnsresolver`, `/api/whois`, `/api/macchecker`, and `/api/cfradar` into edge worker handlers.
+- **Browser Info Homepage Placement**: Embedded the `BrowserInfo` (瀏覽器資訊) component directly beneath `IPCheck` on the homepage for immediate access to User Agent, OS, GPU, CPU cores, and browser fingerprint.
+- **Invisibility Test Free Access**: Removed login restrictions from `InvisibilityTest` so visitors can run proxy/VPN threat detection without logging in, with fast local environment fallback.
+- **Surfshark DNS Leak Integration**: Replaced legacy `edns.ip-api.com` in `DnsLeaksTest` with Surfshark DNS resolvers across all 4 leak test cards.
+- **Rule Test Fallback**: Added `/cdn-cgi/trace` fallback in `RuleTest` so unconfigured `ptest-*.ip.david888.com` subdomains degrade gracefully instead of throwing DNS errors.
+- **AI Agent Discovery (`llms.txt`)**: Added `public/llms.txt` and `public/llms-full.txt` compliant with `llmstxt.org` standards, providing AI agents with structured API indexes.
 
 ### Changed
-- **Rebranding & Cleanup**: Rebranded the product as **8888IP**, replacing all legacy Vercel/VPS references with Cloudflare Worker configuration.
-- **Default IP Detector Cards**: Updated default `ipCardsToShow` to 6 in `frontend/store.js` so Cloudflare IPv4 and Cloudflare IPv6 cards display by default.
-- **Command-Line API Modal**: Added fallback domain (`ip.david888.com`) for `curl` commands in `frontend/store.js` so the Command-Line API modal displays actionable `curl ip.david888.com` examples.
+- **Reactive Auto-Hide Failed IP Cards**: Updated `hideUnavailableIPStack` default to `true` in `store.js` and added `visibleCards` reactive filter in `IpInfos.vue` so failed cards hide immediately on first page load without requiring a page refresh.
+- **IPify IPv4 & Provider Reliability**: Replaced `CN Source` (`cnsource`) with `IPify IPv4` (`ipify_v4`) with multi-tier fallbacks (`api4.ipify.org` -> `api.ipify.org` -> `/api/ip`).
+- **Connectivity Test Reordering**: Reordered connectivity target sites so international services (Google, Cloudflare, YouTube, GitHub, ChatGPT) appear first, and Mainland China services (Taobao, Baidu, WeChat) are placed at the bottom.
+- **Footer Technical Provider Link**: Updated Footer copyright to always display `技術提供： david888.com` pointing to `https://david888.com`.
+- **Serverless Cloudflare Worker Architecture**: Migrated backend infrastructure from VPS/Express to 100% serverless Cloudflare Workers with Static Assets (`@cloudflare/kv-asset-handler`).
 
 ### Fixed
+- **Invisibility Test Button UI**: Fixed missing button text during testing by replacing raw Bootstrap `spinner-grow` with `[spinner] 檢測中...` text label.
 - **Traditional Chinese (zh-TW) i18n**: Fixed Simplified Chinese vocabulary in `zh.json` and PWA installation dialogs (`PWA.vue`, `index.html`).
-- **UTF-8 Charset for `llms.txt`**: Added custom response headers in `worker.js` ensuring `/llms.txt` and `/llms-full.txt` serve with `content-type: text/markdown; charset=utf-8` and Link headers.
+- **UTF-8 Charset for `llms.txt`**: Added explicit route handlers in `worker.js` ensuring `/llms.txt` and `/llms-full.txt` serve raw markdown with `Content-Type: text/markdown; charset=utf-8`.
 
 ## [Unreleased]
 
