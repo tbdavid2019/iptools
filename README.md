@@ -11,7 +11,7 @@
 - WebRTC、DNS 洩漏、網速與全球延遲測試
 - DNS 解析、Whois、MAC 與網絡連通性工具
 - PWA、深色模式、中文／英文／法文介面
-- Vercel Serverless API 與命令列 IP 查詢
+- Cloudflare Worker / Pages 部署與命令列 IP 查詢
 
 ## 命令列 API
 
@@ -30,15 +30,13 @@ curl https://ip.david888.com/api/ip
 
 一般瀏覽器開啟根路徑時會顯示完整的 8888IP 網站；`curl`／`wget` 請求則回傳純文字 IP。
 
-## Vercel 部署
+## Cloudflare Worker / Pages 部署
 
-1. 將本 repository 匯入 Vercel。
+1. 將本 repository 連結至 Cloudflare Pages 或設定 Cloudflare Worker。
 2. Build Command 使用 `npm run build`。
 3. Output Directory 使用 `dist`。
-4. 在 Vercel Project Settings 設定需要的環境變數。
-5. 將 `ip.david888.com` 綁定到 Production deployment。
-
-Vercel Function 位於 `api/` 目錄，根路徑的命令列 rewrite 設定位於 `vercel.json`。
+4. 在 Cloudflare Settings 設定需要的環境變數。
+5. 將 `ip.david888.com` 綁定至 Custom Domain。
 
 ## Node.js 部署
 
@@ -95,7 +93,7 @@ cp .env.example .env
 | `VITE_CURL_IPV64_DOMAIN` | 前端顯示用雙棧 CURL 網域 |
 | `VITE_GOOGLE_ANALYTICS_ID` | Google Analytics ID |
 
-Vercel 的 `VITE_*` 變數會在 build 時注入，修改後需要重新部署。
+`VITE_*` 變數會在 build 時注入，修改後需要重新部署。
 
 ## 開發
 
