@@ -1,0 +1,10 @@
+name = "iptools"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+account_id = "379570860738dd1757ba7f67ef2bdffe"
+workers_dev = true
+
+[site]
+bucket = "./dist"
+
+
