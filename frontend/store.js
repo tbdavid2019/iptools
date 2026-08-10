@@ -239,6 +239,7 @@ export const useMainStore = defineStore('main', {
         if (currentPreferences.ipCardsToShow == 3 || !currentPreferences.ipCardsToShow) {
           currentPreferences.ipCardsToShow = 6;
         }
+        currentPreferences.hideUnavailableIPStack = true;
         preferencesToStore = { ...defaultPreferences, ...currentPreferences };
       } else {
         preferencesToStore = defaultPreferences;

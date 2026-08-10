@@ -198,6 +198,22 @@
                     <li class="list-group-item d-flex justify-content-between align-items-start"
                         :class="[isDarkMode ? 'border-light' : 'border-dark']">
                         <div class="me-auto">
+                            <div class="fw-bold"><label class="form-check-label" for="hideUnavailableIPStack">{{
+                                    t('nav.preferences.hideUnavailableIPStack') }}</label>
+                            </div>
+                            <div class="preferences-tip">{{ t('nav.preferences.hideUnavailableIPStackTips') }}</div>
+                        </div>
+                        <div class="form-check form-switch col-auto ">
+                            <input class="form-check-input" :class="[isDarkMode ? 'jn-check-dark' : 'jn-check-light']"
+                                type="checkbox" role="switch" id="hideUnavailableIPStack"
+                                :checked="userPreferences.hideUnavailableIPStack"
+                                @change="prefHideUnavailableIPStack($event.target.checked)">
+                        </div>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-start"
+                        :class="[isDarkMode ? 'border-light' : 'border-dark']">
+                        <div class="me-auto">
                             <div class="fw-bold"><label class="form-check-label" for="refreshDetectors">{{
                                     t('nav.preferences.refreshDetectors')
                                     }}</label>
@@ -330,6 +346,11 @@ const prefAutoStart = (value) => {
 const prefconnectivityShowNoti = (value) => {
     store.updatePreference('popupConnectivityNotifications', value);
     trackEvent('Nav', 'PrefereceClick', 'ConnectivityNotifications');
+};
+
+const prefHideUnavailableIPStack = (value) => {
+    store.updatePreference('hideUnavailableIPStack', value);
+    trackEvent('Nav', 'PrefereceClick', 'HideUnavailableIPStack');
 };
 
 const prefipCards = (value) => {

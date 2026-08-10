@@ -167,6 +167,8 @@
       "connectivityAutoRefreshTips": "開啟多次重新整理後，程序在啟動時將運行 5 次檢測，並顯示最小延遲值。",
       "popupConnectivityNotifications": "顯示可用性檢測氣泡",
       "popupConnectivityNotificationsTips": "開啟後，將會在首次檢測時以氣泡形式提示可用性結果。",
+      "hideUnavailableIPStack": "隱藏不可用的 IP 棧",
+      "hideUnavailableIPStackTips": "自動隱藏獲取失敗或當前網絡不支援的 IP 卡片",
       "ipDB": "IP 解析數據源",
       "ipDBTips": "你可以選擇你默認使用的 IP 地理位置數據源，如果你選定的不可用，系統會依次使用後續的數據源。",
       "language": "語言設定",
