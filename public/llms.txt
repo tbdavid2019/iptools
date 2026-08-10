@@ -1,0 +1,24 @@
+# 8888IP Network Toolbox
+
+> 8888IP 是一個開源、高效且隱私友好的 IP 與網路工具箱。提供 IP 查詢、地理資訊、WebRTC 測試、DNS 洩漏檢測、網速測試、全球延遲測試、DNS 解析與 Whois 查詢服務。
+
+## 核心服務與頁面 (Core Pages & Services)
+
+- [8888IP 首頁](https://ip.david888.com/): 完整的 IP 與網路診斷主介面
+- [命令列 IP 查詢 API](https://ip.david888.com/api/ip): 終端機 `curl ip.david888.com` 或 `curl https://ip.david888.com/api/ip` 回傳用戶端公開 IP
+- [系統配置 API](https://ip.david888.com/api/configs): 查詢本站點啟用的 API 數據源與功能配置
+- [IP 地理資訊 API](https://ip.david888.com/api/ipinfo): 查詢指定 IP 的地理位置、ASN 與組織數據
+- [Whois 查詢 API](https://ip.david888.com/api/whois): 查詢指定網域或 IP 的 Whois / RDAP 註冊資訊
+- [DNS 解析 API](https://ip.david888.com/api/dnsresolver): 使用 DoH (DNS-over-HTTPS) 進行跨節點 DNS 解析
+
+## AI Agent & API Discovery
+
+- [Agent LLM Specification](https://ip.david888.com/llms.txt): Machine-readable index for LLMs and AI Agents
+- [LLMs Full Documentation](https://ip.david888.com/llms-full.txt): 完整網路工具箱 API 與規格說明
+- [GitHub Repository](https://github.com/tbdavid2019/iptools): 開源專案儲存庫與原始碼
+
+## 研發團隊與維護資訊 (Development & Maintenance)
+
+> 本站點與 8888IP 服務由 DAVID888 團隊傾力設計、開發與持續維護。
+
+- [tbdavid2019](https://github.com/tbdavid2019): 主要創辦人與維護者

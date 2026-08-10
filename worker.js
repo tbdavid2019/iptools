@@ -41,6 +41,32 @@ export default {
             });
         }
 
+        // Handle llms.txt & llms-full.txt with UTF-8 charset
+        if (pathname === '/llms.txt' || pathname === '/llms-full.txt') {
+            try {
+                const assetResponse = await getAssetFromKV(
+                    {
+                        request,
+                        waitUntil: ctx.waitUntil.bind(ctx),
+                    },
+                    {
+                        ASSET_NAMESPACE: env.__STATIC_CONTENT,
+                        ASSET_MANIFEST: assetManifest,
+                        mapRequestUrl: req => new Request(req.url, req),
+                    }
+                );
+                const headers = new Headers(assetResponse.headers);
+                headers.set('content-type', 'text/markdown; charset=utf-8');
+                headers.set('Link', '</llms.txt>; rel="llms-txt"; type="text/markdown"');
+                return new Response(assetResponse.body, {
+                    status: assetResponse.status,
+                    headers
+                });
+            } catch (e) {
+                return new Response(`Error fetching ${pathname}: ${e.message}`, { status: 404 });
+            }
+        }
+
         // 2. /api/ip
         if (pathname === '/api/ip') {
             return new Response(`${clientIp}\n`, {

@@ -1,0 +1,42 @@
+# 8888IP Network Toolbox - Full Specification & API Reference
+
+> 8888IP 是一個開源、全 Serverless 運作的 IP 與網路工具箱，託管於 Cloudflare Workers / Cloudflare Pages 全球邊緣網路。
+
+## 1. 系統架構 (System Architecture)
+
+- **前端介面**: Vue 3 + Vite + Pinia + Bootstrap 5 + PWA。
+- **邊緣運作 (Serverless Edge)**: 100% 運行於 Cloudflare Workers (無須 VPS 伺服器)。
+- **命令列支援**: 針對 `curl` / `wget` 用戶端自動回應純文字 IP。
+
+## 2. API 端點規格 (API Endpoints Specification)
+
+### 2.1 命令列 IP 查詢
+- **Endpoint**: `GET /api/ip` 或 `GET /` (帶 `curl`/`wget` User-Agent)
+- **Response**: `text/plain; charset=utf-8`
+- **Example**:
+  ```bash
+  curl https://ip.david888.com/api/ip
+  ```
+
+### 2.2 IP 地理位置查詢
+- **Endpoint**: `GET /api/ipinfo?ip={ip_address}`
+- **Response**: `application/json; charset=utf-8`
+- **Fields**: `ip`, `city`, `region`, `country_name`, `country_code`, `latitude`, `longitude`, `asn`, `org`
+
+### 2.3 Whois / RDAP 查詢
+- **Endpoint**: `GET /api/whois?q={domain_or_ip}`
+- **Response**: `application/json; charset=utf-8`
+
+### 2.4 DNS Over HTTPS (DoH) 解析
+- **Endpoint**: `GET /api/dnsresolver?hostname={domain}&type={record_type}`
+- **Response**: `application/json; charset=utf-8`
+- **Supported Types**: `A`, `AAAA`, `TXT`, `CNAME`, `NS`, `MX`
+
+### 2.5 Cloudflare Radar ASN 數據分析
+- **Endpoint**: `GET /api/cfradar?asn={asn_number}`
+- **Response**: `application/json; charset=utf-8`
+
+## 3. 開發者與維護者資訊 (Maintainers)
+
+- **GitHub Repository**: https://github.com/tbdavid2019/iptools
+- **維護者**: DAVID888 (tbdavid2019@gmail.com)
