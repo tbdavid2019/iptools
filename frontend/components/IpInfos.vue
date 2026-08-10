@@ -117,7 +117,7 @@ const asnInfos = ref({
 });
 
 // 其它数据
-const ipCardsToShow = ref(userPreferences.value.ipCardsToShow);
+const ipCardsToShow = computed(() => userPreferences.value.ipCardsToShow || 6);
 const ipDetectors = ref([]);
 const copiedStatus = ref({});
 const IPArray = ref([]);
@@ -349,6 +349,12 @@ watch(() => userPreferences.value.ipGeoSource, (newVal, oldVal) => {
   ipGeoSource.value = newVal;
   if (newVal !== usingSource.value) {
     selectIPGeoSource();
+  }
+});
+
+watch(ipCardsToShow, (newVal) => {
+  if (newVal > 0) {
+    checkAllIPs();
   }
 });
 

@@ -236,7 +236,7 @@ export const useMainStore = defineStore('main', {
 
       if (storedPreferences) {
         const currentPreferences = JSON.parse(storedPreferences);
-        if (currentPreferences.ipCardsToShow === 3) {
+        if (currentPreferences.ipCardsToShow == 3 || !currentPreferences.ipCardsToShow) {
           currentPreferences.ipCardsToShow = 6;
         }
         preferencesToStore = { ...defaultPreferences, ...currentPreferences };
