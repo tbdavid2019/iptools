@@ -9,7 +9,7 @@
     </div>
     <div class="row">
       <div v-for="(card, index) in ipDataCards.slice(0, ipCardsToShow)" :key="card.id" :ref="card.id"
-        v-show="!card.ip || (card.ip !== t('ipInfos.IPv4Error') && card.ip !== t('ipInfos.IPv6Error'))"
+        v-show="!hideUnavailableIPStack || !card.ip || (card.ip !== t('ipInfos.IPv4Error') && card.ip !== t('ipInfos.IPv6Error'))"
         :class="[colClass, {
           'jn-opacity': !card.ip || card.ip === t('ipInfos.IPv4Error') || card.ip === t('ipInfos.IPv6Error')
         }]">
@@ -48,6 +48,7 @@ const lang = computed(() => store.lang);
 // 页面的动态配置
 const isMapShown = computed(() => userPreferences.value.showMap);
 const isCardsCollapsed = computed(() => userPreferences.value.simpleMode);
+const hideUnavailableIPStack = computed(() => userPreferences.value.hideUnavailableIPStack);
 
 // 创建样式
 const colClass = computed(() => {

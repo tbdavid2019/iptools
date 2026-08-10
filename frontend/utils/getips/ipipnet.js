@@ -19,12 +19,25 @@ const getIPFromIPIP = async () => {
     } catch (error) {
         console.error("Error fetching IP from IPIP.net:", error);
     }
-    // 故障时尝试从 AliCDN 获取 IP 地址
-    const { ip, source } = await getIPFromUpai();
-    return {
-        ip: ip,
-        source: source
-    };
+    // 故障时尝试从 AliCDN/Upai 获取 IP 地址
+    try {
+        const { ip, source } = await getIPFromUpai();
+        if (isValidIP(ip)) {
+            return { ip: ip, source: source };
+        }
+    } catch (e) {}
+
+    // 終極備援：從 /api/ip 獲取
+    try {
+        const res = await fetch("/api/ip");
+        const text = await res.text();
+        const ip = text.trim();
+        if (isValidIP(ip)) {
+            return { ip, source: "IPIP.net" };
+        }
+    } catch (e) {}
+
+    return { ip: null, source: "IPIP.net" };
 };
 
 export { getIPFromIPIP };
