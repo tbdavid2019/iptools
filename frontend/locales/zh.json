@@ -646,9 +646,9 @@
     "description": "好用和開源的全能 IP 工具箱。輕松查看你的 IP 地址，IP 資訊，檢查 DNS 泄露，檢查 WebRTC 連接，測試網站可用性，查找 DNS 記錄，查找 Whois 資訊，測試全球延遲測試等。",
     "keywords": "我的IP,IP工具,我的IP,IP查詢,DNS泄漏測試,WebRTC測試,網速測試,DNS查詢,Whois查詢, Ping測試, 隱私測試",
     "footerLink": "https://github.com/tbdavid2019/iptools",
-    "copyRightName": "由 ",
-    "copyRightLink": "https://ip.david888.com",
-    "copyRightLinkName": "8888IP"
+    "copyRightName": "技術提供：",
+    "copyRightLink": "https://david888.com",
+    "copyRightLinkName": "david888.com"
   },
   "helpModal": {
     "Title": "快捷鍵"

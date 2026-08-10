@@ -82,9 +82,9 @@
       </div>
     </div>
 
-    <div id="copyright" v-if="!configs.originalSite">
-      <p class="text-center fs-6 fw-light" style="opacity: 0.5;">
-        {{ t('page.copyRightName') }} <a :href="t('page.copyRightLink')" class="link-underline-light" target="_blank"
+    <div id="copyright">
+      <p class="text-center fs-6 fw-light my-3" style="opacity: 0.75;">
+        {{ t('page.copyRightName') }} <a :href="t('page.copyRightLink')" class="link-underline-light fw-bold" target="_blank"
           :class="[isDarkMode ? 'link-light' : 'link-dark']">{{ t('page.copyRightLinkName') }}</a>
       </p>
     </div>
