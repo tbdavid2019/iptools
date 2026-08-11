@@ -46,8 +46,8 @@ curl https://ip.david888.com/api/ip
 需要 Node.js 22 或更新版本：
 
 ```bash
-git clone https://github.com/tbdavid2019/IPtools.git
-cd IPtools
+git clone https://github.com/tbdavid2019/iptools.git
+cd iptools
 npm install
 npm run build
 npm start

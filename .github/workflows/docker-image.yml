@@ -1,22 +1,31 @@
 name: Docker Build and Push
 
 on:
+  push:
+    branches: [ "main", "master" ]
+    tags: [ 'v*.*.*', 'v*' ]
   release:
     types: [published]
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version tag'
-        required: true
+        description: 'Version tag (e.g. v1.0.0)'
+        required: false
+        default: 'latest'
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    environment: production
+    permissions:
+      contents: read
+      packages: write
 
     steps:
     - name: Check Out Repo
       uses: actions/checkout@v4
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
@@ -25,7 +34,7 @@ jobs:
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN || secrets.DOCKER_HUB_TOKEN }}
 
     - name: Login to GitHub Packages
       uses: docker/login-action@v3
@@ -34,26 +43,28 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Get the version and release notes
-      if: github.event_name == 'release'
-      run: |
-        printf "RELEASE_VERSION=%s\n" "${{ github.event.release.tag_name }}" >> $GITHUB_ENV
-        printf "RELEASE_NOTES<<EOF\n%s\nEOF\n" "${{ github.event.release.body }}" >> $GITHUB_ENV
-
-    - name: Set version for manual dispatch
-      if: github.event_name == 'workflow_dispatch'
-      run: |
-        echo "RELEASE_VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
-        echo "RELEASE_NOTES=Manually triggered build" >> $GITHUB_ENV
+    - name: Extract Docker metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: |
+          tbdavid2019/8888ip
+          ghcr.io/${{ github.repository_owner }}/8888ip
+        tags: |
+          type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || github.event_name == 'release' }}
+          type=ref,event=branch
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=raw,value=${{ github.event.inputs.version }},enable=${{ github.event_name == 'workflow_dispatch' && github.event.inputs.version != '' }}
 
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v5
       with:
+        context: .
         push: true
-        tags: |
-          ghcr.io/${{ github.repository_owner }}/8888ip:latest
-          ghcr.io/${{ github.repository_owner }}/8888ip:${{ env.RELEASE_VERSION }}
-        labels: |
-          org.opencontainers.image.version=${{ env.RELEASE_VERSION }}
-          org.opencontainers.image.description=${{ env.RELEASE_NOTES }}
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
         platforms: linux/amd64,linux/arm64
+        cache-from: type=gha
+        cache-to: type=inline
+
