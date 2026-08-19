@@ -1,5 +1,6 @@
 import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
 import manifestJSON from '__STATIC_CONTENT_MANIFEST';
+import { handleMcpRequest, MCP_SERVER_INFO, MCP_TOOLS } from './common/mcp.js';
 const assetManifest = JSON.parse(manifestJSON);
 
 // DoH Servers for DNS Resolver
@@ -65,6 +66,72 @@ export default {
             } catch (e) {
                 return new Response(`Error fetching ${pathname}: ${e.message}`, { status: 404 });
             }
+        }
+
+        // MCP & WebMCP endpoint (/mcp & /api/mcp)
+        if (pathname === '/mcp' || pathname === '/api/mcp') {
+            const corsHeaders = {
+                'access-control-allow-origin': '*',
+                'access-control-allow-methods': 'GET, POST, OPTIONS',
+                'access-control-allow-headers': 'Content-Type, Authorization, Accept',
+            };
+
+            if (request.method === 'OPTIONS') {
+                return new Response(null, {
+                    status: 204,
+                    headers: corsHeaders
+                });
+            }
+
+            if (request.method === 'GET') {
+                return new Response(JSON.stringify({
+                    status: 'ok',
+                    protocol: 'Model Context Protocol (JSON-RPC 2.0)',
+                    server: MCP_SERVER_INFO,
+                    endpoint: '/mcp',
+                    usage: 'Send POST requests with JSON-RPC 2.0 payload (e.g. tools/list or tools/call)',
+                    tools: MCP_TOOLS
+                }, null, 2), {
+                    headers: {
+                        ...corsHeaders,
+                        'content-type': 'application/json; charset=utf-8',
+                        'cache-control': 'no-store'
+                    }
+                });
+            }
+
+            let body = null;
+            try {
+                body = await request.json();
+            } catch (e) {
+                return new Response(JSON.stringify({
+                    jsonrpc: '2.0',
+                    id: null,
+                    error: { code: -32700, message: 'Parse error: Invalid JSON payload' }
+                }), {
+                    status: 400,
+                    headers: {
+                        ...corsHeaders,
+                        'content-type': 'application/json; charset=utf-8'
+                    }
+                });
+            }
+
+            const context = {
+                clientIp,
+                userAgent,
+                env,
+                country: request.headers.get('cf-ipcountry') || 'unknown',
+                city: request.headers.get('cf-ipcity') || 'unknown'
+            };
+
+            const result = await handleMcpRequest(body, context);
+            return new Response(JSON.stringify(result), {
+                headers: {
+                    ...corsHeaders,
+                    'content-type': 'application/json; charset=utf-8'
+                }
+            });
         }
 
         // 2. /api/ip

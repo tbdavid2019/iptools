@@ -36,6 +36,21 @@
 - **Endpoint**: `GET /api/cfradar?asn={asn_number}`
 - **Response**: `application/json; charset=utf-8`
 
+### 2.6 Model Context Protocol (MCP) & WebMCP 端點
+- **Endpoint**: `POST /mcp` (支援標準 JSON-RPC 2.0 與 `GET /mcp` 檢查工具清單)
+- **Protocol Version**: `2024-11-05`
+- **Supported Methods**: `initialize`, `ping`, `tools/list`, `tools/call`
+- **Available Tools**:
+  1. `get_client_ip`: 取得訪客公開 IP、位置、User Agent 與時間戳記
+  2. `lookup_ip_geo`: 查詢指定 IPv4/IPv6 之地理位置、ASN、ISP、資料中心與代理偵測
+  3. `resolve_dns`: 跨 Google / Cloudflare / AdGuard / AliDNS 進行 DoH DNS 解析
+  4. `whois_lookup`: 查詢網域或 IP 之 RDAP / WHOIS 註冊資料
+  5. `mac_lookup`: 查詢 MAC 位址與 OUI 製造商資訊
+  6. `cf_radar_lookup`: 查詢 ASN 之 Cloudflare Radar 流量與安全統計
+- **WebMCP Integration**:
+  - 前端掛載 `document.modelContext.registerTool` (Chrome 146+ 標準)。
+  - 相容 Cloudflare WebMCP `Site MCP Server` 邊緣橋接器 (`/.webmcp/bridge.js`)。
+
 ## 3. 開發者與維護者資訊 (Maintainers)
 
 - **GitHub Repository**: https://github.com/tbdavid2019/iptools

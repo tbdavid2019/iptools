@@ -9,6 +9,7 @@ import { analytics } from './utils/use-analytics';
 
 import { Tooltip } from 'bootstrap';
 import { detectOS } from './utils/system-detect';
+import { setupWebMcp } from './utils/webmcp';
 import './style/style.css'
 
 const app = createApp(App);
@@ -90,7 +91,9 @@ Promise.all([
     store.fetchConfigs()      // 获取后端配置
 ]).then(() => {
     app.mount('#app');
+    setupWebMcp();
 }).catch(error => {
     console.error("Failed to initialize the app properly:", error);
     app.mount('#app'); // 即使初始化中存在错误，也继续挂载应用
+    setupWebMcp();
 });

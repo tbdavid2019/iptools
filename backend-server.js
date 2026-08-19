@@ -26,6 +26,7 @@ import macChecker from './api/mac-checker.js';
 import validateConfigs from './api/configs.js';
 import getUserinfo from './api/get-user-info.js';
 import updateUserAchievement from './api/update-user-achievement.js';
+import mcpHandler from './api/mcp.js';
 
 dotenv.config();
 
@@ -166,6 +167,10 @@ app.put('/api/updateuserachievement', updateUserAchievement);
 
 // 使用查询参数处理所有配置请求
 app.get('/api/configs', validateConfigs);
+
+// Model Context Protocol (MCP) & WebMCP endpoints
+app.all('/mcp', mcpHandler);
+app.all('/api/mcp', mcpHandler);
 
 // 设置静态文件服务
 const __filename = fileURLToPath(import.meta.url);

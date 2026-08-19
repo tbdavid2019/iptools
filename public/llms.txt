@@ -10,11 +10,13 @@
 - [IP 地理資訊 API](https://ip.david888.com/api/ipinfo): 查詢指定 IP 的地理位置、ASN 與組織數據
 - [Whois 查詢 API](https://ip.david888.com/api/whois): 查詢指定網域或 IP 的 Whois / RDAP 註冊資訊
 - [DNS 解析 API](https://ip.david888.com/api/dnsresolver): 使用 DoH (DNS-over-HTTPS) 進行跨節點 DNS 解析
+- [MCP & WebMCP 協定端點](https://ip.david888.com/mcp): 支援 Model Context Protocol (JSON-RPC 2.0) 與 Cloudflare WebMCP 瀏覽器工具註冊
 
 ## AI Agent & API Discovery
 
 - [Agent LLM Specification](https://ip.david888.com/llms.txt): Machine-readable index for LLMs and AI Agents
 - [LLMs Full Documentation](https://ip.david888.com/llms-full.txt): 完整網路工具箱 API 與規格說明
+- [MCP Server Endpoint](https://ip.david888.com/mcp): JSON-RPC 2.0 endpoint for AI Agents (`tools/list`, `tools/call`)
 - [GitHub Repository](https://github.com/tbdavid2019/iptools): 開源專案儲存庫與原始碼
 
 ## 研發團隊與維護資訊 (Development & Maintenance)

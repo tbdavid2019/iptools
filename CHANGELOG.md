@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-19]
+
+### Added
+- **Model Context Protocol (MCP) Server Endpoint**: Added `/mcp` and `/api/mcp` endpoints supporting JSON-RPC 2.0 (`initialize`, `ping`, `tools/list`, `tools/call`) for AI agents like Claude Desktop, Cursor, and CLI tools.
+- **WebMCP Browser Standard Support**: Implemented `frontend/utils/webmcp.js` to register 8888IP diagnostic tools directly with `document.modelContext.registerTool` for Chrome 146+ and WebMCP-compatible browser AI agents.
+- **Core MCP Toolset**: Packaged 6 essential network diagnostics into MCP tool definitions (`common/mcp.js`):
+  1. `get_client_ip`: Retrieves caller public IP, geolocation, user agent, and timestamp.
+  2. `lookup_ip_geo`: Performs detailed IP geolocation, ASN, ISP, datacenter, and proxy lookups.
+  3. `resolve_dns`: Executes cross-provider DoH DNS resolution (Google, Cloudflare, AdGuard, AliDNS).
+  4. `whois_lookup`: Inspects RDAP / WHOIS domain and IP registration data.
+  5. `mac_lookup`: Looks up MAC OUI vendor and hardware manufacturer details.
+  6. `cf_radar_lookup`: Fetches Cloudflare Radar ASN intelligence statistics.
+- **Cloudflare WebMCP Edge Compatibility**: Enabled `/mcp` compatibility with Cloudflare's `Site MCP Server` edge bridge (`/.webmcp/bridge.js`).
+- **MCP Documentation**: Updated `README.md`, `public/llms.txt`, and `public/llms-full.txt` with MCP endpoint specifications and sample payloads.
+
 ## [2026-08-10]
 
 ### Added

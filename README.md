@@ -13,8 +13,30 @@
 - WebRTC、Surfshark DNS 洩漏與全球延遲測試
 - 分流規則測試 (Rule Test)，支援平滑 fallback 備援
 - DNS 解析、Whois、MAC 地址查詢與安全檢查清單
+- **AI Agent 原生支援**：支援 Model Context Protocol (MCP) 與 W3C / Cloudflare WebMCP 標準 (`document.modelContext`)
 - PWA、深色模式、正體中文／英文／法文介面
 - 100% Cloudflare Worker Serverless 部署與 `curl` 命令列 IP 查詢
+
+## AI Agent & WebMCP / MCP 整合
+
+8888IP 提供標準 **Model Context Protocol (JSON-RPC 2.0)** 與 **WebMCP** 介面，AI Agent 與瀏覽器助理可直接調用各項診斷工具：
+
+- **端點路徑**: `https://ip.david888.com/mcp`
+- **協定版本**: `2024-11-05`
+- **支援工具**:
+  - `get_client_ip`: 取得當前訪客公開 IP 與地理位置
+  - `lookup_ip_geo`: 查詢指定 IP 地理位置、ASN 與代理/託管偵測
+  - `resolve_dns`: 跨多節點 DoH DNS 解析
+  - `whois_lookup`: 查詢 RDAP / WHOIS 網域及 IP 註冊資訊
+  - `mac_lookup`: 查詢 MAC 位址與 OUI 製造商
+  - `cf_radar_lookup`: 查詢 ASN 之 Cloudflare Radar 統計數據
+
+範例調用 (JSON-RPC 2.0)：
+```bash
+curl -X POST https://ip.david888.com/mcp \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"lookup_ip_geo","arguments":{"ip":"1.1.1.1"}}}'
+```
 
 ## 命令列 API
 
@@ -46,6 +68,7 @@ curl https://ip.david888.com/api/ip
 需要 Node.js 22 或更新版本：
 
 ```bash
+>>>>>>> Stashed changes
 git clone https://github.com/tbdavid2019/iptools.git
 cd iptools
 npm install
