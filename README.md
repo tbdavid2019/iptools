@@ -121,6 +121,33 @@ cp .env.example .env
 
 `VITE_*` 變數會在 build 時注入，修改後需要重新部署。
 
+## WebMCP (Web Model Context Protocol) 支援
+
+8888IP 支援 Chrome 提議的 [WebMCP (Web Model Context Protocol)](https://developer.chrome.com/docs/ai/webmcp?hl=zh-tw) 網頁標準，讓 AI Agent（例如 Chrome 內建 AI、Gemini Auto-Browse、Model Context Tool Inspector 擴充功能等）能以結構化方式直接呼叫與操作本站功能：
+
+### 支援的 WebMCP 工具清單
+
+1. `get_my_ip`: 取得目前用戶端的公開 IPv4/IPv6、地理位置、ISP、ASN 與各節點偵測結果。
+2. `lookup_ip`: 查詢指定 IP 或網域的詳細歸屬地、ASN、ISP、代理/VPN 風險分數。
+3. `whois_lookup`: 查詢網域或 IP 的 WHOIS 註冊資訊、到期日與 DNS 伺服器。
+4. `resolve_dns`: 透過全球公用 DNS 與 DNS-over-HTTPS (DoH) 解析 DNS 記錄 (A, AAAA, CNAME, MX, TXT, NS)。
+5. `mac_vendor_lookup`: 查詢 MAC 位址 OUI 所屬硬體廠商與裝置資訊。
+6. `check_censorship`: 檢測目標網域/網址在全球高風險節點（如 GFW）與對照節點的連通性與封鎖狀態。
+7. `test_connectivity`: 測試全球主要服務（Google、Cloudflare、GitHub、YouTube 等）連通性與延遲。
+8. `get_browser_info`: 檢視用戶端瀏覽器環境、User-Agent、GPU/WebGL 渲染器、螢幕與網路連線狀態。
+9. `navigate_to`: 指引前端導航至指定工具頁面（如 `/pingtest`、`/whois`、`/dnsresolver` 等）。
+10. `toggle_dark_mode`: 切換或設定網站的深色/淺色主題。
+
+### 宣告式 API (Declarative API)
+
+各主要功能表單均已標註 WebMCP 宣告式屬性（`toolname`、`tooldescription`、`toolparamdescription`、`toolautosubmit`），支援 Agent 自動聚焦、填表與透過 `SubmitEvent.agentInvoked` / `respondWith()` 回傳結果。
+
+### 如何在 Chrome 中測試 WebMCP
+
+1. 開啟 Chrome 149+ 並前往 `chrome://flags/#enable-webmcp-testing`，將其設為 **Enabled** 並重新啟動瀏覽器。
+2. 安裝官方 [Model Context Tool Inspector 擴充功能](https://chromewebstore.google.com/detail/model-context-tool-inspec/gbpdfapgefenggkahomfgkhfehlcenpd)。
+3. 在網頁控制台 (DevTools Console) 中亦可直接透過 `await window.__webmcp.getTools()` 或 `document.modelContext.getTools()` 檢閱已註冊的工具。
+
 ## 開發
 
 ```bash

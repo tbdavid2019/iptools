@@ -1129,6 +1129,24 @@
             "change": "代碼效率優化"
           }
         ]
+      },
+      {
+        "version": "v5.1",
+        "date": "Aug 23, 2026",
+        "content": [
+          {
+            "type": "add",
+            "change": "新增 WebMCP (Web Model Context Protocol) 支援，支援 AI 代理直接調用 10 項結構化工具"
+          },
+          {
+            "type": "add",
+            "change": "支援 WebMCP 宣告式表單與 AI 焦點狀態樣式"
+          },
+          {
+            "type": "improve",
+            "change": "優化查詢表單與全域工具事件處理"
+          }
+        ]
       }
     ]
   }

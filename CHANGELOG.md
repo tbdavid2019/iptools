@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-23]
+
+### Added
+- **WebMCP (Web Model Context Protocol) Support**:
+  - Implemented the Chrome WebMCP standard (`document.modelContext.registerTool`, `getTools`, `executeTool`, and `toolchange` events) with backward compatibility for `navigator.modelContext` and fallback Polyfill.
+  - Registered 10 structured tools for browser AI agents (Chrome AI, Gemini Auto-Browse, Model Context Tool Inspector):
+    1. `get_my_ip`: Retrieve current public IPv4/IPv6, geolocation, ISP, ASN, and detection node data.
+    2. `lookup_ip`: Query geolocation, ASN, ISP, proxy/VPN detection, and risk scores for any IP or domain.
+    3. `whois_lookup`: Query domain/IP WHOIS registration, status, dates, and nameservers.
+    4. `resolve_dns`: Resolve DNS records (A, AAAA, CNAME, MX, TXT, NS) via global public DNS and DoH resolvers.
+    5. `mac_vendor_lookup`: Query MAC address OUI to identify hardware vendor and specs.
+    6. `check_censorship`: Test domain accessibility and censorship across global nodes (GFW, etc.).
+    7. `test_connectivity`: Test network latency and availability to major global services (Google, Cloudflare, YouTube, GitHub, etc.).
+    8. `get_browser_info`: Inspect client browser environment, User-Agent, GPU/WebGL, screen, and network connection.
+    9. `navigate_to`: Navigate web application to specific tool routes (`/pingtest`, `/whois`, `/dnsresolver`, etc.).
+    10. `toggle_dark_mode`: Toggle or set dark mode / light mode theme.
+  - **Declarative WebMCP Forms**: Annotated search and tool forms (`QueryIP`, `Whois`, `DnsResolver`, `MacChecker`, `CensorshipCheck`) with `toolname`, `tooldescription`, `toolparamdescription`, `toolautosubmit`, handling `SubmitEvent.agentInvoked` and `event.respondWith()`.
+  - **Agent Focus Indicators**: Added `:tool-form-active` and `:tool-submit-active` CSS styles in `frontend/style/webmcp.css`.
+  - **DevTools & Extension Bridge**: Exposed `window.__webmcp` for testing in developer console and with Chrome Model Context Tool Inspector.
+
 ## [2026-08-19]
 
 ### Added

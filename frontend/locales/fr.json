@@ -1127,6 +1127,24 @@
                         "change": "Optimisation de la performance du code"
                     }
                 ]
+            },
+            {
+                "version": "v5.1",
+                "date": "Aug 23, 2026",
+                "content": [
+                    {
+                        "type": "add",
+                        "change": "Ajout du support WebMCP (Web Model Context Protocol) avec 10 outils structurés pour les agents IA"
+                    },
+                    {
+                        "type": "add",
+                        "change": "Prise en charge des formulaires déclaratifs WebMCP et des indicateurs de focus IA"
+                    },
+                    {
+                        "type": "improve",
+                        "change": "Optimisation des formulaires de requête et de la gestion des événements"
+                    }
+                ]
             }
         ]
     }

@@ -1,0 +1,33 @@
+/* WebMCP (Web Model Context Protocol) Stylesheet */
+/* Documentation: https://developer.chrome.com/docs/ai/webmcp/declarative-api */
+
+/* Focus indicators for AI Agent tool invocation */
+form:tool-form-active,
+form.webmcp-form-active {
+  outline: light-dark(#0d6efd, #0dcaf0) dashed 2px !important;
+  outline-offset: 2px !important;
+  transition: outline 0.2s ease-in-out;
+}
+
+input:tool-submit-active,
+button:tool-submit-active,
+input.webmcp-submit-active,
+button.webmcp-submit-active {
+  outline: light-dark(#dc3545, #ff6b81) dashed 2px !important;
+  outline-offset: 2px !important;
+  transition: outline 0.2s ease-in-out;
+}
+
+/* WebMCP UI badge & visual hints */
+.webmcp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background-color: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+  border: 1px solid rgba(13, 110, 253, 0.25);
+}

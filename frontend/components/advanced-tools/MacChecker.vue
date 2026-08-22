@@ -12,19 +12,22 @@
                             <label for="queryMAC" class="col-form-label">{{ t('macchecker.Note2') }}</label>
                         </div>
 
-                        <div class="input-group mb-2 mt-2 ">
-                            <input type="text" class="form-control" :class="{ 'dark-mode': isDarkMode }"
-                                :disabled="macCheckStatus === 'running'" :placeholder="t('macchecker.Placeholder')"
-                                v-model="queryMAC" @keyup.enter="onSubmit" name="queryMAC" id="queryMAC" data-1p-ignore>
+                        <form toolname="mac_checker_tool" tooldescription="Lookup MAC address vendor, organization, address, and hardware assignment" toolautosubmit @submit.prevent="handleFormSubmit">
+                            <div class="input-group mb-2 mt-2 ">
+                                <input type="text" class="form-control" :class="{ 'dark-mode': isDarkMode }"
+                                    :disabled="macCheckStatus === 'running'" :placeholder="t('macchecker.Placeholder')"
+                                    toolparamdescription="MAC address prefix or full address (e.g. 00:1A:2B:3C:4D:5E or 001A2B)"
+                                    v-model="queryMAC" name="queryMAC" id="queryMAC" data-1p-ignore>
 
-                            <button class="btn btn-primary" @click="onSubmit"
-                                :disabled="macCheckStatus === 'running' || !queryMAC">
-                                <span v-if="macCheckStatus !== 'running'">{{
-                                    t('macchecker.Run') }}</span>
-                                <span v-else class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
-                            </button>
+                                <button type="submit" class="btn btn-primary"
+                                    :disabled="macCheckStatus === 'running' || !queryMAC">
+                                    <span v-if="macCheckStatus !== 'running'">{{
+                                        t('macchecker.Run') }}</span>
+                                    <span v-else class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                                </button>
 
-                        </div>
+                            </div>
+                        </form>
                         <div class="jn-placeholder">
                             <p v-if="errorMsg" class="text-danger">{{ errorMsg }}</p>
                         </div>
@@ -170,15 +173,24 @@ const validateInput = (input) => {
     return normalizedInput;
 };
 
+// 表单提交（支持 WebMCP agentInvoked 和 respondWith）
+const handleFormSubmit = async (event) => {
+    const queryPromise = onSubmit();
+    if (event && event.agentInvoked && typeof event.respondWith === 'function') {
+        event.respondWith(queryPromise.then(() => macCheckResult.value.success ? macCheckResult.value : { error: errorMsg.value }));
+    }
+};
+
 // 提交查询
-const onSubmit = () => {
+const onSubmit = async () => {
     trackEvent('Section', 'StartClick', 'MACChecker');
     errorMsg.value = '';
     macCheckResult.value = {};
     const query = validateInput(queryMAC.value);
     if (query) {
-        getMacInfo(query);
+        return await getMacInfo(query);
     }
+    return { error: errorMsg.value };
 };
 
 // 获取 MAC 信息
@@ -192,10 +204,12 @@ const getMacInfo = async (query) => {
         const data = await response.json();
         macCheckResult.value = data;
         macCheckStatus.value = 'idle';
+        return macCheckResult.value;
     } catch (error) {
         console.error('Error fetching MAC results:', error);
         macCheckStatus.value = 'idle';
         errorMsg.value = t('macchecker.fetchError');
+        return { error: errorMsg.value };
     }
 };
 

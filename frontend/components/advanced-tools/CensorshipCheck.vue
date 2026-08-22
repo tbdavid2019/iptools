@@ -12,20 +12,23 @@
                             <label for="queryURL" class="col-form-label">{{ t('censorshipcheck.Note2') }}</label>
                         </div>
 
-                        <div class="input-group mb-2 mt-2 ">
-                            <input type="text" class="form-control" :class="{ 'dark-mode': isDarkMode }"
-                                :disabled="censorshipCheckStatus === 'running'"
-                                :placeholder="t('censorshipcheck.Placeholder')" v-model="queryURL"
-                                @keyup.enter="onSubmit" name="queryURL" id="queryURL" data-1p-ignore>
+                        <form toolname="censorship_check_tool" tooldescription="Check website accessibility across global censorship checkpoints" toolautosubmit @submit.prevent="handleFormSubmit">
+                            <div class="input-group mb-2 mt-2 ">
+                                <input type="text" class="form-control" :class="{ 'dark-mode': isDarkMode }"
+                                    :disabled="censorshipCheckStatus === 'running'"
+                                    :placeholder="t('censorshipcheck.Placeholder')" v-model="queryURL"
+                                    toolparamdescription="Domain name or URL to test (e.g. wikipedia.org)"
+                                    name="queryURL" id="queryURL" data-1p-ignore>
 
-                            <button class="btn btn-primary" @click="onSubmit"
-                                :disabled="censorshipCheckStatus === 'running' || !queryURL">
-                                <span v-if="censorshipCheckStatus !== 'running'">{{
-                                    t('censorshipcheck.Run') }}</span>
-                                <span v-else class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
-                            </button>
+                                <button type="submit" class="btn btn-primary"
+                                    :disabled="censorshipCheckStatus === 'running' || !queryURL">
+                                    <span v-if="censorshipCheckStatus !== 'running'">{{
+                                        t('censorshipcheck.Run') }}</span>
+                                    <span v-else class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                                </button>
 
-                        </div>
+                            </div>
+                        </form>
                         <div class="jn-placeholder">
                             <p v-if="errorMsg" class="text-danger">{{ errorMsg }}</p>
                         </div>
@@ -194,7 +197,15 @@ const validateInput = (input) => {
     return null;
 };
 
-const onSubmit = () => {
+// 表单提交（支持 WebMCP agentInvoked 和 respondWith）
+const handleFormSubmit = async (event) => {
+    const queryPromise = onSubmit();
+    if (event && event.agentInvoked && typeof event.respondWith === 'function') {
+        event.respondWith(queryPromise.then(() => censorshipResults.value.length ? censorshipResults.value : { error: errorMsg.value }));
+    }
+};
+
+const onSubmit = async () => {
     trackEvent('Section', 'StartClick', 'CensorshipCheck');
     errorMsg.value = '';
     censorshipResults.value = [];
@@ -204,8 +215,9 @@ const onSubmit = () => {
     blockedCountries.value = [];
     const hostname = validateInput(queryURL.value);
     if (hostname) {
-        startHttpCheck(hostname);
+        return await startHttpCheck(hostname);
     }
+    return { error: errorMsg.value };
 };
 
 // 发起 http 测试

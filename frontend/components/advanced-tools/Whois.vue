@@ -12,21 +12,24 @@
                             <label for="queryURLorIP" class="col-form-label">{{ t('whois.Note2') }}</label>
                         </div>
 
-                        <div class="input-group mb-2 mt-2 ">
-                            <input type="text" class="form-control" :class="{ 'dark-mode': isDarkMode }"
-                                :disabled="whoisCheckStatus === 'running'" :placeholder="t('whois.Placeholder')"
-                                v-model="queryURLorIP" @keyup.enter="onSubmit" name="queryURLorIP" id="queryURLorIP"
-                                data-1p-ignore>
+                        <form toolname="whois_lookup_tool" tooldescription="Perform WHOIS domain or IP registration query" toolautosubmit @submit.prevent="handleFormSubmit">
+                            <div class="input-group mb-2 mt-2 ">
+                                <input type="text" class="form-control" :class="{ 'dark-mode': isDarkMode }"
+                                    :disabled="whoisCheckStatus === 'running'" :placeholder="t('whois.Placeholder')"
+                                    toolparamdescription="Domain name (e.g. google.com) or IP address to query"
+                                    v-model="queryURLorIP" name="queryURLorIP" id="queryURLorIP"
+                                    data-1p-ignore>
 
-                            <button class="btn btn-primary" @click="onSubmit"
-                                :disabled="whoisCheckStatus === 'running' || !queryURLorIP">
-                                <span v-if="whoisCheckStatus === 'idle'">{{
-                                    t('whois.Run') }}</span>
-                                <span v-if="whoisCheckStatus === 'running'" class="spinner-grow spinner-grow-sm"
-                                    aria-hidden="true"></span>
-                            </button>
+                                <button type="submit" class="btn btn-primary"
+                                    :disabled="whoisCheckStatus === 'running' || !queryURLorIP">
+                                    <span v-if="whoisCheckStatus === 'idle'">{{
+                                        t('whois.Run') }}</span>
+                                    <span v-if="whoisCheckStatus === 'running'" class="spinner-grow spinner-grow-sm"
+                                        aria-hidden="true"></span>
+                                </button>
 
-                        </div>
+                            </div>
+                        </form>
 
                         <div class="jn-placeholder">
                             <p v-if="errorMsg" class="text-danger">{{ errorMsg }}</p>
@@ -132,16 +135,25 @@ const validInput = (input) => {
     };
 };
 
+// 表单提交（支持 WebMCP agentInvoked 和 respondWith）
+const handleFormSubmit = async (event) => {
+    const queryPromise = onSubmit();
+    if (event && event.agentInvoked && typeof event.respondWith === 'function') {
+        event.respondWith(queryPromise.then(() => whoisResults.value || { error: errorMsg.value }));
+    }
+};
+
 // 提交查询
-const onSubmit = () => {
+const onSubmit = async () => {
     trackEvent('Section', 'StartClick', 'Whois');
     errorMsg.value = '';
     providers.value = [];
     whoisResults.value = {};
     const query = validInput(queryURLorIP.value);
     if (query) {
-        getWhoisResults(query);
+        return await getWhoisResults(query);
     }
+    return { error: errorMsg.value };
 };
 
 // 获取 Whois 结果
@@ -161,17 +173,23 @@ const getWhoisResults = async (query) => {
                 checkAchievements();
             }
             errorMsg.value = '';
+            whoisCheckStatus.value = 'idle';
+            return whoisResults.value;
         } else if (type.value === 'ip' && data.__raw) {
             whoisResults.value = data;
             errorMsg.value = '';
+            whoisCheckStatus.value = 'idle';
+            return whoisResults.value;
         } else {
             errorMsg.value = t('whois.fetchError');
+            whoisCheckStatus.value = 'idle';
+            return { error: errorMsg.value };
         }
-        whoisCheckStatus.value = 'idle';
     } catch (error) {
         console.error('Error fetching Whois results:', error);
         whoisCheckStatus.value = 'idle';
         errorMsg.value = t('whois.fetchError');
+        return { error: errorMsg.value };
     }
 };
 

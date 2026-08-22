@@ -13,9 +13,10 @@
                         data-bs-dismiss="modal" aria-label="Close"></button>
 
                 </div>
-                <div class="modal-body" :class="{ 'dark-mode': isDarkMode }">
+                <form toolname="query_ip_tool" tooldescription="Search IP address or domain details, geolocation, ISP, ASN, and risk score" toolautosubmit @submit.prevent="handleFormSubmit" class="modal-body" :class="{ 'dark-mode': isDarkMode }">
                     <input type="text" class="form-control mb-2" :class="{ 'dark-mode': isDarkMode }"
-                        :placeholder="t('ipcheck.Placeholder')" v-model="inputIP" @keyup.enter="submitQuery"
+                        :placeholder="t('ipcheck.Placeholder')" v-model="inputIP"
+                        toolparamdescription="IPv4 address, IPv6 address, or hostname to search"
                         name="inputIP" id="inputIP">
                     <div v-if="modalQueryError" class="text-danger">{{ modalQueryError }}</div>
                     <div v-if="modalQueryResult" class="mt-2">
@@ -134,7 +135,7 @@
                         </div>
 
                     </div>
-                </div>
+                </form>
                 <div class="modal-footer" :class="{ 'dark-mode-border': isDarkMode }">
                     <button id="sumitQueryButton" type="button" class="btn btn-primary"
                         :class="{ 'btn-secondary': !isValidIP(inputIP), 'btn-primary': isValidIP(inputIP) }"
@@ -178,6 +179,14 @@ watch(() => userPreferences.value.ipGeoSource, (newVal, oldVal) => {
     ipGeoSource.value = newVal;
 }, { deep: true });
 
+// 表单提交（支持 WebMCP agentInvoked 和 respondWith）
+const handleFormSubmit = async (event) => {
+    const queryPromise = submitQuery();
+    if (event && event.agentInvoked && typeof event.respondWith === 'function') {
+        event.respondWith(queryPromise.then(() => modalQueryResult.value || modalQueryError.value));
+    }
+};
+
 // 查询 IP 信息
 const submitQuery = async () => {
     if (isValidIP(inputIP.value)) {
@@ -185,10 +194,12 @@ const submitQuery = async () => {
         modalQueryResult.value = null;
         isChecking.value = "running";
         await fetchIPForModal(inputIP.value);
+        return modalQueryResult.value;
     } else {
         modalQueryError.value = t('ipcheck.Error');
         modalQueryResult.value = null;
         isChecking.value = "idle";
+        return { error: modalQueryError.value };
     }
 };
 

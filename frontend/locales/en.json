@@ -1127,6 +1127,24 @@
             "change": "Code efficiency optimization"
           }
         ]
+      },
+      {
+        "version": "v5.1",
+        "date": "Aug 23, 2026",
+        "content": [
+          {
+            "type": "add",
+            "change": "Added WebMCP (Web Model Context Protocol) support with 10 structured tools for AI browser agents"
+          },
+          {
+            "type": "add",
+            "change": "Added WebMCP declarative form attributes and agent focus states"
+          },
+          {
+            "type": "improve",
+            "change": "Enhanced query form handling and global tool event dispatching"
+          }
+        ]
       }
     ]
   }

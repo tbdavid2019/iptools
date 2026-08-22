@@ -13,32 +13,35 @@
                         </div>
 
 
-                        <div class="input-group mb-2 mt-2 ">
-                            <input type="text" class="form-control" :class="{ 'dark-mode': isDarkMode }"
-                                :disabled="dnsCheckStatus === 'running'" :placeholder="t('dnsresolver.Placeholder')"
-                                v-model="queryURL" @keyup.enter="onSubmit" name="queryURL" id="queryURL" data-1p-ignore>
+                        <form toolname="dns_resolver_tool" tooldescription="Resolve DNS records (A, AAAA, CNAME, MX, TXT, NS) for a domain name" toolautosubmit @submit.prevent="handleFormSubmit">
+                            <div class="input-group mb-2 mt-2 ">
+                                <input type="text" class="form-control" :class="{ 'dark-mode': isDarkMode }"
+                                    :disabled="dnsCheckStatus === 'running'" :placeholder="t('dnsresolver.Placeholder')"
+                                    toolparamdescription="Domain name or hostname to resolve (e.g. google.com)"
+                                    v-model="queryURL" name="queryURL" id="queryURL" data-1p-ignore>
 
-                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false"
-                                :disabled="dnsCheckStatus === 'running' || !queryURL">
-                                {{ queryType }} {{ t('dnsresolver.Record') }}
-                                <span class="visually-hidden">Choose Type</span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li v-for="type in ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'TXT']" :key="type"
-                                    @click="changeType(type)">
-                                    <span class="dropdown-item">{{ type }}</span>
-                                </li>
-                            </ul>
-                            <button class="btn btn-primary" @click="onSubmit"
-                                :disabled="dnsCheckStatus === 'running' || !queryURL">
-                                <span v-if="dnsCheckStatus === 'idle'">{{
-                                    t('dnsresolver.Run') }}</span>
-                                <span v-if="dnsCheckStatus === 'running'" class="spinner-grow spinner-grow-sm"
-                                    aria-hidden="true"></span>
-                            </button>
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    :disabled="dnsCheckStatus === 'running' || !queryURL">
+                                    {{ queryType }} {{ t('dnsresolver.Record') }}
+                                    <span class="visually-hidden">Choose Type</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li v-for="type in ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'TXT']" :key="type"
+                                        @click="changeType(type)">
+                                        <span class="dropdown-item">{{ type }}</span>
+                                    </li>
+                                </ul>
+                                <button type="submit" class="btn btn-primary"
+                                    :disabled="dnsCheckStatus === 'running' || !queryURL">
+                                    <span v-if="dnsCheckStatus === 'idle'">{{
+                                        t('dnsresolver.Run') }}</span>
+                                    <span v-if="dnsCheckStatus === 'running'" class="spinner-grow spinner-grow-sm"
+                                        aria-hidden="true"></span>
+                                </button>
 
-                        </div>
+                            </div>
+                        </form>
                         <div class="jn-placeholder">
                             <p v-if="errorMsg" class="text-danger">{{ errorMsg }}</p>
                         </div>
@@ -115,14 +118,23 @@ const changeType = (type) => {
     queryType.value = type;
 };
 
-const onSubmit = () => {
+// 表单提交（支持 WebMCP agentInvoked 和 respondWith）
+const handleFormSubmit = async (event) => {
+    const queryPromise = onSubmit();
+    if (event && event.agentInvoked && typeof event.respondWith === 'function') {
+        event.respondWith(queryPromise.then(() => combinedResults.value.length ? combinedResults.value : { error: errorMsg.value }));
+    }
+};
+
+const onSubmit = async () => {
     trackEvent('Section', 'StartClick', 'DNSResolver');
     errorMsg.value = '';
     const hostname = validateInput(queryURL.value);
     const type = queryType.value;
     if (hostname) {
-        getDNSResults(hostname, type);
+        return await getDNSResults(hostname, type);
     }
+    return { error: errorMsg.value };
 };
 
 // 获取DNS结果
@@ -138,10 +150,12 @@ const getDNSResults = async (hostname, type) => {
         processResults(data);
         dnsCheckStatus.value = 'idle';
         errorMsg.value = '';
+        return combinedResults.value;
     } catch (error) {
         console.error('Error fetching DNS results:', error);
         dnsCheckStatus.value = 'idle';
         errorMsg.value = t('dnsresolver.fetchError');
+        return { error: errorMsg.value };
     }
 };
 

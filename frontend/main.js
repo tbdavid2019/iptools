@@ -9,7 +9,7 @@ import { analytics } from './utils/use-analytics';
 
 import { Tooltip } from 'bootstrap';
 import { detectOS } from './utils/system-detect';
-import { setupWebMcp } from './utils/webmcp';
+import { initWebMCP } from './utils/webmcp';
 import './style/style.css'
 
 const app = createApp(App);
@@ -20,6 +20,9 @@ const store = useMainStore(pinia);
 
 app.use(i18n);
 app.use(router);
+
+// Initialize WebMCP (Web Model Context Protocol)
+initWebMCP(app, router, store);
 
 //
 // 初始化一系列操作
