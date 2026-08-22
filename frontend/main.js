@@ -21,9 +21,6 @@ const store = useMainStore(pinia);
 app.use(i18n);
 app.use(router);
 
-// Initialize WebMCP (Web Model Context Protocol)
-initWebMCP(app, router, store);
-
 //
 // 初始化一系列操作
 //
@@ -94,9 +91,17 @@ Promise.all([
     store.fetchConfigs()      // 获取后端配置
 ]).then(() => {
     app.mount('#app');
-    setupWebMcp();
+    try {
+        initWebMCP(app, router, store);
+    } catch (err) {
+        console.warn('[WebMCP] Failed to initialize:', err);
+    }
 }).catch(error => {
     console.error("Failed to initialize the app properly:", error);
-    app.mount('#app'); // 即使初始化中存在错误，也继续挂载应用
-    setupWebMcp();
+    try {
+        app.mount('#app'); // 即使初始化中存在错误，也继续挂载应用
+        initWebMCP(app, router, store);
+    } catch (err) {
+        console.error("Fallback mount error:", err);
+    }
 });

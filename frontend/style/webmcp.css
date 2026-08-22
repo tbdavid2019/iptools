@@ -2,20 +2,34 @@
 /* Documentation: https://developer.chrome.com/docs/ai/webmcp/declarative-api */
 
 /* Focus indicators for AI Agent tool invocation */
-form:tool-form-active,
 form.webmcp-form-active {
-  outline: light-dark(#0d6efd, #0dcaf0) dashed 2px !important;
+  outline: #0d6efd dashed 2px !important;
   outline-offset: 2px !important;
   transition: outline 0.2s ease-in-out;
 }
 
-input:tool-submit-active,
-button:tool-submit-active,
+@supports selector(:tool-form-active) {
+  form:tool-form-active {
+    outline: #0d6efd dashed 2px !important;
+    outline-offset: 2px !important;
+    transition: outline 0.2s ease-in-out;
+  }
+}
+
 input.webmcp-submit-active,
 button.webmcp-submit-active {
-  outline: light-dark(#dc3545, #ff6b81) dashed 2px !important;
+  outline: #dc3545 dashed 2px !important;
   outline-offset: 2px !important;
   transition: outline 0.2s ease-in-out;
+}
+
+@supports selector(:tool-submit-active) {
+  input:tool-submit-active,
+  button:tool-submit-active {
+    outline: #dc3545 dashed 2px !important;
+    outline-offset: 2px !important;
+    transition: outline 0.2s ease-in-out;
+  }
 }
 
 /* WebMCP UI badge & visual hints */
