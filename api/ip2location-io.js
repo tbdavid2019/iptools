@@ -21,9 +21,13 @@ export default (req, res) => {
         return res.status(400).json({ error: 'Invalid IP address' });
     }
 
-    const keys = (process.env.IP2LOCATION_API_KEY).split(',');
+    const apiKeyEnv = process.env.IP2LOCATION_API_KEY || '';
+    if (!apiKeyEnv) {
+        return res.status(500).json({ error: 'IP2Location API key is not configured' });
+    }
+    const keys = apiKeyEnv.split(',').filter(Boolean);
     const key = keys[Math.floor(Math.random() * keys.length)];
-    const url = `https://api.ip2location.io/?ip=${ipAddress}&key=${key}`;
+    const url = `https://api.ip2location.io/?ip=${encodeURIComponent(ipAddress)}&key=${key}`;
 
     get(url, apiRes => {
         let data = '';

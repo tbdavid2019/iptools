@@ -27,6 +27,7 @@ import validateConfigs from './api/configs.js';
 import getUserinfo from './api/get-user-info.js';
 import updateUserAchievement from './api/update-user-achievement.js';
 import mcpHandler from './api/mcp.js';
+import ipHandler from './api/ip.js';
 
 dotenv.config();
 
@@ -140,6 +141,15 @@ if (speedLimitSet !== 0) {
     console.log('Speed limiter is enabled, slowing down after:', speedLimitSet, 'requests');
 }
 
+// HTTP Security Headers
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  next();
+});
+
 app.use(express.json());
 
 // 添加請求日誌中間件
@@ -149,6 +159,7 @@ app.use('/api', (req, res, next) => {
 });
 
 // APIs
+app.get('/api/ip', ipHandler);
 app.get('/api/map', mapHandler);
 app.get('/api/ipinfo', ipinfoHandler);
 app.get('/api/ipapicom', ipapicomHandler);

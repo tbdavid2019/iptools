@@ -23,17 +23,12 @@ export default async (req, res) => {
     }
 
     // 构建请求 ipinfo.io 的 URL
-    console.log('IPINFO_API_TOKEN 環境變數值:', process.env.IPINFO_API_TOKEN);
-    const tokens = (process.env.IPINFO_API_TOKEN || '').split(',');
-    const token = tokens[Math.floor(Math.random() * tokens.length)];
-    console.log('使用的 IPINFO token:', token);
+    const tokens = (process.env.IPINFO_API_TOKEN || '').split(',').filter(Boolean);
+    const token = tokens.length ? tokens[Math.floor(Math.random() * tokens.length)] : '';
 
     const url_hasToken = `https://ipinfo.io/${ipAddress}?token=${token}`;
     const url_noToken = `https://ipinfo.io/${ipAddress}`;
     const url = token ? url_hasToken : url_noToken;
-    console.log('IPINFO 請求 URL:', url);
-
-    console.log('準備向 IPINFO 發送請求...');
     get(url, apiRes => {
         console.log('已連接到 IPINFO API 服務器');
         let data = '';

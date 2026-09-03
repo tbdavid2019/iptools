@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-09-03]
+
+### Security
+- **Cloudflare Security Audit & Vulnerability Remediation**:
+  - **Cloudflare Radar Path Traversal**: Added numeric regex validation (`/^[0-9]+$/`) to the `asn` parameter in `worker.js` and `common/mcp.js`, preventing directory traversal and protecting the `CLOUDFLARE_API` Bearer token.
+  - **Header Smuggling Protection**: Replaced blind client header forwarding (`headers: { ...req.headers }`) with strict header whitelisting (`User-Agent`, `Accept`, and valid `Authorization`) across `api/invisibility-test.js`, `api/ipcheck-ing.js`, `api/get-user-info.js`, and `api/update-user-achievement.js`.
+  - **Credential Redaction in Logs**: Removed plaintext logging of `IPINFO_API_TOKEN`, `IPAPIIS_API_KEY`, and query URLs containing API keys in `api/ipinfo-io.js` and `api/ipapi-is.js`.
+  - **RDAP / WHOIS SSRF Defense**: Enforced strict domain/IP format checks and manual redirection (`redirect: 'manual'`) in `worker.js` and `common/mcp.js` to block SSRF attacks targeting cloud metadata (`169.254.169.254`).
+  - **HTTP Security Headers**: Injected standard defensive headers (`X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy`) across `backend-server.js`, `frontend-server.js`, and `worker.js`.
+  - **Express Route Fix**: Imported and mounted `app.get('/api/ip', ipHandler)` in `backend-server.js` to fix plain-text IP lookups falling through to the static HTML SPA.
+  - **Supply Chain & Secrets Ignore Rules**: Resolved 25 npm audit vulnerabilities via `npm audit fix`, and expanded `.gitignore` and `.dockerignore` to cover `.env.*`, `*.pem`, `*.key`, `*.crt`, and `*.pfx`.
+
 ## [2026-08-23]
 
 ### Added

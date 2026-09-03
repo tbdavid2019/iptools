@@ -23,6 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.env.*
+*.pem
+*.key
+*.crt
+*.pfx
 .vscode/extensions.json
 
 package-lock.json

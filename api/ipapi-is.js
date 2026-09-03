@@ -22,17 +22,12 @@ export default (req, res) => {
         return res.status(400).json({ error: 'Invalid IP address' });
     }
 
-    console.log('IPAPIIS_API_KEY 環境變數值:', process.env.IPAPIIS_API_KEY);
-    const keys = (process.env.IPAPIIS_API_KEY || '').split(',');
-    const key = keys[Math.floor(Math.random() * keys.length)];
-    console.log('使用的 IPAPIIS key:', key);
+    const keys = (process.env.IPAPIIS_API_KEY || '').split(',').filter(Boolean);
+    const key = keys.length ? keys[Math.floor(Math.random() * keys.length)] : '';
     
-    const url_hasKey = `https://api.ipapi.is?q=${ipAddress}&key=${key}`;
-    const url_noKey = `https://api.ipapi.is?q=${ipAddress}`;
+    const url_hasKey = `https://api.ipapi.is?q=${encodeURIComponent(ipAddress)}&key=${key}`;
+    const url_noKey = `https://api.ipapi.is?q=${encodeURIComponent(ipAddress)}`;
     const url = key ? url_hasKey : url_noKey;
-    console.log('IPAPIIS 請求 URL:', url);
-
-    console.log('準備向 IPAPIIS 發送請求...');
     get(url, apiRes => {
         console.log('已連接到 IPAPIIS API 服務器');
         let data = '';

@@ -26,6 +26,19 @@ async function resolveDoh(hostname, type, name, url) {
 
 export default {
     async fetch(request, env, ctx) {
+        const response = await this.handleRequest(request, env, ctx);
+        const headers = new Headers(response.headers);
+        if (!headers.has('X-Content-Type-Options')) headers.set('X-Content-Type-Options', 'nosniff');
+        if (!headers.has('X-Frame-Options')) headers.set('X-Frame-Options', 'SAMEORIGIN');
+        if (!headers.has('Referrer-Policy')) headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+        return new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers
+        });
+    },
+
+    async handleRequest(request, env, ctx) {
         const url = new URL(request.url);
         const rawPath = url.pathname;
         const pathname = rawPath.length > 1 && rawPath.endsWith('/') ? rawPath.slice(0, -1) : rawPath;
@@ -325,20 +338,30 @@ export default {
 
         // 8. /api/whois
         if (pathname === '/api/whois') {
-            const query = url.searchParams.get('q');
+            const query = (url.searchParams.get('q') || '').trim();
             if (!query) {
                 return new Response(JSON.stringify({ error: 'No address provided' }), { status: 400 });
             }
             try {
                 const isIp = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(query) || query.includes(':');
-                const rdapUrl = isIp ? `https://rdap.org/ip/${query}` : `https://rdap.org/domain/${query}`;
+                const isDomain = /^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(query);
+                if (!isIp && !isDomain) {
+                    return new Response(JSON.stringify({ error: 'Invalid IP or domain address' }), { status: 400 });
+                }
+
+                const rdapUrl = isIp ? `https://rdap.org/ip/${encodeURIComponent(query)}` : `https://rdap.org/domain/${encodeURIComponent(query)}`;
                 const res = await fetch(rdapUrl, {
                     headers: {
                         'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)',
                         'Accept': 'application/rdap+json, application/json'
                     },
-                    redirect: 'follow'
+                    redirect: 'manual'
                 });
+
+                if (res.status >= 300 && res.status < 400) {
+                    return new Response(JSON.stringify({ error: 'RDAP query redirected to external authority (manual lookup required)' }), { status: 502 });
+                }
+
                 const data = await res.json();
                 return new Response(JSON.stringify(data), {
                     headers: { 'content-type': 'application/json; charset=utf-8' }
@@ -372,9 +395,9 @@ export default {
 
         // 10. /api/cfradar
         if (pathname === '/api/cfradar') {
-            const asn = (url.searchParams.get('asn') || '').replace(/^AS/i, '');
-            if (!asn) {
-                return new Response(JSON.stringify({ error: 'No ASN provided' }), { status: 400 });
+            const asn = (url.searchParams.get('asn') || '').replace(/^AS/i, '').trim();
+            if (!asn || !/^[0-9]+$/.test(asn)) {
+                return new Response(JSON.stringify({ error: 'Invalid or missing ASN provided (must be numeric)' }), { status: 400 });
             }
 
             const cfToken = env.CLOUDFLARE_API || '';

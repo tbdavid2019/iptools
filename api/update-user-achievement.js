@@ -28,11 +28,17 @@ export default async (req, res) => {
     const url = new URL(`${apiEndpoint}/updateuserachievements?key=${key}`);
 
     try {
+        const forwardHeaders = {
+            'Content-Type': 'application/json',
+            'User-Agent': req.headers['user-agent'] || '8888IP/1.0',
+            'Accept': 'application/json'
+        };
+        if (req.headers.authorization) {
+            forwardHeaders['Authorization'] = req.headers.authorization;
+        }
         const apiResponse = await fetch(url, {
             method: 'PUT',
-            headers: {
-                ...req.headers,
-            },
+            headers: forwardHeaders,
             body: JSON.stringify(req.body),
         });
 

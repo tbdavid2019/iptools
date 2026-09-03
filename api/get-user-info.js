@@ -19,10 +19,15 @@ export default async (req, res) => {
     const url = new URL(`${apiEndpoint}/userinfo?key=${key}`);
 
     try {
+        const forwardHeaders = {
+            'User-Agent': req.headers['user-agent'] || '8888IP/1.0',
+            'Accept': 'application/json'
+        };
+        if (req.headers.authorization) {
+            forwardHeaders['Authorization'] = req.headers.authorization;
+        }
         const apiResponse = await fetch(url, {
-            headers: {
-                ...req.headers,
-            }
+            headers: forwardHeaders
         });
 
         if (!apiResponse.ok) {

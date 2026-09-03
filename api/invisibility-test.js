@@ -43,7 +43,8 @@ export default async (req, res) => {
     try {
         const apiResponse = await fetch(url, {
             headers: {
-                ...req.headers,
+                'User-Agent': req.headers['user-agent'] || '8888IP/1.0',
+                'Accept': 'application/json'
             }
         });
 

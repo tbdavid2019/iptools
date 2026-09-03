@@ -3,6 +3,8 @@
  * Compatible with JSON-RPC 2.0, Model Context Protocol (2024-11-05), and Cloudflare WebMCP.
  */
 
+import { isValidIP } from './valid-ip.js';
+
 export const MCP_SERVER_INFO = {
     name: '8888ip-network-tools',
     version: '1.0.0',
@@ -111,6 +113,9 @@ async function executeGetClientIp(args, context) {
 }
 
 async function executeLookupIpGeo(args, context) {
+    if (args.ip && !isValidIP(args.ip)) {
+        throw new Error('Invalid IP address parameter: must be a valid IPv4 or IPv6 address.');
+    }
     const ip = args.ip || context.clientIp || '1.1.1.1';
     const lang = args.lang || 'en';
     const env = context.env || {};
@@ -236,19 +241,26 @@ async function executeResolveDns(args) {
 }
 
 async function executeWhoisLookup(args) {
-    const { query } = args;
+    const query = (args.query || '').trim();
     if (!query) {
         throw new Error('Missing required parameter: query');
     }
     const isIp = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(query) || query.includes(':');
+    const isDomain = /^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(query);
+    if (!isIp && !isDomain) {
+        throw new Error('Invalid query: must be a valid IP address or domain name.');
+    }
     const rdapUrl = isIp ? `https://rdap.org/ip/${encodeURIComponent(query)}` : `https://rdap.org/domain/${encodeURIComponent(query)}`;
     const res = await fetch(rdapUrl, {
         headers: {
             'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)',
             'Accept': 'application/rdap+json, application/json'
         },
-        redirect: 'follow'
+        redirect: 'manual'
     });
+    if (res.status >= 300 && res.status < 400) {
+        return { query, status: res.status, message: 'RDAP query redirected to external authority (manual lookup required).' };
+    }
     if (!res.ok) {
         return { query, status: res.status, message: 'RDAP query returned non-200 status' };
     }
@@ -270,10 +282,11 @@ async function executeMacLookup(args, context) {
 }
 
 async function executeCfRadarLookup(args, context) {
-    const asn = (args.asn || '').replace(/^AS/i, '');
-    if (!asn) {
-        throw new Error('Missing required parameter: asn');
+    const rawAsn = (args.asn || '').replace(/^AS/i, '').trim();
+    if (!rawAsn || !/^[0-9]+$/.test(rawAsn)) {
+        throw new Error('Invalid ASN parameter: must be a positive integer.');
     }
+    const asn = rawAsn;
     const env = context.env || {};
     const cfToken = env.CLOUDFLARE_API || (typeof process !== 'undefined' && process?.env?.CLOUDFLARE_API) || '';
     if (!cfToken) {

@@ -17,6 +17,15 @@ const frontendApp = express();
 const backEndPort = parseInt(process.env.BACKEND_PORT || 11966, 10);
 const frontEndPort = parseInt(process.env.FRONTEND_PORT || 18966, 10);
 
+// HTTP Security Headers
+frontendApp.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  next();
+});
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
