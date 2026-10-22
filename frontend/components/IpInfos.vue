@@ -68,21 +68,17 @@ const isCardError = (card) => {
 
 // 动态计算真正要显示的卡片（若偵測不到，徹底消失隱藏，不要佔位）
 const visibleCards = computed(() => {
-  const isAllFetched = store.loadingStatus?.ipcheck;
-  const slice = ipDataCards.slice(0, ipCardsToShow.value);
-
-  return slice.filter(card => {
-    // 1. 如果已獲取失敗、超時、或明確無效，徹底隱藏，不佔位
-    if (card.status === 'failed' || card.status === 'unavailable' || isCardError(card) || card.ip === null) {
-      return false;
-    }
-    // 2. 如果整個 IP 檢測已經全部完成，只保留成功抓取到有效 IP 的卡片
-    if (isAllFetched) {
-      return card.ip && isValidIP(card.ip);
-    }
-    // 3. 在檢測進行中時，未失敗的卡片保留顯示
-    return true;
-  });
+  // 嚴格規則：只有真正成功獲取到有效 IP 的卡片，或者正在被主動刷新的卡片才顯示！
+  // 任何偵測不到、失敗、未支援或空數據的卡片，一律徹底隱藏不佔位！
+  const valid = ipDataCards.filter(card => (card.ip && isValidIP(card.ip)) || card.isRefreshing);
+  if (valid.length > 0) {
+    return valid;
+  }
+  // 僅在最剛開始完全尚未有任何 IP 回傳且檢測進行中時，最多顯示正在請求的初始骨架
+  if (!store.loadingStatus?.ipcheck) {
+    return ipDataCards.slice(0, 3).filter(c => c.status !== 'failed');
+  }
+  return [];
 });
 
 // 響應式優化網格欄位寬度（依據有效卡片數量自動平分 12 欄，杜絕空位）
@@ -187,16 +183,19 @@ const fetchIP = async (cardID, getFromSource) => {
       ipDataCards[cardID].ip = ip;
       ipDataCards[cardID].source = source;
       ipDataCards[cardID].status = 'success';
+      ipDataCards[cardID].isRefreshing = false;
       IPArray.value = [...IPArray.value, ip];
       await fetchIPDetails(cardID, ip);
     } else {
       // 偵測不到或無有效 IP，設為 null 並標記 failed，visibleCards 會自動徹底隱藏，不佔位
       ipDataCards[cardID].ip = null;
       ipDataCards[cardID].status = 'failed';
+      ipDataCards[cardID].isRefreshing = false;
     }
   } catch (error) {
     ipDataCards[cardID].ip = null;
     ipDataCards[cardID].status = 'failed';
+    ipDataCards[cardID].isRefreshing = false;
   } finally {
     fetchStatus[cardID] = { [cardID]: true };
     trackFetchStatus(fetchStatus);
@@ -205,8 +204,9 @@ const fetchIP = async (cardID, getFromSource) => {
 
 // 上报数据获取状态，并发送到 store
 const trackFetchStatus = (status) => {
+  const activeCount = Math.min(ipCardsToShow.value, (ipDetectors.value?.length || 6));
   let allHasFetched = true;
-  for (let i = 0; i < ipCardsToShow.value; i++) {
+  for (let i = 0; i < activeCount; i++) {
     if (status[i] === undefined) {
       allHasFetched = false;
     } else {
@@ -244,6 +244,12 @@ const checkAllIPs = async () => {
   });
 
   const maxIndex = Math.min(ipCardsToShow.value, detectors.length);
+
+  // 超出 maxIndex 的未執行預設卡片直接標記為 failed，徹底杜絕骨架殘留佔位
+  for (let i = maxIndex; i < ipDataCards.length; i++) {
+    ipDataCards[i].status = 'failed';
+    ipDataCards[i].ip = null;
+  }
 
   let index = 0;
   const interval = setInterval(() => {
@@ -369,6 +375,7 @@ const selectIPGeoSource = () => {
 // 刷新某张卡片
 const refreshCard = (card, index) => {
   clearCardData(card);
+  card.isRefreshing = true;
   switch (index) {
     case 0:
       fetchIP(0, getIPFromIpify_V4);
