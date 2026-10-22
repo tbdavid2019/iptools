@@ -7,14 +7,17 @@
     <div class="text-secondary">
       <p>{{ t('ipInfos.Notes') }}</p>
     </div>
-    <div class="row">
+    <div class="row" v-if="visibleCards.length > 0">
       <div v-for="(card, index) in visibleCards" :key="card.id" :ref="card.id"
-        :class="[colClass, {
-          'jn-opacity': !card.ip || isCardError(card)
-        }]">
+        :class="colClass">
         <IPCard :card="card" :index="index" :isDarkMode="isDarkMode" :isMobile="isMobile" :ipGeoSource="ipGeoSource"
           :isMapShown="isMapShown" :isCardsCollapsed="isCardsCollapsed" :copiedStatus="copiedStatus" :configs="configs"
           :asnInfos="asnInfos" @refresh-card="refreshCard" />
+      </div>
+    </div>
+    <div v-else-if="store.loadingStatus.ipcheck" class="col-12 text-center py-4">
+      <div class="alert alert-warning d-inline-block px-4 py-3" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ t('ipInfos.IPv4Error') }}
       </div>
     </div>
   </div>
@@ -50,32 +53,51 @@ const isCardsCollapsed = computed(() => userPreferences.value.simpleMode);
 const hideUnavailableIPStack = computed(() => userPreferences.value.hideUnavailableIPStack);
 const ipCardsToShow = computed(() => userPreferences.value.ipCardsToShow || 6);
 
-// 检查卡片是否加载失败
+// 检查卡片是否加载失败或不可用
 const isCardError = (card) => {
-  if (!card || !card.ip) return false;
+  if (!card) return true;
+  if (card.status === 'failed' || card.status === 'unavailable') return true;
+  if (!card.ip) return false;
   return card.ip === t('ipInfos.IPv4Error') ||
          card.ip === t('ipInfos.IPv6Error') ||
          card.ip.includes('Error') ||
          card.ip.includes('失敗') ||
-         card.ip.includes('不存在');
+         card.ip.includes('不存在') ||
+         !isValidIP(card.ip);
 };
 
-// 动态计算真正要显示的卡片
+// 动态计算真正要显示的卡片（若偵測不到，徹底消失隱藏，不要佔位）
 const visibleCards = computed(() => {
+  const isAllFetched = store.loadingStatus?.ipcheck;
   const slice = ipDataCards.slice(0, ipCardsToShow.value);
-  if (!hideUnavailableIPStack.value) return slice;
+
   return slice.filter(card => {
-    if (!card.ip) return true; // 加载中保留
-    return !isCardError(card); // 失败的立即隐藏
+    // 1. 如果已獲取失敗、超時、或明確無效，徹底隱藏，不佔位
+    if (card.status === 'failed' || card.status === 'unavailable' || isCardError(card) || card.ip === null) {
+      return false;
+    }
+    // 2. 如果整個 IP 檢測已經全部完成，只保留成功抓取到有效 IP 的卡片
+    if (isAllFetched) {
+      return card.ip && isValidIP(card.ip);
+    }
+    // 3. 在檢測進行中時，未失敗的卡片保留顯示
+    return true;
   });
 });
 
-// 创建样式
+// 響應式優化網格欄位寬度（依據有效卡片數量自動平分 12 欄，杜絕空位）
 const colClass = computed(() => {
   const numCards = visibleCards.value.length;
-  if (numCards > 0) {
-    const colSize = numCards > 3 ? (numCards === 4 ? 3 : 4) : Math.floor(12 / numCards);
-    return `col-xl-${colSize} col-md-${colSize} mb-4`;
+  if (numCards === 1) {
+    return 'col-xl-6 col-lg-8 col-md-10 mx-auto mb-4';
+  } else if (numCards === 2) {
+    return 'col-xl-6 col-lg-6 col-md-6 mb-4';
+  } else if (numCards === 3) {
+    return 'col-xl-4 col-lg-4 col-md-4 mb-4';
+  } else if (numCards === 4) {
+    return 'col-xl-3 col-lg-6 col-md-6 mb-4';
+  } else if (numCards >= 5) {
+    return 'col-xl-4 col-lg-4 col-md-6 mb-4';
   }
   return 'col-xl-4 col-lg-6 col-md-6 mb-4';
 });
@@ -83,6 +105,7 @@ const colClass = computed(() => {
 // 默认卡片数据
 const createDefaultCard = () => ({
   ip: "",
+  status: "pending",
   country_name: "",
   region: "",
   city: "",
@@ -115,17 +138,17 @@ const ipDataCards = reactive([
   {
     ...createDefaultCard(),
     id: "ipchecking_v64",
-    source: "8888IP IPv6/4",
+    source: "888IP IPv6/4",
   },
   {
     ...createDefaultCard(),
     id: "ipchecking_v4",
-    source: "8888IP IPv4",
+    source: "888IP IPv4",
   },
   {
     ...createDefaultCard(),
     id: "ipchecking_v6",
-    source: "8888IP IPv6",
+    source: "888IP IPv6",
   },
 ]);
 
@@ -150,22 +173,34 @@ let ipDataCache = new Map();
 
 // 公共获取 IP 地址方法
 const fetchIP = async (cardID, getFromSource) => {
-  const { ip, source } = await getFromSource(configs.value.originalSite);
-  let fetchingStatus = false;
-  if (ip !== null) {
-    ipDataCards[cardID].ip = ip;
-    ipDataCards[cardID].source = source;
-    IPArray.value = [...IPArray.value, ip];
-    await fetchIPDetails(cardID, ip);
-  } else if (cardID === 2 || cardID === 5) {
-    ipDataCards[cardID].ip = t('ipInfos.IPv6Error');
-  } else {
-    ipDataCards[cardID].ip = t('ipInfos.IPv4Error');
+  try {
+    // 3.5秒超時保護：如果當前網路環境不支援（例如 IPv6 不通），避免長時間卡住
+    const timeoutPromise = new Promise(resolve =>
+      setTimeout(() => resolve({ ip: null, source: ipDataCards[cardID]?.source || '' }), 3500)
+    );
+    const { ip, source } = await Promise.race([
+      getFromSource(configs.value?.originalSite),
+      timeoutPromise
+    ]);
+
+    if (ip && isValidIP(ip)) {
+      ipDataCards[cardID].ip = ip;
+      ipDataCards[cardID].source = source;
+      ipDataCards[cardID].status = 'success';
+      IPArray.value = [...IPArray.value, ip];
+      await fetchIPDetails(cardID, ip);
+    } else {
+      // 偵測不到或無有效 IP，設為 null 並標記 failed，visibleCards 會自動徹底隱藏，不佔位
+      ipDataCards[cardID].ip = null;
+      ipDataCards[cardID].status = 'failed';
+    }
+  } catch (error) {
+    ipDataCards[cardID].ip = null;
+    ipDataCards[cardID].status = 'failed';
+  } finally {
+    fetchStatus[cardID] = { [cardID]: true };
+    trackFetchStatus(fetchStatus);
   }
-  // 总是返回 true，即使获取 IP 失败，以便在 trackFetchStatus 中记录
-  fetchingStatus = true;
-  fetchStatus[cardID] = { [cardID]: fetchingStatus };
-  trackFetchStatus(fetchStatus);
 };
 
 // 上报数据获取状态，并发送到 store

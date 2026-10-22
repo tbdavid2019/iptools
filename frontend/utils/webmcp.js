@@ -1,5 +1,5 @@
 /**
- * WebMCP (Web Model Context Protocol) Implementation for 8888IP
+ * WebMCP (Web Model Context Protocol) Implementation for 888IP
  * Documentation: https://developer.chrome.com/docs/ai/webmcp
  *
  * Provides:
@@ -149,6 +149,16 @@ export function initWebMCP(app, router, store) {
     } catch (e) { /* ignore read-only */ }
     try {
       window.modelContext = modelContext;
+    } catch (e) { /* ignore */ }
+    try {
+      if (typeof navigator !== 'undefined' && !('modelContext' in navigator)) {
+        Object.defineProperty(navigator, 'modelContext', {
+          value: modelContext,
+          writable: true,
+          configurable: true,
+          enumerable: true
+        });
+      }
     } catch (e) { /* ignore */ }
   } else {
     // Forward events and mirror tools

@@ -39,7 +39,7 @@
         <div id="morefrom8888ip" class="d-flex justify-content-center">
             <div :class="[isMobile ? 'mx-1' : 'mx-3']">
                 <img type="button" data-bs-toggle="modal" @click="openCurlModal"
-                    src="/additional/curl.webp" alt="8888IP for Curl" :width="[isMobile ? '108' : '180']"
+                    src="/additional/curl.webp" alt="888IP for Curl" :width="[isMobile ? '108' : '180']"
                     :height="[isMobile ? '39' : '65']">
             </div>
         </div>

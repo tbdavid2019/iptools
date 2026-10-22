@@ -279,10 +279,10 @@ const updateBodyClass = () => {
 const PWAColor = () => {
     const themeColor = document.querySelector('meta[name="theme-color"]');
     const backgroundColor = document.querySelector('meta[name="background-color"]');
-    const color = isDarkMode.value ? "#171a1d" : "#f8f9fa";
-    const bgColor = isDarkMode.value ? "#212529" : "#ffffff";
-    themeColor.setAttribute("content", color);
-    backgroundColor.setAttribute("content", bgColor);
+    const color = isDarkMode.value ? "#101d2c" : "#FFB010";
+    const bgColor = isDarkMode.value ? "#0c1520" : "#fff0cc";
+    if (themeColor) themeColor.setAttribute("content", color);
+    if (backgroundColor) backgroundColor.setAttribute("content", bgColor);
 };
 
 const updateIPDBs = () => {

@@ -49,12 +49,32 @@ const getClientIp = (req) => {
 };
 
 export default function handler(req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
+
+    if (req.method === 'OPTIONS') {
+        return res.status(204).end();
+    }
+
     if (req.method !== 'GET' && req.method !== 'HEAD') {
-        res.setHeader('Allow', 'GET, HEAD');
+        res.setHeader('Allow', 'GET, HEAD, OPTIONS');
         return res.status(405).send('Method Not Allowed\n');
     }
 
     res.setHeader('Cache-Control', 'no-store');
+    const ip = getClientIp(req);
+    const acceptHeader = req.headers?.['accept'] || '';
+    const isJson = acceptHeader.includes('application/json') || req.query?.format === 'json' || req.query?.json === 'true';
+
+    if (isJson) {
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        return res.status(200).json({
+            ip: ip,
+            status: 'success'
+        });
+    }
+
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    return res.status(200).send(`${getClientIp(req)}\n`);
+    return res.status(200).send(`${ip}\n`);
 }

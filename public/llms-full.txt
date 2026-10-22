@@ -1,6 +1,6 @@
-# 8888IP Network Toolbox - Full Specification & API Reference
+# 888IP Network Toolbox - Full Specification & API Reference
 
-> 8888IP 是一個開源、全 Serverless 運作的 IP 與網路工具箱，託管於 Cloudflare Workers / Cloudflare Pages 全球邊緣網路。
+> 888IP 是一個開源、全 Serverless 運作的 IP 與網路工具箱，託管於 Cloudflare Workers / Cloudflare Pages 全球邊緣網路。
 
 ## 1. 系統架構 (System Architecture)
 

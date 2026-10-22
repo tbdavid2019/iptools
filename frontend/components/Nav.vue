@@ -9,14 +9,11 @@
       </button>
 
       <div class="jn-logo">
-        <a class="navbar-brand d-flex align-items-center align-content-center" :class="{ 'text-white': isDarkMode }"
-          href="#" aria-label="8888IP" @click="handleLogoClick">
-          <span class="fw-bold">8888</span>
-          <span class="fw-lighter" :class="{
-              'background-animation-dark': !loaded && isDarkMode,
-              'background-animation-light': !loaded && !isDarkMode
-            }">IP
-          </span>
+        <a class="navbar-brand d-flex align-items-center" href="#" aria-label="888IP" @click="handleLogoClick">
+          <div class="brand-badge-888" :class="{ 'loading-pulse': !loaded }">
+            <span class="brand-num">888</span>
+            <span class="brand-ip-pill">IP</span>
+          </div>
         </a>
       </div>
 
@@ -40,7 +37,7 @@
           </div>
           <a :class="[isMobile ? 'mt-2':'ms-2']" :href="t('page.footerLink')" target="_blank"
             class="d-flex align-items-center">
-            <img src="https://img.shields.io/github/stars/tbdavid2019/iptools" alt="8888IP GitHub stars" />
+            <img src="https://img.shields.io/github/stars/tbdavid2019/iptools" alt="888IP GitHub stars" />
           </a>
         </div>
       </div>
@@ -261,48 +258,59 @@ defineExpose({
   }
 }
 
-/* Logo 上的加载动画 */
-.background-animation-light {
-  position: relative;
-  overflow: hidden;
+/* 888IP Brand Logo Badge matching 2md.aiurl.tw & david888.com */
+.brand-badge-888 {
   display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--saffron, #ffb010);
+  border: 2px solid var(--deep-blue, #17324d);
+  border-radius: 10px;
+  padding: 3px 9px 3px 11px;
+  line-height: 1;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-shadow: 0 2px 8px rgba(23, 50, 77, 0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  user-select: none;
+  cursor: pointer;
 }
 
-.background-animation-light::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: -100%;
-  width: 100%;
-  height: 10%;
-  background-color: rgb(0, 0, 0);
-  animation: backgroundSlide 1s linear infinite;
+.brand-badge-888:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(23, 50, 77, 0.28);
 }
 
-.background-animation-dark {
-  position: relative;
-  overflow: hidden;
-  display: inline-flex;
+.brand-num {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--deep-blue, #17324d);
+  line-height: 1;
 }
 
-.background-animation-dark::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: -100%;
-  width: 100%;
-  height: 10%;
-  background-color: rgb(255, 255, 255);
-  animation: backgroundSlide 1s linear infinite;
+.brand-ip-pill {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  background: var(--deep-blue, #17324d);
+  color: var(--saffron, #ffb010);
+  padding: 3px 6px;
+  border-radius: 6px;
+  line-height: 1;
 }
 
-@keyframes backgroundSlide {
-  from {
-    left: -100%;
+.brand-badge-888.loading-pulse {
+  animation: logoPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
   }
-
-  to {
-    left: 100%;
+  50% {
+    opacity: 0.82;
+    transform: scale(0.98);
   }
 }
 </style>

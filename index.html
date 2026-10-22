@@ -4,36 +4,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>8888IP - Check My IP Address, DNS Leak & Speed Test</title>
+  <title>888IP - Check My IP Address, DNS Leak & Speed Test</title>
   <meta name="keywords"
-    content="8888IP,IP Tool,My IP,IP check,IP lookup,DNS leak test,WebRTC test,Speed test,DNS lookup,Whois lookup,Ping test,privacy test">
+    content="888IP,IP Tool,My IP,IP check,IP lookup,DNS leak test,WebRTC test,Speed test,DNS lookup,Whois lookup,Ping test,privacy test">
   <meta name="description"
     content="An open-source IP toolbox to check your IP address, IP geolocation, DNS leaks, WebRTC connections, domain WHOIS, and global network latency.">
   <meta name="robots" content="index, follow">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#f8f9fa">
-  <meta name="background-color" content="#ffffff">
+  <meta name="theme-color" content="#FFB010">
+  <meta name="background-color" content="#fff0cc">
   <meta name="webmcp-version" content="1.0.0">
   <link rel="canonical" href="https://ip.david888.com/">
+  <link rel="alternate" type="text/markdown" title="Agent Skill" href="/skill.md">
+  <link rel="alternate" type="text/markdown" title="LLM Context" href="/llms.txt">
+  <link rel="service-doc" href="/skill.md">
+  <link rel="api-catalog" href="/mcp">
+
+  <!-- Google Fonts: Outfit (Display), JetBrains Mono (Tech/IP), Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Open Graph / Facebook / LinkedIn -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ip.david888.com/">
-  <meta property="og:site_name" content="8888IP">
-  <meta property="og:title" content="8888IP - Check My IP Address, DNS Leak & Speed Test">
+  <meta property="og:site_name" content="888IP">
+  <meta property="og:title" content="888IP - Check My IP Address, DNS Leak & Speed Test">
   <meta property="og:description"
     content="An open-source IP toolbox to check your IP address, IP geolocation, DNS leaks, WebRTC connections, domain WHOIS, and global network latency.">
   <meta property="og:image" content="https://ip.david888.com/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="8888IP Open-Source Network & IP Toolbox">
+  <meta property="og:image:alt" content="888IP Open-Source Network & IP Toolbox">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:locale:alternate" content="en_US">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@tbdavid2019">
-  <meta name="twitter:title" content="8888IP - Check My IP Address, DNS Leak & Speed Test">
+  <meta name="twitter:title" content="888IP - Check My IP Address, DNS Leak & Speed Test">
   <meta name="twitter:description"
     content="An open-source IP toolbox to check your IP address, IP geolocation, DNS leaks, WebRTC connections, domain WHOIS, and global network latency.">
   <meta name="twitter:image" content="https://ip.david888.com/og-image.jpg">
@@ -48,7 +57,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "8888IP",
+    "name": "888IP",
     "url": "https://ip.david888.com/",
     "description": "An open-source IP toolbox to check your IP address, IP geolocation, DNS leaks, WebRTC connections, domain WHOIS, and global network latency.",
     "applicationCategory": "UtilitiesApplication",
@@ -70,57 +79,84 @@
   <script>
     setTimeout(() => {
       document.getElementById('waiting-too-long').innerHTML = `
-        <p>Waiting too long? Try to refresh 8888IP.</p>
+        <p>Waiting too long? Try to refresh 888IP.</p>
         <p>Or refresh the page.</p>`
     }, 12000)
   </script>
 
   <style>
+    :root {
+      --saffron: #ffb010;
+      --deep-blue: #17324d;
+      --canvas: #fff0cc;
+      --warm-cream: #fff9e8;
+      --ink: #1f1a14;
+    }
+
+    body {
+      background-color: var(--canvas);
+      color: var(--ink);
+    }
+
     .jn-spinner {
-      border: 4px solid rgb(12, 144, 34);
-      width: 20px;
-      height: 20px;
+      border: 4px solid #ffb010;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      border-left-color: transparent;
-      animation: spin 1s linear infinite;
-      margin-top: 10px;
+      border-left-color: #17324d;
+      animation: spin 0.8s linear infinite;
+      margin-top: 16px;
     }
 
     .jn-loading {
-      margin-top: 30vh;
+      margin-top: 28vh;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .loading-logo {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-      font-family: Arial, sans-serif;
-      font-size: 42px;
+    .loading-logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffb010;
+      border: 3px solid #17324d;
+      border-radius: 14px;
+      padding: 8px 18px 8px 20px;
+      box-shadow: 0 6px 18px rgba(23, 50, 77, 0.2);
+    }
+
+    .loading-logo-badge .loading-num {
+      font-family: 'Outfit', -apple-system, sans-serif;
+      font-size: 38px;
+      font-weight: 900;
       letter-spacing: -2px;
-      margin: 0;
+      line-height: 1;
+      color: #17324d;
     }
 
-    .loading-logo span {
-      color: #212529;
-      font-weight: 700;
-    }
-
-    .loading-logo strong {
-      color: #198754;
-      font-weight: 300;
+    .loading-logo-badge .loading-ip-pill {
+      font-family: 'Outfit', -apple-system, sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: #17324d;
+      color: #ffb010;
+      padding: 3px 8px;
+      border-radius: 7px;
+      line-height: 1;
     }
 
     .jn-spinner-text {
-      margin-top: 10px;
+      margin-top: 14px;
       text-align: center;
     }
 
     .jn-spinner-text p {
       font-size: 14px;
-      color: #777;
+      color: #524530;
+      font-weight: 500;
+      margin-bottom: 4px;
     }
 
     .visually-hidden {
@@ -148,10 +184,13 @@
 </head>
 
 <body>
-  <h1 class="visually-hidden">8888IP - Check My IP Address, DNS Leak & Speed Test</h1>
+  <h1 class="visually-hidden">888IP - Check My IP Address, DNS Leak & Speed Test</h1>
   <div id="jn-loading" class="jn-loading">
     <div>
-      <div class="loading-logo" aria-label="8888IP"><span>8888</span><strong>IP</strong></div>
+      <div class="loading-logo-badge" aria-label="888IP">
+        <span class="loading-num">888</span>
+        <span class="loading-ip-pill">IP</span>
+      </div>
     </div>
     <div class="jn-spinner-text">
       <p>It may take a while for the first time, please wait...</p>

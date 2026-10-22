@@ -1,6 +1,6 @@
 <template>
     <pwa-install manual-apple="true" manual-chrome="true" disable-screenshots="true"
-        manifest-url="/manifest.webmanifest" name="8888IP"
+        manifest-url="/manifest.webmanifest" name="888IP"
         description="此網站具備 App 功能特性。在您的裝置上安裝，以享受更豐富的體驗並便於存取。"
         install-button-text="安裝" cancel-button-text="取消"></pwa-install>
 </template>

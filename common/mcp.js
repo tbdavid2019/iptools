@@ -1,14 +1,14 @@
 /**
- * 8888IP Model Context Protocol (MCP) & WebMCP Tools Definition & Handler
+ * 888IP Model Context Protocol (MCP) & WebMCP Tools Definition & Handler
  * Compatible with JSON-RPC 2.0, Model Context Protocol (2024-11-05), and Cloudflare WebMCP.
  */
 
 import { isValidIP } from './valid-ip.js';
 
 export const MCP_SERVER_INFO = {
-    name: '8888ip-network-tools',
+    name: '888ip-network-tools',
     version: '1.0.0',
-    description: '8888IP Network & IP Diagnostics MCP Server'
+    description: '888IP Network & IP Diagnostics MCP Server'
 };
 
 export const MCP_PROTOCOL_VERSION = '2024-11-05';
@@ -126,7 +126,7 @@ async function executeLookupIpGeo(args, context) {
             const keys = ipapiisKey.split(',').filter(Boolean);
             const key = keys[Math.floor(Math.random() * keys.length)];
             const res = await fetch(`https://api.ipapi.is?q=${encodeURIComponent(ip)}&key=${key}`, {
-                headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+                headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)' }
             });
             if (res.ok) {
                 const json = await res.json();
@@ -158,7 +158,7 @@ async function executeLookupIpGeo(args, context) {
             const tokens = ipinfoToken.split(',').filter(Boolean);
             const token = tokens[Math.floor(Math.random() * tokens.length)];
             const res = await fetch(`https://ipinfo.io/${encodeURIComponent(ip)}?token=${token}`, {
-                headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+                headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)' }
             });
             if (res.ok) {
                 const json = await res.json();
@@ -185,7 +185,7 @@ async function executeLookupIpGeo(args, context) {
     // Default Fallback: ip-api.com
     try {
         const res = await fetch(`http://ip-api.com/json/${encodeURIComponent(ip)}?fields=66842623&lang=${encodeURIComponent(lang)}`, {
-            headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+            headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)' }
         });
         const json = await res.json();
         const asn = json.as ? json.as.split(' ')[0] : 'N/A';
@@ -253,7 +253,7 @@ async function executeWhoisLookup(args) {
     const rdapUrl = isIp ? `https://rdap.org/ip/${encodeURIComponent(query)}` : `https://rdap.org/domain/${encodeURIComponent(query)}`;
     const res = await fetch(rdapUrl, {
         headers: {
-            'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)',
+            'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)',
             'Accept': 'application/rdap+json, application/json'
         },
         redirect: 'manual'
@@ -276,7 +276,7 @@ async function executeMacLookup(args, context) {
     const token = env.MAC_LOOKUP_API_KEY || (typeof process !== 'undefined' && process?.env?.MAC_LOOKUP_API_KEY) || '';
     const apiUrl = token ? `https://api.maclookup.app/v2/macs/${mac}?apiKey=${token}` : `https://api.maclookup.app/v2/macs/${mac}`;
     const res = await fetch(apiUrl, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)' }
     });
     return await res.json();
 }
@@ -300,7 +300,7 @@ async function executeCfRadarLookup(args, context) {
             headers: {
                 'Authorization': `Bearer ${cfToken}`,
                 'Content-Type': 'application/json',
-                'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)'
+                'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)'
             }
         });
         return r.json();
