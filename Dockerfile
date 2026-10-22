@@ -1,5 +1,5 @@
 # 第一阶段：构建
-FROM node:22-alpine AS build-stage
+FROM node:22.23.4-alpine AS build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -11,7 +11,7 @@ ENV VITE_DEFAULT_IP_GEO_SOURCE=2
 RUN npm run build
 
 # 第二阶段：运行
-FROM node:22-alpine AS production-stage
+FROM node:22.23.4-alpine AS production-stage
 WORKDIR /app
 ENV FRONTEND_PORT=6001 BACKEND_PORT=11966
 COPY --from=build-stage /app/node_modules ./node_modules
