@@ -1,28 +1,28 @@
 import { isValidIP } from '@/utils/valid-ip.js';
 
-// 从 8888IP 获取 IPv6/4 地址
+// 从 888IP 获取 IPv6/4 地址
 const getIPFromIPChecking64 = async (originalSite) => {
     try {
         let ip;
         originalSite ? ip = await getFromJson() : ip = await getFromTrace();
-        const source = "8888IP IPv6/4";
+        const source = "888IP IPv6/4";
         if (isValidIP(ip)) {
             return {
                 ip: ip,
                 source: source
             };
         } else {
-            console.error("Invalid IP from 8888IP IPv6/4:", ip);
+            console.error("Invalid IP from 888IP IPv6/4:", ip);
             return {
                 ip: null,
                 source: source
             };
         }
     } catch (error) {
-        console.error("Error fetching IP from 8888IP IPv6/4:", error);
+        console.error("Error fetching IP from 888IP IPv6/4:", error);
         return {
             ip: null,
-            source: "8888IP IPv6/4"
+            source: "888IP IPv6/4"
         };
     }
 };

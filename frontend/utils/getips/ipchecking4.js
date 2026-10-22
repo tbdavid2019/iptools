@@ -1,26 +1,26 @@
 import { isValidIP } from '@/utils/valid-ip.js';
 import { getIPFromIpify_V4 } from "./ipify-v4";
 
-// 从 8888IP 获取 IPv4 地址
+// 从 888IP 获取 IPv4 地址
 const getIPFromIPChecking4 = async (originalSite) => {
     try {
         let ip;
         originalSite ? ip = await getFromJson() : ip = await getFromTrace();
-        const source = "8888IP IPv4";
+        const source = "888IP IPv4";
         if (isValidIP(ip)) {
             return {
                 ip: ip,
                 source: source
             };
         } else {
-            console.error("Invalid IP from 8888IP IPv4:", ip);
+            console.error("Invalid IP from 888IP IPv4:", ip);
             return {
                 ip: null,
                 source: source
             };
         }
     } catch (error) {
-        console.error("Error fetching IP from 8888IP IPv4:", error);
+        console.error("Error fetching IP from 888IP IPv4:", error);
     }
     // 故障转移
     const { ip, source } = await getIPFromIpify_V4();

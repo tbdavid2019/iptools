@@ -1,6 +1,6 @@
-# 8888IP
+# 888IP
 
-8888IP 是一個開源的 IP 與網絡工具箱，提供 IP 查詢、地理資訊、WebRTC、DNS 洩漏、網速、連通性、Whois、DNS 解析與網絡診斷工具。
+888IP 是一個開源的 IP 與網絡工具箱，提供 IP 查詢、地理資訊、WebRTC、DNS 洩漏、網速、連通性、Whois、DNS 解析與網絡診斷工具。
 
 線上服務：[https://ip.david888.com](https://ip.david888.com)
 
@@ -19,7 +19,7 @@
 
 ## AI Agent & WebMCP / MCP 整合
 
-8888IP 提供標準 **Model Context Protocol (JSON-RPC 2.0)** 與 **WebMCP** 介面，AI Agent 與瀏覽器助理可直接調用各項診斷工具：
+888IP 提供標準 **Model Context Protocol (JSON-RPC 2.0)** 與 **WebMCP** 介面，AI Agent 與瀏覽器助理可直接調用各項診斷工具：
 
 - **端點路徑**: `https://ip.david888.com/mcp`
 - **協定版本**: `2024-11-05`
@@ -53,7 +53,7 @@ curl https://ip.david888.com
 curl https://ip.david888.com/api/ip
 ```
 
-一般瀏覽器開啟根路徑時會顯示完整的 8888IP 網站；`curl`／`wget` 請求則回傳純文字 IP。
+一般瀏覽器開啟根路徑時會顯示完整的 888IP 網站；`curl`／`wget` 請求則回傳純文字 IP。
 
 ## Cloudflare Worker / Pages 部署
 
@@ -123,7 +123,7 @@ cp .env.example .env
 
 ## WebMCP (Web Model Context Protocol) 支援
 
-8888IP 支援 Chrome 提議的 [WebMCP (Web Model Context Protocol)](https://developer.chrome.com/docs/ai/webmcp?hl=zh-tw) 網頁標準，讓 AI Agent（例如 Chrome 內建 AI、Gemini Auto-Browse、Model Context Tool Inspector 擴充功能等）能以結構化方式直接呼叫與操作本站功能：
+888IP 支援 Chrome 提議的 [WebMCP (Web Model Context Protocol)](https://developer.chrome.com/docs/ai/webmcp?hl=zh-tw) 網頁標準，讓 AI Agent（例如 Chrome 內建 AI、Gemini Auto-Browse、Model Context Tool Inspector 擴充功能等）能以結構化方式直接呼叫與操作本站功能：
 
 ### 支援的 WebMCP 工具清單
 

@@ -74,12 +74,12 @@ export default defineConfig({
         ]
       },
       manifest: {
-        name: '8888IP',
-        short_name: '8888IP',
-        theme_color: '#f8f9fa',
+        name: '888IP',
+        short_name: '888IP',
+        theme_color: '#FFB010',
         orientation: "portrait",
-        id: 'com.david888.8888ip',
-        description: '8888IP network toolbox',
+        id: 'com.david888.888ip',
+        description: '888IP network toolbox',
         icons: [
           {
             src: '/favicon.svg',

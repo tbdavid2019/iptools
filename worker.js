@@ -149,8 +149,39 @@ export default {
 
         // 2. /api/ip
         if (pathname === '/api/ip') {
+            const corsHeaders = {
+                'access-control-allow-origin': '*',
+                'access-control-allow-methods': 'GET, HEAD, OPTIONS',
+                'access-control-allow-headers': 'Content-Type, Accept',
+            };
+
+            if (request.method === 'OPTIONS') {
+                return new Response(null, { status: 204, headers: corsHeaders });
+            }
+
+            const acceptHeader = request.headers.get('accept') || '';
+            const isJson = acceptHeader.includes('application/json') || url.searchParams.get('format') === 'json' || url.searchParams.get('json') === 'true';
+
+            if (isJson) {
+                return new Response(JSON.stringify({
+                    ip: clientIp,
+                    country: request.headers.get('cf-ipcountry') || null,
+                    city: request.headers.get('cf-ipcity') || null,
+                    asn: request.headers.get('cf-asn') || null,
+                    asOrganization: request.headers.get('cf-as-organization') || null,
+                    status: 'success'
+                }, null, 2), {
+                    headers: {
+                        ...corsHeaders,
+                        'content-type': 'application/json; charset=utf-8',
+                        'cache-control': 'no-store'
+                    }
+                });
+            }
+
             return new Response(`${clientIp}\n`, {
                 headers: {
+                    ...corsHeaders,
                     'content-type': 'text/plain; charset=utf-8',
                     'cache-control': 'no-store'
                 }
@@ -189,7 +220,7 @@ export default {
 
             try {
                 const res = await fetch(apiUrl, {
-                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)' }
                 });
                 const json = await res.json();
                 const [lat, lon] = (json.loc || '0,0').split(',').map(Number);
@@ -224,7 +255,7 @@ export default {
 
             try {
                 const res = await fetch(apiUrl, {
-                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)' }
                 });
                 const json = await res.json();
                 const asn = json.as ? json.as.split(' ')[0] : '';
@@ -256,7 +287,7 @@ export default {
 
             try {
                 const res = await fetch(apiUrl, {
-                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)' }
                 });
                 const json = await res.json();
                 const asn = json.asn || {};
@@ -290,7 +321,7 @@ export default {
 
             try {
                 const res = await fetch(apiUrl, {
-                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)' }
+                    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)' }
                 });
                 const json = await res.json();
                 const asn = json.as ? json.as.split(' ')[0] : 'N/A';
@@ -352,7 +383,7 @@ export default {
                 const rdapUrl = isIp ? `https://rdap.org/ip/${encodeURIComponent(query)}` : `https://rdap.org/domain/${encodeURIComponent(query)}`;
                 const res = await fetch(rdapUrl, {
                     headers: {
-                        'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)',
+                        'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)',
                         'Accept': 'application/rdap+json, application/json'
                     },
                     redirect: 'manual'
@@ -409,7 +440,7 @@ export default {
                 headers: {
                     'Authorization': `Bearer ${cfToken}`,
                     'Content-Type': 'application/json',
-                    'User-Agent': 'Mozilla/5.0 (compatible; 8888IP/1.0)'
+                    'User-Agent': 'Mozilla/5.0 (compatible; 888IP/1.0)'
                 }
             };
 

@@ -5,7 +5,7 @@ const analyticsID = import.meta.env.VITE_GOOGLE_ANALYTICS_ID || '';
 
 // Google Analytics 配置
 const analytics = Analytics({
-    app: '8888IP',
+    app: '888IP',
     plugins: [
         googleAnalytics({
             measurementIds: [analyticsID],

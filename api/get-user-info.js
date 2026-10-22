@@ -20,7 +20,7 @@ export default async (req, res) => {
 
     try {
         const forwardHeaders = {
-            'User-Agent': req.headers['user-agent'] || '8888IP/1.0',
+            'User-Agent': req.headers['user-agent'] || '888IP/1.0',
             'Accept': 'application/json'
         };
         if (req.headers.authorization) {
